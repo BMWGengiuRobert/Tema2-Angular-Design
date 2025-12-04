@@ -1,5 +1,6 @@
 .avatar-frame
-    display: flex
+    position: relative
+    display: inline-flex
     align-items: center
     font-family: Arial, sans-serif
     border: 1px solid #ddd
@@ -46,8 +47,12 @@
         cursor: pointer
         &:hover
             color: #ca74dd
-        &:focus
-            outline: 2px solid #ca74dd
         &:active
             transform: scale(0.95)
+    
+    .dropdown-wrapper
+        position: absolute
+        top: 100%
+        left: 0
+        width: 100%
         

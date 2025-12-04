@@ -1,0 +1,10 @@
+<ul class="users-dropdown">
+    <li class="user" *ngFor="let user of availableUsers" (click)="onClickSelectUser(user)">
+        <div class="name-initials">
+            {{ user.avatar }}
+        </div>
+        <div class="user-info">
+            <p class="user-info__full-name">{{ user.name }}</p>
+        </div>
+    </li>
+</ul>
