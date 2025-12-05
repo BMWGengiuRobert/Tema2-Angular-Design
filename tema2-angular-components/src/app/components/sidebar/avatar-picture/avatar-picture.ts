@@ -1,5 +1,5 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
-import { UsersDropdown } from '../users-dropdown/users-dropdown';
+import { UsersDropdown } from '../../users-dropdown/users-dropdown';
 import { CommonModule } from '@angular/common';
 import { USERS, User } from '../../../models/users.model';
 
@@ -32,6 +32,13 @@ export class AvatarPicture {
     if (!clickedInside && this.isDropdownVisible) {
       this.isDropdownVisible = false;
     }
+  }
+
+  getInitialsAvatar(name: string): string {
+    if (!name) return '';
+    const names = name.split(' ');
+    const initials = names.map(n => n.charAt(0).toUpperCase()).join('');
+    return initials;
   }
 
 }

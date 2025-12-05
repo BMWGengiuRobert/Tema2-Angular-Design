@@ -1,0 +1,10 @@
+<ul class="users-dropdown">
+    <li class="user" *ngFor="let user of users" (click)="onClickSelectUser(user)">
+        <div class="name-initials" [ngStyle]="{'background-color': user.color}">
+            {{ getInitialsAvavtar(user.name) }}
+        </div>
+        <div class="user-info">
+            <p class="user-info__full-name">{{ user.name }}</p>
+        </div>
+    </li>
+</ul>

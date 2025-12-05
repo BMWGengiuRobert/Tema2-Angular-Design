@@ -1,7 +1,7 @@
 <div class="avatar-frame">
     <div class="user">
-        <div class="name-initials">
-            {{ selectedUser.avatar }}
+        <div class="name-initials" [ngStyle]="{'background-color': selectedUser.color}">
+            {{ getInitialsAvatar(selectedUser.name) }}
         </div>
         <div class="user-info">
             <p class="user-info__full-name">{{ selectedUser.name }}</p>
