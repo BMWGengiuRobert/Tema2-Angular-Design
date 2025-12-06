@@ -1,7 +1,8 @@
 <ul class="routes-list">
     <li class="route-item" *ngFor="let route of routes">
-        <a [routerLink]="[route.path]" class="route-link">
-            <i class="{{ route.icon }}"></i>
+        <a [routerLink]="[route.path]" class="route-link" (mouseenter)="hoveredRouteId = route.id"
+            (mouseleave)="hoveredRouteId = null">
+            <i class="{{ route.icon }}" [ngStyle]="{'color': hoveredRouteId === route.id ? selectedUserColor : ''}"></i>
             {{ route.name }}
         </a>
     </li>

@@ -1,0 +1,12 @@
+<div class="projects-container">
+    <div class="projects-container__header">
+        <p class="projects-container__title">My Projects</p>
+        <button class="projects-container__add-button">+ Add</button>
+    </div>
+    <ul class="projects-container__list">
+        <li class="projects-container__item" *ngFor="let project of projects">
+            <div class="projects-container__item__icon" [ngStyle]="{ 'background-color': project.color }"></div>
+            <span class="projects-container__item__name">{{ project.name }}</span>
+        </li>
+    </ul>
+</div>
