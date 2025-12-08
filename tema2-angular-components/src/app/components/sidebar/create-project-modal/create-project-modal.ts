@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MyProjectsService } from '../../services/my-projects.service';
-import { Project } from '../../models/projects.model';
-import { OpenModalService } from '../../services/my-projects-modal.service';
+import { MyProjectsService } from '../../../services/my-projects.service';
+import { Project } from '../../../models/projects.model';
+import { OpenModalService } from '../../../services/modal.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -42,8 +42,6 @@ export class CreateProjectModal implements OnInit, OnDestroy {
   }
 
   clickedOutsideModal(event: MouseEvent) {
-    if (event.target === event.currentTarget) {
-      this.closeModal();
-    }
+    this.openModalService.clickedOutsideModal(event);
   }
 }

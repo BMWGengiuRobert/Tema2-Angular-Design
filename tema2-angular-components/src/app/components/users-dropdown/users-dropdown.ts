@@ -22,12 +22,10 @@ export class UsersDropdown {
     this.userSelected.emit(user);
   }
 
-  getInitialsAvavtar(name: string): string {
-    if (!name) return '';
+  getInitialsAvavtar(firstName: string, lastName: string): string {
+    if (!firstName || !lastName) return '';
 
-    const names = name.split(' ');
-    const initials = names.map(n => n.charAt(0).toUpperCase()).join('');
-    return initials;
+    return firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
   } 
 
 }

@@ -1,13 +1,14 @@
 export interface User {
     id: number;
-    name: string;
+    firstName: string;
+    lastName: string;
     color: string;
 }
 
 export const USERS: User[] = [
-    { id: 1, name: 'Coutrney Henry', color: '#ca74dd' },
-    { id: 2, name: 'Albert Flores', color: '#74a9dd' },
-    { id: 3, name: 'Dianne Russell', color: '#74ddaa' },
-    { id: 4, name: 'Jenny Wilson', color: '#dddd74' },
-    { id: 5, name: 'Cameron William', color: '#aa74dd' },
+    { id: 1, firstName: 'Coutrney', lastName: 'Henry', color: '#ca74dd' },
+    { id: 2, firstName: 'Albert', lastName: 'Flores', color: '#74a9dd' },
+    { id: 3, firstName: 'Dianne', lastName: 'Russell', color: '#74ddaa' },
+    { id: 4, firstName: 'Jenny', lastName: 'Wilson', color: '#dddd74' },
+    { id: 5, firstName: 'Cameron', lastName: 'William', color: '#aa74dd' },
 ]

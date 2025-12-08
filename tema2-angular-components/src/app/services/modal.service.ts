@@ -16,4 +16,10 @@ export class OpenModalService {
     closeModal() {
         this.isModalOpen.next(false);
     }
+
+    clickedOutsideModal(event: MouseEvent) {
+        if (event.target === event.currentTarget) {
+            this.closeModal();
+        }
+    }
 }

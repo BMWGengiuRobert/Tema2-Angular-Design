@@ -36,10 +36,9 @@ export class AvatarPicture {
     }
   }
 
-  getInitialsAvatar(name: string): string {
-    if (!name) return '';
-    const names = name.split(' ');
-    const initials = names.map(n => n.charAt(0).toUpperCase()).join('');
+  getInitialsAvatar(firstName: string, lastName: string): string {
+    if (!firstName || !lastName) return '';
+    const initials = firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
     return initials;
   }
 

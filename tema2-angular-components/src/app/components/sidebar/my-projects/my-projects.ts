@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { PROJECTS } from '../../../models/projects.model';
-import { CreateProjectModal } from '../../create-project-modal/create-project-modal';
-import { OpenModalService } from '../../../services/my-projects-modal.service';
+import { CreateProjectModal } from '../create-project-modal/create-project-modal';
+import { OpenModalService } from '../../../services/modal.service';
 
 @Component({
   selector: 'app-my-projects',
