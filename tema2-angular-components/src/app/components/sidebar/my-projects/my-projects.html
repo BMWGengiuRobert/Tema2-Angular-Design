@@ -1,7 +1,7 @@
 <div class="projects-container">
     <div class="projects-container__header">
         <p class="projects-container__title">My Projects</p>
-        <button class="projects-container__add-button">+ Add</button>
+        <button class="projects-container__add-button" (click)="openModal()">+ Add</button>
     </div>
     <ul class="projects-container__list">
         <li class="projects-container__item" *ngFor="let project of projects">
@@ -10,3 +10,5 @@
         </li>
     </ul>
 </div>
+
+<app-create-project-modal></app-create-project-modal>

@@ -1,0 +1,19 @@
+<div class="modal-overlay" *ngIf="isModalOpen" (click)="clickedOutsideModal($event)">
+    <div class="modal-content">
+        <h2 class="modal-content__title">Add New Project</h2>
+        <form class="modal-content__form">
+            <label class="modal-content__form__label" for="project-name">Project Name</label>
+            <input class="modal-content__form__input" type="text" id="project-name" name="project-name" [(ngModel)]="newProject.name"
+                placeholder="Enter project name" />
+
+            <label class="modal-content__form__label" for="project-color">Project Color</label>
+            <input class="modal-content__form__input" type="color" id="project-color" name="project-color" [(ngModel)]="newProject.color" />
+            <div class="modal-content__form__buttons">
+                <button class="modal-content__form__buttons__cancel"
+                    type="button" (click)="closeModal()">Cancel</button>
+                <button class="modal-content__form__buttons__create"
+                    type="submit" (click)="createProject()">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
