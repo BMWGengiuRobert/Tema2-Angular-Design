@@ -1,0 +1,93 @@
+.card-container
+    display: flex
+    flex-direction: column
+    background-color: #fff
+    padding: 16px
+    border-radius: 20px
+    gap: 12px
+
+    &__header
+        display: flex
+        gap: 36px
+        align-items: center
+        color: #000
+
+        .title
+            font-family: 'Arial', sans-serif
+            font-size: 20px
+            font-weight: bold
+
+            i
+                color: #7669e0
+                margin-right: 8px
+
+        .recents
+            font-family: 'Arial', sans-serif
+            font-size: 16px
+            color: #666
+
+            i
+                margin-left: 8px
+
+    &__body
+        display: flex
+        alingn-items: center
+        gap: 16px
+        justify-content: space-between
+        margin-top: 12px
+
+        .column
+            flex: 1
+            display: flex
+            flex-direction: column
+            gap: 24px
+
+            .item
+                display: flex
+                align-items: center
+                gap: 16px
+
+                &__icon
+                    font-size: 16px
+                    border-radius: 12px
+                    width: 40px
+                    height: 40px
+                    display: flex
+                    align-items: center
+                    justify-content: center
+
+                    &.dotted-border
+                        border: 2px dashed #7669e0
+                    
+                    &.blue-bg
+                        background-color: #e9e9fc
+                        color: #1e29c5
+                    
+                    &.purple-bg
+                        background-color: #fae2fe
+                        color: #9423c8
+                    
+                    &.green-bg
+                        background-color: #def1f8
+                        color: #21b5c7
+
+                &__text
+                    display: flex
+                    flex-direction: column
+                    gap: 4px
+
+                    span
+                        font-family: 'Arial', sans-serif
+                        font-size: 16px
+                        font-weight: bold
+
+                    .project-details
+                        font-family: 'Arial', sans-serif
+                        font-size: 14px
+                        color: #666
+                        display: flex
+                        gap: 8px
+                        align-items: center
+            
+                
+                
