@@ -1,0 +1,75 @@
+.card-container 
+    display: flex
+    flex-direction: column
+    background-color: #fff
+    padding: 16px
+    border-radius: 20px
+    gap: 12px
+
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        font-family: 'Arial', sans-serif
+        padding: 8px
+
+        .title
+            font-size: 20px
+            font-weight: bold
+
+            i
+                color: #7669e0
+                margin-right: 8px
+        
+    &__body
+        display: flex
+        flex-direction: column
+        gap: 16px
+
+        .item
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding: 8px
+
+            &__details
+                display: flex
+                flex-direction: column
+                gap: 4px
+
+                span
+                    font-size: 18px
+                    font-weight: bold
+
+                div
+                    color: #666 
+                    display: flex
+                    gap: 8px
+                    align-items: center
+                    span
+                        font-size: 16px
+            
+            &__status
+                display: flex
+                align-items: center
+                gap: 8px
+
+                span
+                    font-size: 16px
+                    font-weight: bold
+                
+                .progress-track
+                    width: 120px
+                    height: 10px
+                    background-color: #e0e0e0
+                    border-radius: 5px
+                    overflow: hidden
+
+                    .progress-fill
+                        height: 100%
+
+                    .cyan
+                        background-color: #36d0c9
+                    
+                    .orange
+                        background-color: #f8ab62
