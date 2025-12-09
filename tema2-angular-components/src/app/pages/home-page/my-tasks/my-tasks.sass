@@ -1,0 +1,144 @@
+.card-container
+    display: flex
+    flex-direction: column
+    background-color: #fff
+    padding: 16px
+    border-radius: 20px
+    gap: 12px
+
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+
+        .title
+            font-family: 'Arial', sans-serif
+            font-size: 20px
+            font-weight: bold
+
+            i
+                color: #7669e0
+                margin-right: 8px
+        
+        .actions
+            display: flex
+            gap: 12px
+
+            button
+                background: none
+                border: none
+                cursor: pointer
+                font-size: 18px
+
+    &__body
+        margin-top: 16px
+
+        .label
+            display: flex
+            align-items: center
+            gap: 12px
+            font-size: 14px
+            font-weight: bold
+
+            .status
+                background-color: #adedec
+                padding: 8px
+                border-radius: 8px
+    
+    &__task-list
+        color: #7b6e6e
+        font-weight: bold
+
+        .header
+            margin-top: 16px 
+            display: flex
+            justify-content: space-between
+            align-items: center
+            border-bottom: 4px solid #e0e0e0
+
+            div
+                display: flex
+                justify-content: space-between
+                width: 240px
+        
+        .tasks
+            display: flex
+            flex-direction: column
+            gap: 16px
+
+            .item
+                display: flex
+                justify-content: space-between
+                align-items: center
+                color:#000
+                padding: 12px 0
+                border-bottom: 4px solid #e0e0e0
+
+                .left
+                    color: #000
+                    display: flex
+                    align-items: center
+                    gap: 12px
+
+                    div
+                        background-color: #adedec
+                        height: 12px
+                        width: 12px
+                
+                .right
+                    display: flex
+                    justify-content: space-between
+                    align-items: center
+                    width: 240px
+
+                    .high
+                        color: #ff6b6b
+                    
+                    .priority
+                        padding: 4px 8px
+                        border-radius: 8px
+                    
+                    .p-low
+                        background-color: #c0c0c0
+                    
+                    .p-high
+                        background-color: #ffb3b3
+    
+    &__footer
+        display: flex
+        flex-direction: column
+
+        button
+            margin: 12px 0
+            font-family: 'Arial', sans-serif
+            font-size: 16px
+            background: none
+            border: none
+            font-weight: bold
+            cursor: pointer
+            align-self: flex-start
+
+        .card
+            display: flex
+            align-items: center
+            gap: 12px
+            font-weight: bold
+            margin-top: 16px
+
+            span:nth-child(2)
+                padding: 4px 8px
+                border-radius: 8px
+            
+            .p-low
+                background-color: #c0c0c0
+            
+            .p-medium
+                background-color: #ffdb99
+
+.overlay
+    perspective: none
+    
+    &:hover .card-container
+        transform: rotateZ(-5deg)
+        transition: transform 0.3s ease-in-out
+        box-shadow: 20px 20px 40px rgba(0,0,0,0.15);
