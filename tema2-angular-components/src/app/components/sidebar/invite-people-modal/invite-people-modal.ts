@@ -24,17 +24,13 @@ export class InvitePeopleModal {
   constructor(private usersService: UsersService, private openModalService: OpenModalService) { }
 
   ngOnInit() {
-    this.modalSubscription = this.openModalService.isModalOpen$.subscribe((isOpen) => {
+    this.modalSubscription = this.openModalService.isInvitePeopleModalOpen$.subscribe((isOpen) => {
       this.isModalOpen = isOpen;
     });
 }
 
-  ngOnDestroy() {
-    this.modalSubscription.unsubscribe();
-  }
-
   closeModal() {
-    this.openModalService.closeModal();
+    this.openModalService.closeInvitePeopleModal();
   }
 
   inviteUser() {
@@ -50,6 +46,11 @@ export class InvitePeopleModal {
   }
 
   clickedOutsideModal(event: MouseEvent) {
-    this.openModalService.clickedOutsideModal(event);
+    this.openModalService.clickedOutsideInvitePeopleModal(event);
   }
+
+    ngOnDestroy() {
+    this.modalSubscription.unsubscribe();
+  }
+
 }

@@ -21,17 +21,13 @@ export class CreateProjectModal implements OnInit, OnDestroy {
   constructor(private myProjectsService: MyProjectsService, private openModalService: OpenModalService) { }
 
   ngOnInit() {
-    this.modalSubscription = this.openModalService.isModalOpen$.subscribe((isOpen) => {
+    this.modalSubscription = this.openModalService.isCreateProjectModalOpen$.subscribe((isOpen) => {
       this.isModalOpen = isOpen;
     });
   }
 
-  ngOnDestroy() {
-    this.modalSubscription.unsubscribe();
-  }
-
   closeModal() {
-    this.openModalService.closeModal();
+    this.openModalService.closeCreateProjectModal();
   }
 
   createProject() {
@@ -42,6 +38,10 @@ export class CreateProjectModal implements OnInit, OnDestroy {
   }
 
   clickedOutsideModal(event: MouseEvent) {
-    this.openModalService.clickedOutsideModal(event);
+    this.openModalService.clickedOutsideCreateProjectModal(event);
+  }
+
+  ngOnDestroy() {
+    this.modalSubscription.unsubscribe();
   }
 }

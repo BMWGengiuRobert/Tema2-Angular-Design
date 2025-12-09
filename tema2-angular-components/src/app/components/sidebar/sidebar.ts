@@ -16,6 +16,6 @@ export class Sidebar {
   constructor(private openModalService: OpenModalService) { }
 
   openModal() {
-    this.openModalService.openModal();
+    this.openModalService.openInvitePeopleModal();
   }
 }

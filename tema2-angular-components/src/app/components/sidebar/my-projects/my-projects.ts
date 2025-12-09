@@ -16,6 +16,6 @@ export class MyProjects {
   constructor(private openModalService: OpenModalService) {}
 
   openModal() {
-    this.openModalService.openModal();
+    this.openModalService.openCreateProjectModal();
   }
 }

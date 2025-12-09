@@ -5,21 +5,37 @@ import { BehaviorSubject } from "rxjs";
     providedIn: 'root'
 })
 export class OpenModalService {
-    private isModalOpen = new BehaviorSubject<boolean>(false);
+    private isInvitePeopleModalOpen = new BehaviorSubject<boolean>(false);
+    private isCreateProjectModalOpen = new BehaviorSubject<boolean>(false);
 
-    isModalOpen$ = this.isModalOpen.asObservable();
+    isInvitePeopleModalOpen$ = this.isInvitePeopleModalOpen.asObservable();
+    isCreateProjectModalOpen$ = this.isCreateProjectModalOpen.asObservable();
 
-    openModal() {
-        this.isModalOpen.next(true);
+    openInvitePeopleModal() {
+        this.isInvitePeopleModalOpen.next(true);
     }
 
-    closeModal() {
-        this.isModalOpen.next(false);
+    closeInvitePeopleModal() {
+        this.isInvitePeopleModalOpen.next(false);
     }
 
-    clickedOutsideModal(event: MouseEvent) {
+    openCreateProjectModal() {
+        this.isCreateProjectModalOpen.next(true);
+    }
+
+    closeCreateProjectModal() {
+        this.isCreateProjectModalOpen.next(false);
+    }
+
+    clickedOutsideInvitePeopleModal(event: MouseEvent) {
         if (event.target === event.currentTarget) {
-            this.closeModal();
+            this.closeInvitePeopleModal();
+        }
+    }
+
+    clickedOutsideCreateProjectModal(event: MouseEvent) {
+        if (event.target === event.currentTarget) {
+            this.closeCreateProjectModal();
         }
     }
 }
