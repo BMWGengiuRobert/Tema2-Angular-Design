@@ -1,0 +1,164 @@
+.card-container
+    display: flex
+    flex-direction: column
+    background-color: #fff
+    padding: 16px
+    border-radius: 20px
+    gap: 12px
+
+    &__header
+        display: flex
+        align-items: center
+        gap: 36px
+        font-family: 'Arial', sans-serif
+
+        .title
+            font-size: 20px
+            font-weight: 600
+            color: #333
+
+            i
+                margin-right: 8px
+                color: #7669e0
+
+        .current-month
+            font-size: 16px
+            color: #000
+
+            i
+                margin-left: 8px
+
+    &__body
+        display: flex
+        flex-direction: column
+        gap: 16px
+        padding: 16px
+        border-radius: 20px
+
+        .current-week
+            display: flex
+
+            &__days
+                display: flex
+                align-items: center
+                justify-content: space-around
+                flex-grow: 1
+
+                .day
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    justify-content: center
+                    gap: 4px
+
+                    .name
+                        color: #666
+                        font-size: 14px
+
+                    .number
+                        font-size: 18px
+                        font-weight: bold
+
+                .active
+                    background-color: #7669e0
+                    padding: 8px
+                    height: 40px
+                    width: 40px
+                    border-radius: 12px
+                    color: #fff
+                    display: flex
+                    align-items: center
+                    justify-content: center
+
+                    .name
+                        color: #fff
+
+            button
+                cursor: pointer
+                border: none
+                background: none
+
+        .upcoming-events
+            display: flex
+            flex-direction: column
+            background-color: #f5f6ff
+            padding: 12px
+            border-radius: 12px
+            gap: 16px
+
+            &__details
+                display: flex
+                justify-content: space-between
+
+                &__header
+                    display: flex
+                    flex-direction: column
+                    gap: 4px
+
+                    .title
+                        font-family: 'Arial', sans-serif
+                        font-size: 18px
+                        font-weight: bold
+
+                    .details
+                        font-family: 'Arial', sans-serif
+                        font-size: 14px
+                        color: #666
+                        display: flex
+                        gap: 8px
+                        align-items: center
+
+                .actions
+                    display: flex
+                    align-items: center
+                    gap: 4px
+
+            .platform
+                display: flex
+                align-items: center
+                justify-content: space-between
+                font-family: 'Arial', sans-serif
+
+                &__cell
+                    display: flex
+                    align-items: center
+                    gap: 8px
+                    background: #fff
+                    padding: 8px 12px
+                    border-radius: 50px
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+
+                    i
+                        color: #7669e0
+
+                &__people
+                    display: flex
+                    align-items: center
+                    background: #fff
+                    padding: 4px 8px
+                    border-radius: 50px
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+
+                    .avatar
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        font-size: 12px
+                        width: 24px
+                        height: 24px
+                        border-radius: 50px
+                        margin-left: -8px
+                        border: 2px solid #000000
+
+                    .purple
+                        background-color: #7669e0
+                        margin-left: 4px
+                    .red
+                        background-color: #f63b3b
+                    .green
+                        background-color: #34c759
+                    .pink
+                        background-color: #da5870
+                    .orange
+                        background-color: #ff9500
+                        margin-right: 2px

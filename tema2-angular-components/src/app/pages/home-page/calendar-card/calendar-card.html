@@ -1,0 +1,51 @@
+<div class="card-container">
+    <div class="card-container__header">
+        <div class="title">
+            <span><i class="fa fa-calendar"></i> Calendar</span>
+        </div>
+        <span class="current-month">{{this.months[this.currentMonth]}} <i class="fa fa-chevron-down"></i></span>
+    </div>
+    <div class="card-container__body">
+        <div class="current-week">
+            <button (click)="previousDay()"><i class="fa fa-chevron-left"></i></button>
+            <div class="current-week__days">
+                <div class=day *ngFor="let day of week; let i = index;" [ngClass]="{'active': i === 3}">
+                    <span class="name">{{ day.dayName }}</span>
+                    <span class="number">{{ day.dayNumber }}</span>
+                </div>
+            </div>
+            <button (click)="nextDay()"><i class="fa fa-chevron-right"></i></button>
+        </div>
+        <div class="upcoming-events">
+            <div class="upcoming-events__details">
+                <div class="upcoming-events__details__header">
+                    <span class="title">Meeting with VP</span>
+                    <div class="details">
+                        <span>Today</span>
+                        <span>&bull;</span>
+                        <span>10:00 - 11:00 am</span>
+                    </div>
+                </div>
+                <div class="actions">
+                    <span>&bull;</span>
+                    <span>&bull;</span>
+                    <span>&bull;</span>
+                </div>
+            </div>
+            <div class="platform">
+                <div class="platform__cell">
+                    <span><i class="fa fa-video"></i></span>
+                    <span>Google Meet</span>
+                </div>
+                <div class="platform__people">
+                    <div class="avatar purple">AB</div>
+                    <div class="avatar red">CD</div>
+                    <div class="avatar green">EF</div>
+                    <div class="avatar pink">GH</div>
+                    <div class="avatar orange">IJ</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
