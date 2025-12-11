@@ -69,8 +69,14 @@ export class CalendarCard implements OnInit {
   }
 
   nextDay(){
-    const lastDayFromWeek = this.week[this.week.length - 1]
-    const dayName = new Date(this.currentYear, this.currentMonth, parseInt(lastDayFromWeek.dayNumber) + 1).toDateString().slice(0,3)
+    const lastDayFromWeek: WeekDay = this.week[this.week.length - 1]
+    const dayName: string = new Date(this.currentYear, this.currentMonth, parseInt(lastDayFromWeek.dayNumber) + 1).toDateString().slice(0,3)
+
+    const lastDayOfMonth: number = new Date(this.currentYear, this.currentMonth + 1, 0).getDate()
+    
+    if(parseInt(lastDayFromWeek.dayNumber) + 1 > lastDayOfMonth){
+      return
+    }
 
     this.week.shift()
     this.week.push({
@@ -80,8 +86,15 @@ export class CalendarCard implements OnInit {
   }
 
   previousDay(){
-    const firstDayFromWeek = this.week[0]
-    const dayName = new Date(this.currentYear, this.currentMonth, parseInt(firstDayFromWeek.dayNumber) - 1).toDateString().slice(0,3)
+    const firstDayFromWeek: WeekDay = this.week[0]
+    const dayName: string = new Date(this.currentYear, this.currentMonth, parseInt(firstDayFromWeek.dayNumber) - 1).toDateString().slice(0,3)
+    
+    const firstDayOfMonth: number = new Date(this.currentYear, this.currentMonth , 1).getDate()
+
+    if(parseInt(firstDayFromWeek.dayNumber) - 1 < firstDayOfMonth){
+      return
+    }
+    
     this.week.pop()
     this.week.unshift({
       dayName: dayName,
