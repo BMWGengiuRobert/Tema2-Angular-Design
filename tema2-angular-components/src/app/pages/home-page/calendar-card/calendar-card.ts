@@ -10,96 +10,72 @@ import { CommonModule } from '@angular/common';
 })
 export class CalendarCard implements OnInit {
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  isDropdownOpen: boolean = false;
   currentDate = new Date()
   currentYear = this.currentDate.getFullYear()
   currentMonth = this.currentDate.getMonth()
   week: WeekDay[] = []
 
   ngOnInit(): void {
-    this.createCurrentWeek()
+    this.createCurrentWeek(this.currentDate)
   }
 
-  createCurrentWeek() {
+  createCurrentWeek(dateInput: Date) {
+    this.week = []
+    const index: number = 3
+    const currentMonth: number = dateInput.getMonth()
 
-    let index: number = 3
-    for (let i = 0; i < 3; i++) {
-      const dayNumber: number = this.currentDate.getDate() - index
-      let dayNumberStr: string = dayNumber.toString().slice(0,3)
+    for (let i = -index; i <= index; i++) {
+      const date: Date = new Date(dateInput)
+      date.setDate(date.getDate() + i)
 
-      if(dayNumberStr.length === 1){
-        dayNumberStr = '0' + dayNumberStr
-      }
-
-      const dateString: string = new Date(this.currentYear, this.currentMonth, dayNumber).toDateString().slice(0,3)
+      const dayNumberStr: string = date.getDate().toString().padStart(2, '0')
+      const dateNameString: string = date.toDateString().slice(0, 3)
+      const isCurrentMonth: boolean = date.getMonth() === currentMonth
 
       const day: WeekDay = {
-        dayName: dateString,
-        dayNumber: dayNumberStr
+        dayName: dateNameString,
+        dayNumber: dayNumberStr,
+        isCurrentMonth: isCurrentMonth
       }
 
       this.week.push(day)
-      index--
     }
 
-    this.week.push({
-      dayName: this.currentDate.toDateString().slice(0, 3),
-      dayNumber: this.currentDate.getDate().toString()
-    })
-
-    index = 1
-
-    for (let i = 0; i < 3; i++) {
-      const dayNumber: number = this.currentDate.getDate() + index
-      let dayNumberStr: string = dayNumber.toString().slice(0,3)
-
-      if(dayNumberStr.length === 1){
-        dayNumberStr = '0' + dayNumberStr
-      }
-
-      const dateString: string = new Date(this.currentYear, this.currentMonth, dayNumber).toDateString().slice(0,3)
-
-      const day: WeekDay = {
-        dayName: dateString,
-        dayNumber: dayNumberStr.toString()
-      }
-
-      this.week.push(day)
-      index++
-    }
   }
 
-  nextDay(){
-    const lastDayFromWeek: WeekDay = this.week[this.week.length - 1]
-    const dayName: string = new Date(this.currentYear, this.currentMonth, parseInt(lastDayFromWeek.dayNumber) + 1).toDateString().slice(0,3)
+  nextDay() {
+    const nextDate: Date = new Date(this.currentDate)
+    nextDate.setDate(nextDate.getDate() + 1)
 
-    const lastDayOfMonth: number = new Date(this.currentYear, this.currentMonth + 1, 0).getDate()
-    
-    if(parseInt(lastDayFromWeek.dayNumber) + 1 > lastDayOfMonth){
-      return
-    }
+    this.currentDate = nextDate
+    this.currentMonth = nextDate.getMonth()
+    this.currentYear = nextDate.getFullYear()
 
-    this.week.shift()
-    this.week.push({
-      dayName: dayName,
-      dayNumber: (parseInt(lastDayFromWeek.dayNumber) + 1).toString()
-    })
+    this.createCurrentWeek(nextDate)
   }
 
-  previousDay(){
-    const firstDayFromWeek: WeekDay = this.week[0]
-    const dayName: string = new Date(this.currentYear, this.currentMonth, parseInt(firstDayFromWeek.dayNumber) - 1).toDateString().slice(0,3)
-    
-    const firstDayOfMonth: number = new Date(this.currentYear, this.currentMonth , 1).getDate()
+  previousDay() {
+    const previousDate: Date = new Date(this.currentDate)
+    previousDate.setDate(previousDate.getDate() - 1)
 
-    if(parseInt(firstDayFromWeek.dayNumber) - 1 < firstDayOfMonth){
-      return
-    }
-    
-    this.week.pop()
-    this.week.unshift({
-      dayName: dayName,
-      dayNumber: (parseInt(firstDayFromWeek.dayNumber) - 1).toString()
-    })
+    this.currentDate = previousDate
+    this.currentMonth = previousDate.getMonth()
+    this.currentYear = previousDate.getFullYear()
+
+    this.createCurrentWeek(previousDate)
+  }
+
+  changeMonth(monthIndex: number) {
+    this.currentMonth = monthIndex
+    this.currentDate.setMonth(monthIndex)
+    this.currentYear = this.currentDate.getFullYear()
+    this.createCurrentWeek(this.currentDate)
+    this.toggleDropdown()
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen
   }
 
 }

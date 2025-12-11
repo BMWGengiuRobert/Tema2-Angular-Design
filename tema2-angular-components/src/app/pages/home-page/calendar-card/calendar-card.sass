@@ -21,12 +21,40 @@
                 margin-right: 8px
                 color: #7669e0
 
-        .current-month
-            font-size: 16px
-            color: #000
+        .month-selector
+
+            .current-month
+                font-size: 16px
+                color: #000
 
             i
                 margin-left: 8px
+
+            button
+                cursor: pointer
+                border: none
+                background: none
+
+            .months-dropdown
+                position: absolute
+                list-style: none
+                background-color: #fff
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+                display: flex
+                padding: 0
+                flex-direction: column
+
+                li
+                    cursor: pointer
+                    white-space: nowrap
+                    padding: 4px 9px
+                    border-bottom: 2px solid #7669e0
+
+                    &:last-child
+                        border-bottom: none
+
+                    &:hover
+                        background-color: #f0f0f0
 
     &__body
         display: flex
@@ -69,6 +97,13 @@
 
                     .name
                         color: #fff
+                
+                .other-month
+                    opacity: 0.4
+                    pointer-events: none 
+                    
+                    .name, .number
+                        color: #ccc
 
             button
                 cursor: pointer
