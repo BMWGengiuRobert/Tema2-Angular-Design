@@ -1,8 +1,9 @@
-import { Component, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
 import { UsersDropdown } from '../../users-dropdown/users-dropdown';
 import { CommonModule } from '@angular/common';
 import { USERS, User } from '../../../models/users.model';
 import { AvatarColorService } from '../../../services/avatar-color.service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
   selector: 'app-avatar-picture',
@@ -15,7 +16,7 @@ export class AvatarPicture {
   isDropdownVisible = false;
   selectedUser: User = USERS[0];
 
-  constructor(private elementRef: ElementRef, private avatarColorService: AvatarColorService) { }
+  constructor(private elementRef: ElementRef, private avatarColorService: AvatarColorService, private usersService: UsersService) { }
 
   onClickShowDropdown() {
     this.isDropdownVisible = !this.isDropdownVisible;
@@ -25,6 +26,7 @@ export class AvatarPicture {
     this.selectedUser = user;
     this.isDropdownVisible = false;
     this.avatarColorService.setSelectedUserColor(user.color);
+    this.usersService.setSelectedUser(user);
   }
 
   @HostListener('document:click', ['$event'])

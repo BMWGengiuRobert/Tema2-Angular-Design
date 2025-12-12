@@ -2,7 +2,7 @@
     <p class="page-container__date">{{ currentDate | customDatePipe }}</p>
     <div class="page-container__header">
         <div class="page-container__header__messages">
-            <span class="page-container__header__messages__greetings">Hello, Courtney!</span>
+            <span class="page-container__header__messages__greetings">Hello, {{ selectedUser.firstName }}!</span>
             <span class="page-container__header__messages__help">How can I help you today?</span>
         </div>
         <div class="page-container__header__buttons">
