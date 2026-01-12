@@ -4,6 +4,10 @@
         <button class="projects-container__add-button" (click)="openModal()">+ Add</button>
     </div>
     <ul class="projects-container__list">
+        @if(projects.length === 0)
+        {
+            <p class="projects-container__no-projects-text">No projects available. Click "Add" to create one.</p>
+        }
         <li class="projects-container__item" *ngFor="let project of projects">
             <div class="projects-container__item__icon" [ngStyle]="{ 'background-color': project.color }"></div>
             <span class="projects-container__item__name">{{ project.name }}</span>

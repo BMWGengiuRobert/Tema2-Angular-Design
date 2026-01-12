@@ -26,6 +26,13 @@
         flex-direction: column
         gap: 16px
 
+        .no-goals
+            text-align: center
+            font-weight: bold
+            color: #666
+            font-size: 16px
+            padding: 20px
+
         .item
             display: flex
             justify-content: space-between
@@ -57,6 +64,8 @@
                 span
                     font-size: 16px
                     font-weight: bold
+                    min-width: 40px
+                    text-align: right
                 
                 .progress-track
                     width: 120px
@@ -67,9 +76,16 @@
 
                     .progress-fill
                         height: 100%
-
-                    .cyan
-                        background-color: #36d0c9
                     
                     .orange
                         background-color: #f8ab62
+                    
+                    .red
+                        background-color: #f01225
+                    
+                    .green
+                        background-color: #4caf50
+                    
+                    .cyan
+                        background-color: #49e6f1
+                    

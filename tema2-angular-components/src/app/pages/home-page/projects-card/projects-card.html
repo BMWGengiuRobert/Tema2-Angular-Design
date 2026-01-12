@@ -6,56 +6,54 @@
         <span class="recents">Recents <i class="fa fa-chevron-down"></i></span>
     </div>
     <div class="card-container__body">
+        @if(projects.length === 0)
+        {
+        <p class="card-container__no-projects-text">No recent projects to display.</p>
+        }
+        @else
+        {
         <div class="column">
-            <div class="item">
-                <div class="item__icon dotted-border">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-                <div class="item__text">
-                    <span class="item__text__title">Create new project</span>
-                </div>
-            </div>
-            <div class="item">
-                <div class="item__icon blue-bg">
-                    <i class="fa fa-star"></i>
-                </div>
-                <div class="item__text">
-                    <span class="item__text__title">Team brainstorm</span>
-                    <div class="project-details">
-                        <span>2 tasks</span>
-                        <span>&bull;</span>
-                        <span>32 teammates</span>
+            @for(project of projects; track project.id; let i = $index)
+            {
+                @if(i % 2 === 0)
+                {
+                <div class="item">
+                    <div class="item__icon" [ngStyle]="{ 'background-color': project.color + '35', 'color': project.color }">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="item__text">
+                        <span class="item__text__title">{{ project.name }}</span>
+                        <div class="project-details">
+                            <span>{{ getTasksByProjectId(project.id) }} tasks</span>
+                            <span>&bull;</span>
+                            <span>{{ project.noOfTeammates }} teammates</span>
+                        </div>
                     </div>
                 </div>
-            </div>
+                }
+            }
         </div>
         <div class="column">
-            <div class="item">
-                <div class="item__icon purple-bg">
-                    <i class="fa fa-star"></i>
-                </div>
-                <div class="item__text">
-                    <span class="item__text__title">Product launch</span>
-                    <div class="project-details">
-                        <span>6 tasks</span>
-                        <span>&bull;</span>
-                        <span>12 teammates</span>
+            @for(project of projects; track project.id; let i = $index)
+            {
+                @if(i % 2 === 1)
+                {
+                <div class="item">
+                    <div class="item__icon" [ngStyle]="{ 'background-color': project.color + '35', 'color': project.color }">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="item__text">
+                        <span class="item__text__title">{{ project.name }}</span>
+                        <div class="project-details">
+                            <span>{{ getTasksByProjectId(project.id) }} tasks</span>
+                            <span>&bull;</span>
+                            <span>{{ project.noOfTeammates }} teammates</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="item">
-                <div class="item__icon green-bg">
-                    <i class="fa fa-star"></i>
-                </div>
-                <div class="item__text">
-                    <span class="item__text__title">Branding launch</span>
-                    <div class="project-details">
-                        <span>4 tasks</span>
-                        <span>&bull;</span>
-                        <span>9 teammates</span>
-                    </div>
-                </div>
-            </div>
+                }
+            }
         </div>
+        }
     </div>
 </div>

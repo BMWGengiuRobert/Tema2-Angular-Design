@@ -5,53 +5,32 @@
         </div>
     </div>
     <div class="card-container__body">
+        @if(goals.length === 0) {
+        <p class="no-goals">No goals available.</p>
+        }
+
+        @for(goal of goals; track goal.id; let i = $index) {
         <div class="item">
             <div class="item__details">
-                <span class="item__details__title">Check Emails and Messages</span>
+                <span class="item__details__title">{{ goal.name }}</span>
                 <div>
-                    <span>Product launch</span>
+                    <span>{{ getProjectNameById(goal.projectId) }}</span>
                     <span>&bull;</span>
                     <span>My Projects</span>
                 </div>
             </div>
             <div class="item__status">
                 <div class="progress-track">
-                    <div class="progress-fill cyan" style="width: 73%;"></div>
+                    <div class="progress-fill" style="width: {{ goal.percentageCompleted }}%" [ngClass]="{
+                        'red': goal.percentageCompleted < 30,
+                        'orange': goal.percentageCompleted >= 30 && goal.percentageCompleted < 70,
+                        'green': goal.percentageCompleted >= 70,
+                        'cyan': goal.percentageCompleted === 100
+                    }"></div>
                 </div>
-                <span class="percentage">73%</span>
+                <span class="percentage">{{ goal.percentageCompleted }}%</span>
             </div>
         </div>
-        <div class="item">
-            <div class="item__details">
-                <span class="item__details__title">Prepare a brief status update to the client</span>
-                <div>
-                    <span>Product launch</span>
-                    <span>&bull;</span>
-                    <span>My Projects</span>
-                </div>
-            </div>
-            <div class="item__status">
-                <div class="progress-track">
-                    <div class="progress-fill orange" style="width: 11%;"></div>
-                </div>
-                <span class="percentage">11%</span>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item__details">
-                <span class="item__details__title">Update project documentation</span>
-                <div>
-                    <span>Product launch</span>
-                    <span>&bull;</span>
-                    <span>My Projects</span>
-                </div>
-            </div>
-            <div class="item__status">
-                <div class="progress-track">
-                    <div class="progress-fill cyan" style="width: 63%;"></div>
-                </div>
-                <span class="percentage">63%</span>
-            </div>
-        </div>
+        }
     </div>
 </div>
