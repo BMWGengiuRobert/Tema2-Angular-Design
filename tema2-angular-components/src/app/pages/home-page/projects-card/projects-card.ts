@@ -20,8 +20,16 @@ export class ProjectsCard implements OnInit, OnDestroy {
   constructor(private userService: UsersService) {}
 
   ngOnInit(): void {
-    this.userSubscription = this.userService.selectedUser$.subscribe(selectedUser => {
-      this.projects = getProjectsByUserId(selectedUser.id);
+    this.userSubscription = this.userService.selectedUser$.subscribe({
+      next: (selectedUser) => {
+        this.projects = getProjectsByUserId(selectedUser.id);
+      },
+      error: (err) => {
+        console.error('Error fetching user projects:', err);
+      },
+      complete: () => {
+        console.log('Completed fetching user projects.');
+      }
     });
   }
 

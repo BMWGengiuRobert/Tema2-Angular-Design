@@ -9,7 +9,7 @@
         <p class="no-goals">No goals available.</p>
         }
 
-        @for(goal of goals; track goal.id; let i = $index) {
+        @for(goal of goals; track goal.id) {
         <div class="item">
             <div class="item__details">
                 <span class="item__details__title">{{ goal.name }}</span>

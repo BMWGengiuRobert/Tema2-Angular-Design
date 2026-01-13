@@ -21,9 +21,19 @@ export class CreateProjectModal implements OnInit, OnDestroy {
   constructor(private myProjectsService: MyProjectsService, private openModalService: OpenModalService) { }
 
   ngOnInit() {
-    this.modalSubscription = this.openModalService.isCreateProjectModalOpen$.subscribe((isOpen) => {
-      this.isModalOpen = isOpen;
-    });
+    this.modalSubscription = this.openModalService.isCreateProjectModalOpen$.subscribe(
+      {
+        next: (isOpen: boolean) => {
+          this.isModalOpen = isOpen;
+        },
+        error: (err) => {
+          console.error('Error receiving modal state:', err);
+        },
+        complete: () => {
+          console.log('Completed receiving modal state.');  
+        }
+      }
+    );
   }
 
   closeModal() {

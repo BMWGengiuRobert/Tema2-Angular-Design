@@ -7,10 +7,11 @@ import { CalendarCard } from './calendar-card/calendar-card';
 import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs';
 import { User, USERS } from '../../models/users.model';
+import { MyReminders } from "./my-reminders/my-reminders";
 
 @Component({
   selector: 'app-home-page',
-  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard],
+  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard, MyReminders],
   templateUrl: './home-page.html',
   styleUrl: './home-page.sass',
 })
@@ -22,8 +23,16 @@ export class HomePage {
   constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.selectedUserSubscription = this.usersService.selectedUser$.subscribe(user => {
-      this.selectedUser = user;
+    this.selectedUserSubscription = this.usersService.selectedUser$.subscribe({
+      next: (user: User) => {
+        this.selectedUser = user;
+      },
+      error: (err) => {
+        console.error('Error fetching selected user:', err);
+      },
+      complete: () => {
+        console.log('Completed fetching selected user.');
+      }
     });
   }
 

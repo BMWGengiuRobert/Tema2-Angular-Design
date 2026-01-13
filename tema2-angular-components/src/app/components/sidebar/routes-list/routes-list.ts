@@ -22,8 +22,16 @@ export class RoutesList implements OnInit, OnDestroy {
   constructor(private userService: AvatarColorService) {}
 
   ngOnInit() {
-    this.colorSubscription = this.userService.selectedUserColor$.subscribe(color => {
-      this.selectedUserColor = color;
+    this.colorSubscription = this.userService.selectedUserColor$.subscribe({
+      next: (color: string) => {
+        this.selectedUserColor = color;
+      },
+      error: (err) => {
+        console.error('Error fetching user color:', err);
+      },
+      complete: () => {
+        console.log('Completed fetching user color.');
+      }
     });
   }
 

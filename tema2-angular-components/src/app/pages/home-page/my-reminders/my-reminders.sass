@@ -1,0 +1,104 @@
+.card-container 
+    display: flex
+    flex-direction: column
+    background-color: #fff
+    padding: 16px
+    border-radius: 20px
+    gap: 12px
+
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        font-family: 'Arial', sans-serif
+        padding: 8px
+
+        .title
+            font-size: 20px
+            font-weight: bold
+
+            i
+                color: #7669e0
+                margin-right: 8px
+    
+    &__date
+        display: flex
+        align-items: center
+        gap: 12px
+        font-size: 18px
+        font-weight: bold
+        padding: 8px
+
+        .date-picker
+            padding: 4px 8px
+            border: 1px solid #e0e0e0
+            border-radius: 8px
+            font-size: 14px
+            cursor: pointer
+            outline: none
+            transition: border-color 0.3s
+
+            &:hover
+                border-color: #7669e0
+
+            &:focus
+                border-color: #7669e0
+
+        :nth-child(3), :nth-child(4)
+                            font-size:14px;
+                            color: #666
+        
+    &__body
+        display: flex
+        flex-direction: column
+        gap: 16px
+
+        .no-reminders
+            text-align: center
+            font-weight: bold
+            color: #666
+            font-size: 16px
+            padding: 20px
+
+        .item
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding: 8px
+            border-bottom: 1px solid #e0e0e0
+
+            &:last-child
+                border: none
+
+            &__details
+                display: flex
+                flex-direction: column
+                gap: 4px
+
+                &__title
+                    font-size: 18px
+                    font-weight: bold
+
+                div
+                    color: #666 
+                    display: flex
+                    gap: 8px
+                    align-items: center
+                    span
+                        font-size: 14px
+            
+            &__status
+                display: flex
+                align-items: center
+                gap: 8px
+                
+                span:nth-child(1)
+                    color: #ceb211
+                span:nth-child(2)
+                    color: #374249
+                span:nth-child(3)
+                    color: #aabd03
+
+                span
+                    margin: 0px 8px
+                    font-size: 18px

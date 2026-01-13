@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { UsersService } from '../../../services/users.service';
 import { getGoalsByUserId, getProjectById } from '../../../db/mocked-db';
 import { ProjectDBModel } from '../../../db/project-db.model';
-import {CommonModule} from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-my-goals',
@@ -14,14 +14,22 @@ import {CommonModule} from '@angular/common';
 })
 export class MyGoals implements OnInit, OnDestroy {
 
-  goals = [] as GoalDBModel[];
+  goals: GoalDBModel[] = [];
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
-    this.userSubscription = this.userService.selectedUser$.subscribe(selectedUser => {
-      this.goals = getGoalsByUserId(selectedUser.id);
+    this.userSubscription = this.userService.selectedUser$.subscribe({
+      next: (selectedUser) => {
+        this.goals = getGoalsByUserId(selectedUser.id);
+      },
+      error: (err) => {
+        console.error('Error fetching user goals:', err);
+      },
+      complete: () => {
+        console.log('Completed fetching user goals.');
+      }
     });
   }
 

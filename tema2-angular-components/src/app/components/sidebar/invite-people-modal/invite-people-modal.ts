@@ -24,10 +24,18 @@ export class InvitePeopleModal {
   constructor(private usersService: UsersService, private openModalService: OpenModalService) { }
 
   ngOnInit() {
-    this.modalSubscription = this.openModalService.isInvitePeopleModalOpen$.subscribe((isOpen) => {
-      this.isModalOpen = isOpen;
+    this.modalSubscription = this.openModalService.isInvitePeopleModalOpen$.subscribe({
+      next: (isOpen: boolean) => {
+        this.isModalOpen = isOpen;
+      },
+      error: (err) => {
+        console.error('Error receiving modal state:', err);
+      },
+      complete: () => {
+        console.log('Completed receiving modal state.');
+      }
     });
-}
+  }
 
   closeModal() {
     this.openModalService.closeInvitePeopleModal();
@@ -49,7 +57,7 @@ export class InvitePeopleModal {
     this.openModalService.clickedOutsideInvitePeopleModal(event);
   }
 
-    ngOnDestroy() {
+  ngOnDestroy() {
     this.modalSubscription.unsubscribe();
   }
 
