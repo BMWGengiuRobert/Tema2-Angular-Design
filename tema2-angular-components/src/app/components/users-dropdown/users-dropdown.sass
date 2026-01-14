@@ -3,21 +3,20 @@
     padding: 0
     margin: 0
     margin-top: 4px
-    background-color: #fff
-    border: 1px solid #ddd
+    background-color: var(--bg-card)
+    border: 1px solid var(--border)
     border-radius: 8px
     box-shadow: 0 4px 6px #0000001a
-    // z-index: 1000
 
     .user
         display: flex
         align-items: center
         gap: 8px
         padding: 8px 12px
-        border-bottom: 1px solid #eee
+        border-bottom: 1px solid var(--border-subtle)
 
         &:hover
-            background-color: #f9f9f9
+            background-color: var(--bg-hover-subtle)
 
     .name-initials
         width: 36px
@@ -34,5 +33,5 @@
         &__full-name
             font-size: 16px
             font-weight: bold
-            color: #333
+            color: var(--text-primary)
             margin: 0

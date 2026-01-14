@@ -1,10 +1,13 @@
 .card-container
     display: flex
     flex-direction: column
-    background-color: #fff
+    background-color: var(--bg-card)
     padding: 16px
     border-radius: 20px
     gap: 12px
+
+    .add_task
+        color: var(--text-primary)
 
     &__header
         display: flex
@@ -17,7 +20,7 @@
             font-weight: bold
 
             i
-                color: #7669e0
+                color: var(--primary)
                 margin-right: 8px
         
         .actions
@@ -29,6 +32,10 @@
                 border: none
                 cursor: pointer
                 font-size: 18px
+                color: var(--text-primary)
+
+                &:hover
+                    color: var(--primary)
 
     &__body
         margin-top: 16px
@@ -41,12 +48,12 @@
             font-weight: bold
 
             .status
-                background-color: #adedec
+                background-color: var(--accent-3)
                 padding: 8px
                 border-radius: 8px
     
     &__task-list
-        color: #7b6e6e
+        color: var(--text-muted)
         font-weight: bold
 
         .header
@@ -54,7 +61,7 @@
             display: flex
             justify-content: space-between
             align-items: center
-            border-bottom: 4px solid #e0e0e0
+            border-bottom: 4px solid var(--border)
 
             div
                 display: flex
@@ -70,18 +77,18 @@
                 display: flex
                 justify-content: space-between
                 align-items: center
-                color:#000
+                color: var(--text-strong)
                 padding: 12px 0
-                border-bottom: 4px solid #e0e0e0
+                border-bottom: 4px solid var(--border)
 
                 .left
-                    color: #000
+                    color: var(--text-strong)
                     display: flex
                     align-items: center
                     gap: 12px
 
                     div
-                        background-color: #adedec
+                        background-color: var(--accent-3)
                         height: 12px
                         width: 12px
                 
@@ -92,7 +99,7 @@
                     width: 240px
 
                     .high
-                        color: #ff6b6b
+                        color: var(--error)
                     
                     .priority
                         padding: 4px 8px
@@ -102,10 +109,10 @@
                         background-color: #c0c0c0
                     
                     .p-high
-                        background-color: #ff5050
+                        background-color: var(--error)
                     
                     .p-medium
-                        background-color: #ffdb99
+                        background-color: var(--warning)
     
     &__footer
         display: flex
@@ -133,10 +140,10 @@
                 border-radius: 8px
             
             .p-low
-                background-color: #c0c0c0
+                background-color: var(--border-medium)
             
             .p-medium
-                background-color: #ffdb99
+                background-color: var(--warning)
 
 .overlay
     perspective: none
@@ -149,6 +156,6 @@
 .no-tasks
     text-align: center
     font-weight: bold
-    color: #666
+    color: var(--text-secondary)
     font-size: 16px
     padding: 20px

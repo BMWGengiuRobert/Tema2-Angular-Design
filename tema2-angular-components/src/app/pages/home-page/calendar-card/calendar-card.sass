@@ -1,10 +1,16 @@
 .card-container
     display: flex
     flex-direction: column
-    background-color: #fff
+    background-color: var(--bg-card)
     padding: 16px
     border-radius: 20px
     gap: 12px
+
+    .fa-chevron-left, .fa-chevron-right
+        cursor: pointer
+        border: none
+        background: none
+        color: var(--text-primary)
 
     &__header
         display: flex
@@ -15,17 +21,17 @@
         .title
             font-size: 20px
             font-weight: 600
-            color: #333
+            color: var(--text-primary)
 
             i
                 margin-right: 8px
-                color: #7669e0
+                color: var(--primary)
 
         .month-selector
 
             .current-month
                 font-size: 16px
-                color: #000
+                color: var(--text-strong)
 
             i
                 margin-left: 8px
@@ -38,7 +44,7 @@
             .months-dropdown
                 position: absolute
                 list-style: none
-                background-color: #fff
+                background-color: var(--bg-card)
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
                 display: flex
                 padding: 0
@@ -48,13 +54,13 @@
                     cursor: pointer
                     white-space: nowrap
                     padding: 4px 9px
-                    border-bottom: 2px solid #7669e0
+                    border-bottom: 2px solid var(--primary)
 
                     &:last-child
                         border-bottom: none
 
                     &:hover
-                        background-color: #f0f0f0
+                        background-color: var(--bg-hover)
 
     &__body
         display: flex
@@ -84,7 +90,7 @@
                     gap: 4px
 
                     .name
-                        color: #666
+                        color: var(--text-secondary)
                         font-size: 14px
 
                     .number
@@ -92,18 +98,18 @@
                         font-weight: bold
 
                 .active
-                    background-color: #7669e0
-                    color: #fff
+                    background-color: var(--primary)
+                    color: var(--text-strong)
 
                     .name
-                        color: #fff
+                        color: var(--text-strong)
                 
                 .other-month
                     opacity: 0.4
                     pointer-events: none 
                     
                     .name, .number
-                        color: #ccc
+                        color: var(--text-secondary)
 
             button
                 cursor: pointer
@@ -113,7 +119,7 @@
         .upcoming-events
             display: flex
             flex-direction: column
-            background-color: #f5f6ff
+            background-color: var(--bg-page)
             padding: 12px
             border-radius: 12px
             gap: 16px
@@ -135,7 +141,7 @@
                     .details
                         font-family: 'Arial', sans-serif
                         font-size: 14px
-                        color: #666
+                        color: var(--text-secondary)
                         display: flex
                         gap: 8px
                         align-items: center
@@ -155,18 +161,18 @@
                     display: flex
                     align-items: center
                     gap: 8px
-                    background: #fff
+                    background: var(--bg-card)
                     padding: 8px 12px
                     border-radius: 50px
                     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
 
                     i
-                        color: #7669e0
+                        color: var(--text-strong)
 
                 &__people
                     display: flex
                     align-items: center
-                    background: #fff
+                    background: var(--bg-card)
                     padding: 4px 8px
                     border-radius: 50px
                     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
@@ -180,10 +186,10 @@
                         height: 24px
                         border-radius: 50px
                         margin-left: -8px
-                        border: 2px solid #000000
+                        border: 2px solid var(--text-strong)
 
                     .purple
-                        background-color: #7669e0
+                        background-color: var(--primary)
                         margin-left: 4px
                     .red
                         background-color: #f63b3b

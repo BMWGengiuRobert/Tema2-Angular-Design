@@ -1,7 +1,7 @@
 .card-container 
     display: flex
     flex-direction: column
-    background-color: #fff
+    background-color: var(--bg-card)
     padding: 16px
     border-radius: 20px
     gap: 12px
@@ -18,7 +18,7 @@
             font-weight: bold
 
             i
-                color: #7669e0
+                color: var(--primary)
                 margin-right: 8px
         
     &__body
@@ -29,7 +29,7 @@
         .no-goals
             text-align: center
             font-weight: bold
-            color: #666
+            color: var(--text-secondary)
             font-size: 16px
             padding: 20px
 
@@ -47,9 +47,10 @@
                 &__title
                     font-size: 18px
                     font-weight: bold
+                    color: var(--text-strong)
 
                 div
-                    color: #666 
+                    color: var(--text-secondary)
                     display: flex
                     gap: 8px
                     align-items: center
@@ -70,7 +71,7 @@
                 .progress-track
                     width: 120px
                     height: 10px
-                    background-color: #e0e0e0
+                    background-color: var(--border)
                     border-radius: 5px
                     overflow: hidden
 
@@ -78,14 +79,13 @@
                         height: 100%
                     
                     .orange
-                        background-color: #f8ab62
+                        background-color: var(--warning)
                     
                     .red
-                        background-color: #f01225
+                        background-color: var(--error-dark)
                     
                     .green
-                        background-color: #4caf50
+                        background-color: var(--success)
                     
                     .cyan
-                        background-color: #49e6f1
-                    
+                        background-color: var(--info)

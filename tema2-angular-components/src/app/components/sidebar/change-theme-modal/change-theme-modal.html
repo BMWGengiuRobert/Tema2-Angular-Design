@@ -1,0 +1,77 @@
+<div class="modal-overlay" *ngIf="isModalOpen" (click)="clickedOutsideModal($event)">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-header__title">
+                <i class="fa fa-palette"></i>
+                Choose Theme
+            </h2>
+            <button class="modal-header__close" (click)="closeModal()">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+
+        <div class="theme-selector">
+            <div class="theme-card theme-card--light">
+                <div class="theme-card__preview">
+                    <div class="preview-header"></div>
+                    <div class="preview-body">
+                        <div class="preview-sidebar">
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-box"></div>
+                            <div class="preview-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-card__info">
+                    <h3 class="theme-card__title">
+                        <i class="fa fa-sun"></i>
+                        Light Mode
+                    </h3>
+                    <p class="theme-card__description">Clean and bright interface</p>
+                </div>
+                <button 
+                    class="theme-card__button" 
+                    [class.theme-card__button--active]="isActiveTheme('light')"
+                    (click)="setTheme('light')">
+                    <i class="fa" [ngClass]="isActiveTheme('light') ? 'fa-check' : 'fa-circle-o'"></i>
+                    {{ isActiveTheme('light') ? 'Active' : 'Select' }}
+                </button>
+            </div>
+
+            <div class="theme-card theme-card--dark">
+                <div class="theme-card__preview">
+                    <div class="preview-header"></div>
+                    <div class="preview-body">
+                        <div class="preview-sidebar">
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                            <div class="preview-item"></div>
+                        </div>
+                        <div class="preview-content">
+                            <div class="preview-box"></div>
+                            <div class="preview-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-card__info">
+                    <h3 class="theme-card__title">
+                        <i class="fa fa-moon"></i>
+                        Dark Mode
+                    </h3>
+                    <p class="theme-card__description">Easy on the eyes</p>
+                </div>
+                <button 
+                    class="theme-card__button" 
+                    [class.theme-card__button--active]="isActiveTheme('dark')"
+                    (click)="setTheme('dark')">
+                    <i class="fa" [ngClass]="isActiveTheme('dark') ? 'fa-check' : 'fa-circle-o'"></i>
+                    {{ isActiveTheme('dark') ? 'Active' : 'Select' }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

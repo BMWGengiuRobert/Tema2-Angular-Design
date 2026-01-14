@@ -3,7 +3,7 @@
     font-family: Arial, sans-serif
     font-weight: bold
     width: 250px
-    border-bottom: 1px solid #ddd
+    border-bottom: 1px solid var(--border)
     padding: 12px
 
     .route-item
@@ -11,7 +11,7 @@
 
         .route-link
             text-decoration: none
-            color: #333
+            color: var(--text-primary)
             display: flex
             align-items: center
             gap: 16px
@@ -19,9 +19,9 @@
             border-radius: 4px
 
             &:hover
-                background: linear-gradient(to left, #f0f0f0 0%, #ffffff 100%);
+                background: linear-gradient(to left, var(--bg-hover) 0%, var(--bg-card) 100%)
                 i
-                    color: #ca74dd
+                    color: var(--accent-4)
 
             i
                 font-size: 20px

@@ -5,17 +5,23 @@ import { CommonModule } from '@angular/common';
 import { MyProjects } from './my-projects/my-projects';
 import { OpenModalService } from '../../services/modal.service';
 import { InvitePeopleModal } from './invite-people-modal/invite-people-modal';
+import { ChangeThemeModal } from "./change-theme-modal/change-theme-modal";
 
 @Component({
   selector: 'app-sidebar',
-  imports: [AvatarPicture, CommonModule, RoutesList, MyProjects, InvitePeopleModal],
+  imports: [AvatarPicture, CommonModule, RoutesList, MyProjects, InvitePeopleModal, ChangeThemeModal],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.sass',
 })
 export class Sidebar {
   constructor(private openModalService: OpenModalService) { }
 
-  openModal() {
+  openInvitePeopleModal() {
     this.openModalService.openInvitePeopleModal();
   }
+
+  openChangeThemeModal() {
+    this.openModalService.openChangeThemeModal();
+  }
+
 }

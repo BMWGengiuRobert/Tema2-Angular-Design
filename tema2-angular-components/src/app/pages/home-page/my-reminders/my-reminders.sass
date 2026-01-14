@@ -1,7 +1,7 @@
 .card-container 
     display: flex
     flex-direction: column
-    background-color: #fff
+    background-color: var(--bg-card)
     padding: 16px
     border-radius: 20px
     gap: 12px
@@ -18,7 +18,7 @@
             font-weight: bold
 
             i
-                color: #7669e0
+                color: var(--primary)
                 margin-right: 8px
     
     &__date
@@ -31,7 +31,7 @@
 
         .date-picker
             padding: 4px 8px
-            border: 1px solid #e0e0e0
+            border: 1px solid var(--border)
             border-radius: 8px
             font-size: 14px
             cursor: pointer
@@ -39,14 +39,14 @@
             transition: border-color 0.3s
 
             &:hover
-                border-color: #7669e0
+                border-color: var(--primary)
 
             &:focus
-                border-color: #7669e0
+                border-color: var(--primary)
 
         :nth-child(3), :nth-child(4)
                             font-size:14px;
-                            color: #666
+                            color: var(--text-secondary)
         
     &__body
         display: flex
@@ -56,7 +56,7 @@
         .no-reminders
             text-align: center
             font-weight: bold
-            color: #666
+            color: var(--text-secondary)
             font-size: 16px
             padding: 20px
 
@@ -65,7 +65,7 @@
             justify-content: space-between
             align-items: center
             padding: 8px
-            border-bottom: 1px solid #e0e0e0
+            border-bottom: 1px solid var(--border)
 
             &:last-child
                 border: none
@@ -78,9 +78,10 @@
                 &__title
                     font-size: 18px
                     font-weight: bold
+                    color: var(--text-strong)
 
                 div
-                    color: #666 
+                    color: var(--text-secondary)
                     display: flex
                     gap: 8px
                     align-items: center
@@ -93,11 +94,11 @@
                 gap: 8px
                 
                 span:nth-child(1)
-                    color: #ceb211
+                    color: var(--alert)
                 span:nth-child(2)
-                    color: #374249
+                    color: var(--inactive)
                 span:nth-child(3)
-                    color: #aabd03
+                    color: var(--pending)
 
                 span
                     margin: 0px 8px

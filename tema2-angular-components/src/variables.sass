@@ -1,0 +1,164 @@
+
+// Light Theme Vars For Colors
+//================================================================
+// Backgrounds
+$bg-page-light: #f5f5f5
+$bg-card-light: #fff
+$bg-hover-light: #f0f0f0
+$bg-hover-subtle-light: #f9f9f9
+
+// Primary Colors
+$primary-purple: #7669e0
+$primary-purple-light: #cbc6fc
+$gradient-purple-start: #8a4bfa
+$gradient-purple-end: #e4ccff
+
+// Secondary Accent
+$accent-cyan: #2dd4bf
+$accent-purple: #8b5cf6
+$accent-cyan-light: #adedec
+$accent-pink: #ca74dd
+
+// Text Colors
+$text-primary-light: #333
+$text-strong-light: #000
+$text-secondary-light: #666
+$text-muted-light: #7b6e6e
+
+// Borders
+$border-light: #ddd
+$border-divider-light: #e0e0e0
+$border-subtle-light: #eee
+$border-medium-light: #ccc
+
+// Status Colors
+$status-error: #ff6b6b
+$status-error-dark: #f01225
+$status-warning: #f8ab62
+$status-success: #4caf50
+$status-info: #49e6f1
+$status-alert: #ceb211
+$status-pending: #aabd03
+$status-inactive: #374249
+//================================================================
+
+
+
+// Dark Theme Vars For Colors
+//================================================================
+// Backgrounds
+$bg-page-dark: #121212
+$bg-card-dark: #1e1e1e
+$bg-hover-dark: #2a2a2a
+$bg-hover-subtle-dark: #282828
+
+// Primary Colors (Dark adjusted)
+$primary-purple-dark: #9d8ff4
+$primary-purple-light-dark: #7b6bdc
+$gradient-purple-start-dark: #a66dff
+$gradient-purple-end-dark: #6b4ba8
+
+// Secondary Accent (Dark adjusted)
+$accent-cyan-dark: #2dd4bf
+$accent-purple-dark: #a78bfa
+$accent-cyan-light-dark: #5fd3d1
+$accent-pink-dark: #d88ce8
+
+// Text Colors (Dark)
+$text-primary-dark: #e0e0e0
+$text-strong-dark: #ffffff
+$text-secondary-dark: #a0a0a0
+$text-muted-dark: #707070
+
+// Borders & Dividers (Dark)
+$border-light-dark: #3a3a3a
+$border-divider-dark: #404040
+$border-subtle-dark: #353535
+$border-medium-dark: #4a4a4a
+
+// Status Colors (Dark adjusted)
+$status-error-dark-theme: #f55f5f
+$status-error-intense-dark: #ff4d5a
+$status-warning-dark: #f89d35
+$status-success-dark: #66bb6a
+$status-info-dark: #5fecf5
+$status-alert-dark: #e8d84f
+$status-pending-dark: #c5d645
+$status-inactive-dark: #455157
+//================================================================
+
+    
+
+// Css Vars
+//================================================================
+:root
+  // Default Light Theme
+  --bg-page: #{$bg-page-light}
+  --bg-card: #{$bg-card-light}
+  --bg-hover: #{$bg-hover-light}
+  --bg-hover-subtle: #{$bg-hover-subtle-light}
+  
+  --primary: #{$primary-purple}
+  --primary-light: #{$primary-purple-light}
+  --gradient-start: #{$gradient-purple-start}
+  --gradient-end: #{$gradient-purple-end}
+  
+  --accent-1: #{$accent-cyan}
+  --accent-2: #{$accent-purple}
+  --accent-3: #{$accent-cyan-light}
+  --accent-4: #{$accent-pink}
+  
+  --text-primary: #{$text-primary-light}
+  --text-strong: #{$text-strong-light}
+  --text-secondary: #{$text-secondary-light}
+  --text-muted: #{$text-muted-light}
+  
+  --border: #{$border-light}
+  --border-divider: #{$border-divider-light}
+  --border-subtle: #{$border-subtle-light}
+  --border-medium: #{$border-medium-light}
+  
+  --error: #{$status-error}
+  --error-dark: #{$status-error-dark}
+  --warning: #{$status-warning}
+  --success: #{$status-success}
+  --info: #{$status-info}
+  --alert: #{$status-alert}
+  --pending: #{$status-pending}
+  --inactive: #{$status-inactive}
+
+// Dark Theme Override
+[data-theme="dark"]
+  --bg-page: #{$bg-page-dark}
+  --bg-card: #{$bg-card-dark}
+  --bg-hover: #{$bg-hover-dark}
+  --bg-hover-subtle: #{$bg-hover-subtle-dark}
+  
+  --primary: #{$primary-purple-dark}
+  --primary-light: #{$primary-purple-light-dark}
+  --gradient-start: #{$gradient-purple-start-dark}
+  --gradient-end: #{$gradient-purple-end-dark}
+  
+  --accent-1: #{$accent-cyan-dark}
+  --accent-2: #{$accent-purple-dark}
+  --accent-3: #{$accent-cyan-light-dark}
+  --accent-4: #{$accent-pink-dark}
+  
+  --text-primary: #{$text-primary-dark}
+  --text-strong: #{$text-strong-dark}
+  --text-secondary: #{$text-secondary-dark}
+  --text-muted: #{$text-muted-dark}
+  
+  --border: #{$border-light-dark}
+  --border-divider: #{$border-divider-dark}
+  --border-subtle: #{$border-subtle-dark}
+  --border-medium: #{$border-medium-dark}
+  
+  --error: #{$status-error-dark-theme}
+  --error-dark: #{$status-error-intense-dark}
+  --warning: #{$status-warning-dark}
+  --success: #{$status-success-dark}
+  --info: #{$status-info-dark}
+  --alert: #{$status-alert-dark}
+  --pending: #{$status-pending-dark}
+  --inactive: #{$status-inactive-dark}
