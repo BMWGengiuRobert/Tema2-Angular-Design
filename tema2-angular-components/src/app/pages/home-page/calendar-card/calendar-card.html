@@ -5,14 +5,14 @@
         </div>
         <div class="month-selector">
             <button (click)="toggleDropdown()">
-                <span class="current-month">{{this.months[this.currentMonth]}}
+                <span class="current-month">{{this.months[this.currentMonth] | translate}}
                     <i class="fa fa-chevron-down"></i>
                 </span>
             </button>
 
             <ul class="months-dropdown" *ngIf="isDropdownOpen"> 
-                <li *ngFor="let month of months; let i = index;" (click)="changeMonth(i)">
-                    {{ month }}
+                <li *ngFor="let month of months; let i = index;" (click)="changeMonth(i)" i18n>
+                    {{ month | translate }}
                 </li>
             </ul>
         </div>
@@ -21,8 +21,8 @@
         <div class="current-week">
             <button (click)="previousDay()"><i class="fa fa-chevron-left"></i></button>
             <div class="current-week__days">
-                <div class=day *ngFor="let day of week; let i = index;" [ngClass]="{'active': i === 3, 'other-month': !day.isCurrentMonth}">
-                    <span class="name">{{ day.dayName }}</span>
+                <div class="day" *ngFor="let day of week; let i = index;" [ngClass]="{'active': i === 3, 'other-month': !day.isCurrentMonth}">
+                    <span class="name">{{ day.dayName | translate }}</span>
                     <span class="number">{{ day.dayNumber }}</span>
                 </div>
             </div>
@@ -31,9 +31,9 @@
         <div class="upcoming-events">
             <div class="upcoming-events__details">
                 <div class="upcoming-events__details__header">
-                    <span class="title">Meeting with VP</span>
+                    <span i18n class="title">Meeting with VP</span>
                     <div class="details">
-                        <span>Today</span>
+                        <span i18n> Today</span>
                         <span>&bull;</span>
                         <span>10:00 - 11:00 am</span>
                     </div>

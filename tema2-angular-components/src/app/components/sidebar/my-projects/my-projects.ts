@@ -6,10 +6,11 @@ import { getProjectsByUserId } from '../../../db/mocked-db';
 import { UsersService } from '../../../services/users.service';
 import { ProjectDBModel } from '../../../db/project-db.model';
 import { Subscription } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-projects',
-  imports: [CommonModule, CreateProjectModal],
+  imports: [CommonModule, CreateProjectModal, TranslateModule],
   templateUrl: './my-projects.html',
   styleUrl: './my-projects.sass',
 })
@@ -17,7 +18,11 @@ export class MyProjects implements OnInit, OnDestroy {
   projects = [] as ProjectDBModel[];
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private openModalService: OpenModalService, private userService: UsersService) { }
+  constructor(private openModalService: OpenModalService, private userService: UsersService, translateService: TranslateService) { 
+    const currentLang = document.documentElement.lang || 'en';
+    const lang = currentLang.includes('ro') ? 'ro' : 'en';
+    translateService.use(lang);
+  }
 
   ngOnInit() {
     this.userSubscription = this.userService.selectedUser$.subscribe({

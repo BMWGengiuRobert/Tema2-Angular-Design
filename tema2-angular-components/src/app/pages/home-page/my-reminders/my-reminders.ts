@@ -5,10 +5,11 @@ import { UsersService } from '../../../services/users.service';
 import { getRemindersByUserId } from '../../../db/mocked-db';
 import { FormsModule } from '@angular/forms';
 import { CustomDatePipe } from '../../../pipes/custom-date.pipe';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-reminders',
-  imports: [FormsModule, CustomDatePipe],
+  imports: [FormsModule, CustomDatePipe, TranslateModule],
   templateUrl: './my-reminders.html',
   styleUrl: './my-reminders.sass',
 })
@@ -19,7 +20,11 @@ export class MyReminders implements OnInit, OnDestroy {
   selectedDate: Date = new Date();
   private userSubcription: Subscription = new Subscription();
 
-  constructor(private userService: UsersService){}
+  constructor(private userService: UsersService, translateService: TranslateService){
+    const currentLang = document.documentElement.lang || 'en';
+    const lang = currentLang.includes('ro') ? 'ro' : 'en';
+    translateService.use(lang);
+  }
 
   ngOnInit(): void {
     this.userSubcription = this.userService.selectedUser$.subscribe(user => {

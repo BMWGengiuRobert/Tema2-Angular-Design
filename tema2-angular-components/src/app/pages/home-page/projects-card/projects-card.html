@@ -1,14 +1,14 @@
 <div class="card-container">
     <div class="card-container__header">
         <div class="title">
-            <span><i class="fa fa-suitcase"></i> Projects</span>
+            <span i18n><i class="fa fa-suitcase"></i> Projects</span>
         </div>
-        <span class="recents">Recents <i class="fa fa-chevron-down"></i></span>
+        <span i18n class="recents">Recents <i class="fa fa-chevron-down"></i></span>
     </div>
     <div class="card-container__body">
         @if(projects.length === 0)
         {
-        <p class="no-projects">No recent projects to display.</p>
+        <p i18n class="no-projects">No recent projects to display.</p>
         }
         @else
         {
@@ -22,11 +22,11 @@
                         <i class="fa-solid fa-star"></i>
                     </div>
                     <div class="item__text">
-                        <span class="item__text__title">{{ project.name }}</span>
+                        <span i18n class="item__text__title">{{ project.name | translate }}</span>
                         <div class="project-details">
-                            <span>{{ getTasksByProjectId(project.id) }} tasks</span>
+                            <span i18n>{{ getTasksByProjectId(project.id) }} tasks</span>
                             <span>&bull;</span>
-                            <span>{{ project.noOfTeammates }} teammates</span>
+                            <span i18n>{{ project.noOfTeammates }} teammates</span>
                         </div>
                     </div>
                 </div>
@@ -43,11 +43,11 @@
                         <i class="fa-solid fa-star"></i>
                     </div>
                     <div class="item__text">
-                        <span class="item__text__title">{{ project.name }}</span>
+                        <span i18n class="item__text__title">{{ project.name | translate }}</span>
                         <div class="project-details">
-                            <span>{{ getTasksByProjectId(project.id) }} tasks</span>
+                            <span i18n>{{ getTasksByProjectId(project.id) }} tasks</span>
                             <span>&bull;</span>
-                            <span>{{ project.noOfTeammates }} teammates</span>
+                            <span i18n>{{ project.noOfTeammates }} teammates</span>
                         </div>
                     </div>
                 </div>

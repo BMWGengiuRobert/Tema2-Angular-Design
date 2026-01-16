@@ -1,16 +1,16 @@
 <div class="projects-container">
     <div class="projects-container__header">
-        <p class="projects-container__title">My Projects</p>
-        <button class="projects-container__add-button" (click)="openModal()">+ Add</button>
+        <p i18n class="projects-container__title">My Projects</p>
+        <button i18n class="projects-container__add-button" (click)="openModal()">+ Add</button>
     </div>
     <ul class="projects-container__list">
         @if(projects.length === 0)
         {
-            <p class="projects-container__no-projects-text">No projects available. Click "Add" to create one.</p>
+            <p i18n class="projects-container__no-projects-text">No projects available. Click "Add" to create one.</p>
         }
         <li class="projects-container__item" *ngFor="let project of projects">
             <div class="projects-container__item__icon" [ngStyle]="{ 'background-color': project.color }"></div>
-            <span class="projects-container__item__name">{{ project.name }}</span>
+            <span class="projects-container__item__name">{{ project.name | translate }}</span>
         </li>
     </ul>
 </div>

@@ -2,7 +2,7 @@
     <div class="card-container">
         <div class="card-container__header">
             <div class="title">
-                <span><i class="fa fa-list"></i> My Tasks</span>
+                <span i18n><i class="fa fa-list"></i> My Tasks</span>
             </div>
             <div class="actions">
                 <button><i class="fa fa-plus"></i></button>
@@ -14,16 +14,16 @@
             @if(tasks.length > 0){
             <div class="label">
                 <span><i class="fa-solid fa-chevron-up"></i></span>
-                <span class="status">IN PROGRESS</span>
+                <span i18n class="status">IN PROGRESS</span>
                 <span>&bull;</span>
                 <span>{{tasks.length}} tasks</span>
             </div>
             <div class="card-container__task-list">
                 <div class="header">
-                    <p>Name</p>
+                    <p i18n>Name</p>
                     <div>
-                        <p>Priority</p>
-                        <p>Due Date</p>
+                        <p i18n>Priority</p>
+                        <p i18n>Due Date</p>
                     </div>
                 </div>
                 <div class="tasks">
@@ -32,10 +32,10 @@
                         <div class="left">
                             <span><i class="fa-solid fa-chevron-down"></i></span>
                             <div></div>
-                            <span>{{task.name}}</span>
+                            <span i18n>{{task.name | translate}}</span>
                         </div>
                         <div class="right">
-                            <span class="priority p-{{task.priority.toLowerCase()}}">{{task.priority}}</span>
+                            <span i18n class="priority p-{{task.priority.toLowerCase()}}">{{task.priority | translate}}</span>
                             <span>{{task.dueDate | taskDueDatePipe}}</span>
                         </div>
                     </div>
@@ -44,26 +44,26 @@
             </div>
             }
             @else {
-            <p class="no-tasks">No tasks assigned.</p>
+            <p i18n class="no-tasks">No tasks assigned.</p>
             }
         </div>
         @if(tasks.length > 0){
         <div class="card-container__footer">
-            <button class="add_task">+ Add Task</button>
+            <button i18n class="add_task">+ Add Task</button>
             <div class="item">
                 <div class="card">
                     <span><i class="fa fa-chevron-down"></i></span>
-                    <span class="p-low">TO DO</span>
+                    <span i18n class="p-low">TO DO</span>
                     <span>&bull;</span>
-                    <span>1 task</span>
+                    <span i18n>1 task</span>
                 </div>
             </div>
             <div class="item">
                 <div class="card">
                     <span><i class="fa fa-chevron-down"></i></span>
-                    <span class="p-medium">UPCOMING</span>
+                    <span i18n class="p-medium">UPCOMING</span>
                     <span>&bull;</span>
-                    <span>1 task</span>
+                    <span i18n>1 task</span>
                 </div>
             </div>
         </div>

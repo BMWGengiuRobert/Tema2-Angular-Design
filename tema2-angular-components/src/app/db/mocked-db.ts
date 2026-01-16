@@ -127,3 +127,8 @@ export function getGoalById(goalId: number) {
 export function getReminderById(reminderId: number) {
     return MOCKED_DB.reminders.find(reminder => reminder.id === reminderId);
 }
+
+// functions to add new data
+export function addProject(project: any) {
+    MOCKED_DB.projects.push(project);
+}

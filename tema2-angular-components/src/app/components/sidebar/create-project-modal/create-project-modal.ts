@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MyProjectsService } from '../../../services/my-projects.service';
 import { Project } from '../../../models/projects.model';
 import { OpenModalService } from '../../../services/modal.service';
 import { Subscription } from 'rxjs';
+import { addProject, getProjects } from '../../../db/mocked-db';
+import { UsersService } from '../../../services/users.service';
+import { ProjectDBModel } from '../../../db/project-db.model';
 
 @Component({
   selector: 'app-create-project-modal',
@@ -15,10 +17,11 @@ import { Subscription } from 'rxjs';
 export class CreateProjectModal implements OnInit, OnDestroy {
 
   isModalOpen: boolean = false;
-  newProject: Project = { id: 0, name: '', color: '#000' };
+  newProject: ProjectDBModel = { id: 0, userId: 0, noOfTeammates: 0, name: '', color: '#000' };
   private modalSubscription: Subscription = new Subscription();
+  private userSubscription: Subscription = new Subscription();
 
-  constructor(private myProjectsService: MyProjectsService, private openModalService: OpenModalService) { }
+  constructor(private usersService: UsersService, private openModalService: OpenModalService) { }
 
   ngOnInit() {
     this.modalSubscription = this.openModalService.isCreateProjectModalOpen$.subscribe(
@@ -34,6 +37,22 @@ export class CreateProjectModal implements OnInit, OnDestroy {
         }
       }
     );
+
+    this.userSubscription = this.usersService.selectedUser$.subscribe(
+      {
+        next: (user) => {
+          if (user) {
+            this.newProject.userId = user.id;
+          }
+        },
+        error: (err) => {
+          console.error('Error receiving selected user:', err);
+        },
+        complete: () => {
+          console.log('Completed receiving selected user.');  
+        }
+      }
+    );
   }
 
   closeModal() {
@@ -41,9 +60,13 @@ export class CreateProjectModal implements OnInit, OnDestroy {
   }
 
   createProject() {
-    const newProjectId = this.myProjectsService.getProjects().length + 1;
-    this.myProjectsService.addProject({ ...this.newProject, id: newProjectId });
-    this.newProject = { id: 0, name: '', color: '#000000' };
+    const newProjectId = getProjects().length + 1;
+    addProject({
+      ...this.newProject,
+      id: newProjectId
+    });
+    this.usersService.refreshSelectedUser();
+    this.newProject = { id: 0, userId: 0, noOfTeammates: 0, name: '', color: '#000' };
     this.closeModal();
   }
 
@@ -53,5 +76,6 @@ export class CreateProjectModal implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.modalSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
   }
 }

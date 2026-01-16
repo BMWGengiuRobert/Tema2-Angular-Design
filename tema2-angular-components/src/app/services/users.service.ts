@@ -19,6 +19,10 @@ export class UsersService {
         return this.selectedUser.getValue();
     }
 
+    refreshSelectedUser() {
+        this.selectedUser.next(this.getSelectedUser());
+    }
+
     getUsers() {
         return this.users;
     }

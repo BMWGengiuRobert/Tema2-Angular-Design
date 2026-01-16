@@ -4,10 +4,11 @@ import { ROUTES } from '../../../models/routes.model';
 import { RouterLink } from '@angular/router';
 import { AvatarColorService } from '../../../services/avatar-color.service';
 import { Subscription } from 'rxjs';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-routes-list',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, TranslateModule],
   templateUrl: './routes-list.html',
   styleUrl: './routes-list.sass',
 })
@@ -19,7 +20,11 @@ export class RoutesList implements OnInit, OnDestroy {
 
   private colorSubscription: Subscription = new Subscription();
 
-  constructor(private userService: AvatarColorService) {}
+  constructor(private userService: AvatarColorService, translateService: TranslateService) {
+    const currentLang = document.documentElement.lang || 'en';
+    const lang = currentLang.includes('ro') ? 'ro' : 'en';
+    translateService.use(lang);
+  }
 
   ngOnInit() {
     this.colorSubscription = this.userService.selectedUserColor$.subscribe({
