@@ -1,79 +1,90 @@
 {
+  "PROJECT": {
+  "productLaunch_1": "Product launch_1 222",
+  "Team brainstorim_1": "Team brainstorming_1",
+  "Design landing page": "Design landing page"
+  },
 
-  "Home": "Acasă",
-  "Prodify Ai": "Prodify Ai",
-  "My Tasks": "Sarcinile mele",
-  "Inbox": "Inbox",
-  "Calendar": "Calendar",
-  "Reports & Analytics": "Rapoarte și Analitică",
+  "SIDEBAR": {
+    "MY_PROJECTS":{
+    "TITLE_FROM_SIDEBAR": "Proiectele Mele",
+    "ADD_PROJECT": "+ Adaugă",
+    "NO_PROJECTS_TEXT": "Nu există proiecte disponibile. Apasă \"Adaugă\" pentru a crea unul."
+    },
+    "SETTINGS": "Setări",
+    "NEW_MEMBERS_DESCRIPTION": "Noii membri vor avea acces la Spații, Documente și Panouri publice",
+    "INVITE_PEOPLE": "+ Invită persoane"
+  },
 
-  "Product launch_1": "Lansare produs_1",
-  "Team brainstorim_1": "Brainstorming echipă_1",
-  "Branding launch_1": "Lansare branding_1",
+  "HOME_PAGE": {
+    "GREETINGS_TEXT": "Bună",
+    "HELP_TEXT": "Cu ce te pot ajuta astăzi?",
+    "BUTTONS":{
+      "CREATE_WORKSPACE": "Creează spațiu de lucru",
+      "CONNECT_APPS": "Conectează aplicații",
+      "ASK_AI": "Întreabă AI",
+      "GET_TASKS_UPDATES": "Obține actualizări ale sarcinilor"
+    },
+    "MY_TASKS_CARD":{
+      "TITLE": "Sarcinile Mele",
+      "NO_TASKS_TEXT": "Nu există sarcini atribuite.",
+      "PROGRESS_LABEL":"ÎN PROGRES",
+      "UPCOMING_LABEL":"VIITOARE",
+      "TO_DO_LABEL":"DE FĂCUT",
+      "TASKS_TABLE":{
+        "NAME_COLUMN":"Nume",
+        "PRIORITY_COLUMN":"Prioritate",
+        "DUE_DATE_COLUMN":"Data scadentă"
+      },
+      "ADD_TASK_BUTTON":"+ Adaugă Sarcină",
+      "TASKS":"Sarcini"
+    },
+    "MY_GOALS_CARD":{
+      "TITLE": "Obiectivele Mele",
+      "NO_GOALS_TEXT": "Nu există obiective disponibile."
+    },
+    "MY_PROJECTS_CARD":{
+      "TITLE": "Proiecte",
+      "RECENTS_LABEL":"Recente",
+      "NO_PROJECTS_TEXT": "Nu există proiecte recente disponibile."
+    },
+    "MY_REMINDERS_CARD":{
+      "TITLE": "Mementourile Mele",
+      "NO_REMINDERS_TEXT": "Nu există mementouri disponibile."
+    },
+    "MY_CALENDAR_CARD":{
+      "TITLE": "Calendar",
+      "MEETING_WITH_VP": "Întâlnire cu VP",
+      "TODAY_LABEL": "Astăzi"
+    }
+  },
   
-  "Product launch_2": "Lansare produs_2",
-  "Team brainstorim_2": "Brainstorming echipă_2",
-  "Branding launch_2": "Lansare branding_2",
-
-  "Product launch_3": "Lansare produs_3",
-  "Team brainstorim_3": "Brainstorming echipă_3",
-  "Branding launch_3": "Lansare branding_3",
-
-  "High": "Ridicată",
-  "Medium": "Medie",
-  "Low": "Scăzută",
-
-  "Design landing page": "Proiectare pagină de destinație",
-  "Develop marketing strategy": "Dezvoltare strategie de marketing",
-  "Create wireframes": "Creare machete",
-  "Set up project repository": "Configurare repository proiect",
-  "Implement authentication system": "Implementare sistem de autentificare",
-  "Write unit tests": "Scriere teste unitare",
-  "Design new logo": "Proiectare logo nou",
-  "Plan marketing strategy": "Planificare strategie de marketing",
-  "Conduct user research": "Realizare cercetare utilizatori",
-  "Develop social media campaign": "Dezvoltare campanie social media",
-
-  "Check Emails and Messages": "Verifică emailuri și mesaje",
-  "Prepare a brief status update to the clients": "Pregătește o scurtă actualizare a stării pentru clienți",
-  "Update project documentation": "Actualizează documentația proiectului",
-  "Conduct team meeting to discuss project milestones": "Condu o întâlnire de echipă pentru a discuta etapele proiectului",
-  "Review team members progress": "Revizuiește progresul membrilor echipei",
-  "Organize files and resources": "Organizează fișierele și resursele",
-  "Complete project report": "Finalizează raportul proiectului",
-
-  "Assess any new risks identified": "Evaluează orice riscuri noi identificate",
-  "Review quarterly budget allocation": "Revizuiește alocarea bugetului trimestrial",
-  "Weekly team sync meeting": "Întâlnire săptămânală de sincronizare a echipei",
-  "Submit monthly progress report": "Trimite raportul lunar de progres",
-  "Finalize brand color palette": "Finalizează paleta de culori a brandului",
-  "Sketch mobile navigation wireframes": "Schitează machetele de navigare mobilă",
-  "Review client feedback on logo": "Revizuiește feedback-ul clientului privind logo-ul",
-  "Fix responsive layout bugs": "Remediază erorile de aspect responsive",
-  "Update documentation for API": "Actualizează documentația pentru API",
-  "Push final build to staging": "Trimite build-ul final către staging",
-  "Prepare interview questions": "Pregătește întrebările pentru interviu",
-  "Follow up with survey participants": "Urmărește participanții la sondaj",
-  "Social media campaign launch": "Lansare campanie social media",
-
-  "January": "Ianuarie",
-  "February": "Februarie",
-  "March": "Martie",
-  "April": "Aprilie",
-  "May": "Mai",
-  "June": "Iunie",
-  "July": "Iulie",
-  "August": "August",
-  "September": "Septembrie",
-  "October": "Octombrie",
-  "November": "Noiembrie",
-  "December": "Decembrie",
-
-  "Monday": "Luni",
-  "Tuesday": "Marți",
-  "Wednesday": "Miercuri",
-  "Thursday": "Joi",
-  "Friday": "Vineri",
-  "Saturday": "Sâmbătă",
-  "Sunday": "Duminică"
+  "MODALS":{
+    "CREATE_PROJECT_MODAL": {
+      "TITLE": "Creează Proiect",
+      "PROJECT_NAME_LABEL": "Numele Proiectului",
+      "PROJECT_DESCRIPTION_LABEL": "Descrierea Proiectului",
+      "PROJECT_COLOR_LABEL": "Culoarea Proiectului",
+      "CREATE_BUTTON": "Creează",
+      "CANCEL_BUTTON": "Anulează"
+    },
+    "INVITE_PEOPLE_MODAL": {
+      "TITLE": "Invită Persoane",
+      "FIRST_NAME_LABEL": "Prenume",
+      "LAST_NAME_LABEL": "Nume",
+      "FAVORITE_COLOR_LABEL": "Culoare Preferată",
+      "CANCEL_BUTTON": "Anulează",
+      "CREATE_BUTTON": "Creează"
+    },
+    "CHANGE_THEME_MODAL": {
+      "TITLE": "Schimbă Tema",
+      "LIGHT_THEME_LABEL": "Mod Deschis",
+      "LIGHT_THEME_DESCRIPTION": "Interfață curată și luminoasă",
+      "DARK_THEME_LABEL": "Mod Întunecat",
+      "DARK_THEME_DESCRIPTION": "Ușor pentru ochi",
+      "ACTIVE_BUTTON": "Activ",
+      "SELECT_BUTTON": "Selectează"
+    }
+  }
+ 
 }

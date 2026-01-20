@@ -1,7 +1,7 @@
 <div class="card-container">
     <div class="card-container__header">
         <div class="title">
-            <span i18n><i class="fa fa-stopwatch"></i> My Reminders</span>
+            <span ><i class="fa fa-stopwatch"></i> {{'HOME_PAGE.MY_REMINDERS_CARD.TITLE' | translate}}</span>
         </div>
     </div>
     <div class="card-container__date">
@@ -13,13 +13,13 @@
     </div>
     <div class="card-container__body">
         @if(reminders.length === 0) {
-        <p i18n class="no-reminders">No reminders available.</p>
+        <p  class="no-reminders">{{'HOME_PAGE.MY_REMINDERS_CARD.NO_REMINDERS_TEXT' | translate}}</p>
         }
 
         @for(reminder of reminders; track reminder.id) {
         <div class="item">
             <div class="item__details">
-                <span i18n class="item__details__title">{{ reminder.name | translate }}</span>
+                <span  class="item__details__title">{{ reminder.name | translate }}</span>
             </div>
             <div class="item__status">
                 <span><i class="fa fa-bell"></i></span>

@@ -4,10 +4,11 @@ import { OpenModalService } from '../../../services/modal.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-invite-people-modal',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule, TranslatePipe],
   templateUrl: './invite-people-modal.html',
   styleUrl: './invite-people-modal.sass',
 })
@@ -21,7 +22,7 @@ export class InvitePeopleModal {
   }
   modalSubscription: Subscription = new Subscription();
 
-  constructor(private usersService: UsersService, private openModalService: OpenModalService) { }
+  constructor(private usersService: UsersService, private openModalService: OpenModalService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.modalSubscription = this.openModalService.isInvitePeopleModalOpen$.subscribe({
@@ -35,6 +36,8 @@ export class InvitePeopleModal {
         console.log('Completed receiving modal state.');
       }
     });
+
+    this.translate.use(document.documentElement.lang || 'en');
   }
 
   closeModal() {

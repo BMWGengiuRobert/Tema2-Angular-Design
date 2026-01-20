@@ -3,10 +3,11 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { OpenModalService } from '../../../services/modal.service';
 import { CommonModule } from '@angular/common';
 import { ChangeThemeService } from '../../../services/change-theme.service';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-change-theme-modal',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule, TranslatePipe],
   templateUrl: './change-theme-modal.html',
   styleUrl: './change-theme-modal.sass',
 })
@@ -16,7 +17,7 @@ export class ChangeThemeModal implements OnInit, OnDestroy {
   themeSubscription: Subscription = new Subscription();
   currentTheme: 'light' | 'dark' = 'light';
 
-  constructor(private modalService: OpenModalService, private changeThemeService: ChangeThemeService) { }
+  constructor(private modalService: OpenModalService, private changeThemeService: ChangeThemeService, private translateService: TranslateService) { }
 
   ngOnInit() {
     this.modalSubscription = this.modalService.isChangeThemeModalOpen$.subscribe({
@@ -42,6 +43,8 @@ export class ChangeThemeModal implements OnInit, OnDestroy {
         console.log('Completed receiving theme.');
       }
     });
+
+    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   closeModal() {

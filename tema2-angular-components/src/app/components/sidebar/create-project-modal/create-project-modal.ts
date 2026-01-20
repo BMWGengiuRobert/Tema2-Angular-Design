@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Project } from '../../../models/projects.model';
 import { OpenModalService } from '../../../services/modal.service';
 import { Subscription } from 'rxjs';
 import { addProject, getProjects } from '../../../db/mocked-db';
 import { UsersService } from '../../../services/users.service';
 import { ProjectDBModel } from '../../../db/project-db.model';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-project-modal',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule, TranslatePipe],
   templateUrl: './create-project-modal.html',
   styleUrl: './create-project-modal.sass',
 })
@@ -21,7 +21,7 @@ export class CreateProjectModal implements OnInit, OnDestroy {
   private modalSubscription: Subscription = new Subscription();
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private usersService: UsersService, private openModalService: OpenModalService) { }
+  constructor(private usersService: UsersService, private openModalService: OpenModalService, private translateService: TranslateService) { }
 
   ngOnInit() {
     this.modalSubscription = this.openModalService.isCreateProjectModalOpen$.subscribe(
@@ -53,6 +53,8 @@ export class CreateProjectModal implements OnInit, OnDestroy {
         }
       }
     );
+
+    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   closeModal() {

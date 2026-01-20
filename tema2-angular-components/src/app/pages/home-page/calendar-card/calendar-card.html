@@ -1,7 +1,7 @@
 <div class="card-container">
     <div class="card-container__header">
         <div class="title">
-            <span><i class="fa fa-calendar"></i> Calendar</span>
+            <span><i class="fa fa-calendar"></i> {{ 'HOME_PAGE.MY_CALENDAR_CARD.TITLE' | translate }}</span>
         </div>
         <div class="month-selector">
             <button (click)="toggleDropdown()">
@@ -11,7 +11,7 @@
             </button>
 
             <ul class="months-dropdown" *ngIf="isDropdownOpen"> 
-                <li *ngFor="let month of months; let i = index;" (click)="changeMonth(i)" i18n>
+                <li *ngFor="let month of months; let i = index;" (click)="changeMonth(i)" >
                     {{ month | translate }}
                 </li>
             </ul>
@@ -31,9 +31,9 @@
         <div class="upcoming-events">
             <div class="upcoming-events__details">
                 <div class="upcoming-events__details__header">
-                    <span i18n class="title">Meeting with VP</span>
+                    <span  class="title">{{ 'HOME_PAGE.MY_CALENDAR_CARD.MEETING_WITH_VP' | translate }}</span>
                     <div class="details">
-                        <span i18n> Today</span>
+                        <span > {{ 'HOME_PAGE.MY_CALENDAR_CARD.TODAY_LABEL' | translate }}</span>
                         <span>&bull;</span>
                         <span>10:00 - 11:00 am</span>
                     </div>

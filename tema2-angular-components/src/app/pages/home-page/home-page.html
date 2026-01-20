@@ -1,20 +1,20 @@
 <div class="page-container">
-    <p class="page-container__date">{{ currentDate | customDatePipe }}</p>
+    <p class="page-container__date">{{ currentDate | customDatePipe | translate}}</p>
     <div class="page-container__header">
         <div class="page-container__header__messages">
-            <span i18n class="page-container__header__messages__greetings" >Hello, {{ selectedUser.firstName }}!</span>
-            <span i18n class="page-container__header__messages__help">How can I help you today?</span>
+            <span  class="page-container__header__messages__greetings" >{{ 'HOME_PAGE.GREETINGS_TEXT' | translate }}, {{ selectedUser.firstName }}!</span>
+            <span  class="page-container__header__messages__help">{{ 'HOME_PAGE.HELP_TEXT' | translate }}</span>
         </div>
         <div class="page-container__header__buttons">
-            <button i18n class="ask-ai"><span class="icon">&#9733;</span> Ask AI</button>
+            <button  class="ask-ai"><span class="icon">&#9733;</span> {{ 'HOME_PAGE.BUTTONS.ASK_AI' | translate }}</button>
             <div class="page-container__header__buttons__gradient">
-                <button i18n>Get tasks updates</button>
+                <button >{{ 'HOME_PAGE.BUTTONS.GET_TASKS_UPDATES' | translate }}</button>
             </div>
             <div class="page-container__header__buttons__gradient">
-                <button i18n>Create workspace</button>
+                <button >{{ 'HOME_PAGE.BUTTONS.CREATE_WORKSPACE' | translate }}</button>
             </div>
             <div class="page-container__header__buttons__gradient">
-                <button i18n>Connect apps</button>
+                <button >{{ 'HOME_PAGE.BUTTONS.CONNECT_APPS' | translate }}</button>
             </div>
         </div>
     </div>

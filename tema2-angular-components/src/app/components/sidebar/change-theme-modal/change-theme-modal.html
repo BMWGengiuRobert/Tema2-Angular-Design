@@ -3,7 +3,7 @@
         <div class="modal-header">
             <h2 class="modal-header__title">
                 <i class="fa fa-palette"></i>
-                Choose Theme
+                {{ 'MODALS.CHANGE_THEME_MODAL.TITLE' | translate }}
             </h2>
             <button class="modal-header__close" (click)="closeModal()">
                 <i class="fa fa-times"></i>
@@ -29,16 +29,16 @@
                 <div class="theme-card__info">
                     <h3 class="theme-card__title">
                         <i class="fa fa-sun"></i>
-                        Light Mode
+                        {{ 'MODALS.CHANGE_THEME_MODAL.LIGHT_THEME_LABEL' | translate }}
                     </h3>
-                    <p class="theme-card__description">Clean and bright interface</p>
+                    <p class="theme-card__description">{{ 'MODALS.CHANGE_THEME_MODAL.LIGHT_THEME_DESCRIPTION' | translate }}</p>
                 </div>
                 <button 
                     class="theme-card__button" 
                     [class.theme-card__button--active]="isActiveTheme('light')"
                     (click)="setTheme('light')">
                     <i class="fa" [ngClass]="isActiveTheme('light') ? 'fa-check' : 'fa-circle-o'"></i>
-                    {{ isActiveTheme('light') ? 'Active' : 'Select' }}
+                    {{ isActiveTheme('light') ? ('MODALS.CHANGE_THEME_MODAL.ACTIVE_BUTTON' | translate) : ('MODALS.CHANGE_THEME_MODAL.SELECT_BUTTON' | translate) }}
                 </button>
             </div>
 
@@ -60,16 +60,16 @@
                 <div class="theme-card__info">
                     <h3 class="theme-card__title">
                         <i class="fa fa-moon"></i>
-                        Dark Mode
+                        {{ 'MODALS.CHANGE_THEME_MODAL.DARK_THEME_LABEL' | translate }}
                     </h3>
-                    <p class="theme-card__description">Easy on the eyes</p>
+                    <p class="theme-card__description">{{ 'MODALS.CHANGE_THEME_MODAL.DARK_THEME_DESCRIPTION' | translate }}</p>
                 </div>
                 <button 
                     class="theme-card__button" 
                     [class.theme-card__button--active]="isActiveTheme('dark')"
                     (click)="setTheme('dark')">
                     <i class="fa" [ngClass]="isActiveTheme('dark') ? 'fa-check' : 'fa-circle-o'"></i>
-                    {{ isActiveTheme('dark') ? 'Active' : 'Select' }}
+                    {{ isActiveTheme('dark') ? ('MODALS.CHANGE_THEME_MODAL.ACTIVE_BUTTON' | translate) : ('MODALS.CHANGE_THEME_MODAL.SELECT_BUTTON' | translate) }}
                 </button>
             </div>
         </div>

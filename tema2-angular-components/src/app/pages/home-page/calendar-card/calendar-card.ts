@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { WeekDay } from '../../../models/week-day.model';
 import { CommonModule } from '@angular/common';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-calendar-card',
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, TranslatePipe],
   templateUrl: './calendar-card.html',
   styleUrl: './calendar-card.sass',
 })
@@ -17,14 +17,11 @@ export class CalendarCard implements OnInit {
   currentMonth = this.currentDate.getMonth()
   week: WeekDay[] = []
 
-  constructor(translateService: TranslateService) {
-    const currentLang = document.documentElement.lang || 'en';
-    const lang = currentLang.includes('ro') ? 'ro' : 'en';
-    translateService.use(lang);
-  }
+  constructor(private translateService: TranslateService) {}
 
   ngOnInit(): void {
-    this.createCurrentWeek(this.currentDate)
+    this.createCurrentWeek(this.currentDate);
+    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   createCurrentWeek(dateInput: Date) {

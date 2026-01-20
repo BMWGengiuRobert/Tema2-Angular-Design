@@ -2,7 +2,7 @@
     <div class="card-container">
         <div class="card-container__header">
             <div class="title">
-                <span i18n><i class="fa fa-list"></i> My Tasks</span>
+                <span ><i class="fa fa-list"></i> {{'HOME_PAGE.MY_TASKS_CARD.TASKS' | translate}}</span>
             </div>
             <div class="actions">
                 <button><i class="fa fa-plus"></i></button>
@@ -14,16 +14,16 @@
             @if(tasks.length > 0){
             <div class="label">
                 <span><i class="fa-solid fa-chevron-up"></i></span>
-                <span i18n class="status">IN PROGRESS</span>
+                <span  class="status">{{'HOME_PAGE.MY_TASKS_CARD.PROGRESS_LABEL' | translate}}</span>
                 <span>&bull;</span>
-                <span>{{tasks.length}} tasks</span>
+                <span>{{tasks.length}} {{'HOME_PAGE.MY_TASKS_CARD.TASKS' | translate}}</span>
             </div>
             <div class="card-container__task-list">
                 <div class="header">
-                    <p i18n>Name</p>
+                    <p >{{'HOME_PAGE.MY_TASKS_CARD.TASKS_TABLE.NAME_COLUMN' | translate}}</p>
                     <div>
-                        <p i18n>Priority</p>
-                        <p i18n>Due Date</p>
+                        <p >{{'HOME_PAGE.MY_TASKS_CARD.TASKS_TABLE.PRIORITY_COLUMN' | translate}}</p>
+                        <p >{{'HOME_PAGE.MY_TASKS_CARD.TASKS_TABLE.DUE_DATE_COLUMN' | translate}}</p>
                     </div>
                 </div>
                 <div class="tasks">
@@ -32,10 +32,10 @@
                         <div class="left">
                             <span><i class="fa-solid fa-chevron-down"></i></span>
                             <div></div>
-                            <span i18n>{{task.name | translate}}</span>
+                            <span >{{task.name | translate}}</span>
                         </div>
                         <div class="right">
-                            <span i18n class="priority p-{{task.priority.toLowerCase()}}">{{task.priority | translate}}</span>
+                            <span  class="priority p-{{task.priority.toLowerCase()}}">{{task.priority | translate}}</span>
                             <span>{{task.dueDate | taskDueDatePipe}}</span>
                         </div>
                     </div>
@@ -44,26 +44,26 @@
             </div>
             }
             @else {
-            <p i18n class="no-tasks">No tasks assigned.</p>
+            <p  class="no-tasks">{{'HOME_PAGE.MY_TASKS_CARD.NO_TASKS_TEXT' | translate}}</p>
             }
         </div>
         @if(tasks.length > 0){
         <div class="card-container__footer">
-            <button i18n class="add_task">+ Add Task</button>
+            <button  class="add_task">{{'HOME_PAGE.MY_TASKS_CARD.ADD_TASK_BUTTON' | translate}}</button>
             <div class="item">
                 <div class="card">
                     <span><i class="fa fa-chevron-down"></i></span>
-                    <span i18n class="p-low">TO DO</span>
+                    <span  class="p-low">{{'HOME_PAGE.MY_TASKS_CARD.TO_DO_LABEL' | translate}}</span>
                     <span>&bull;</span>
-                    <span i18n>1 task</span>
+                    <span >1 {{'HOME_PAGE.MY_TASKS_CARD.TASKS' | translate}}</span>
                 </div>
             </div>
             <div class="item">
                 <div class="card">
                     <span><i class="fa fa-chevron-down"></i></span>
-                    <span i18n class="p-medium">UPCOMING</span>
+                    <span  class="p-medium">{{'HOME_PAGE.MY_TASKS_CARD.UPCOMING_LABEL' | translate}}</span>
                     <span>&bull;</span>
-                    <span i18n>1 task</span>
+                    <span >1 {{'HOME_PAGE.MY_TASKS_CARD.TASKS' | translate}}</span>
                 </div>
             </div>
         </div>

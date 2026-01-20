@@ -1,20 +1,20 @@
 <div class="modal-overlay" *ngIf="isModalOpen" (click)="clickedOutsideModal($event)">
     <div class="modal-content">
-        <h2 i18n class="modal-content__title">Invite People</h2>
+        <h2 class="modal-content__title">{{ 'MODALS.INVITE_PEOPLE_MODAL.TITLE' | translate }}</h2>
         <form class="modal-content__form">
-            <label i18n class="modal-content__form__label" for="first-name">First Name</label>
+            <label class="modal-content__form__label" for="first-name">{{ 'MODALS.INVITE_PEOPLE_MODAL.FIRST_NAME_LABEL' | translate }}</label>
             <input class="modal-content__form__input" type="text" id="first-name" name="first-name" [(ngModel)]="newUser.firstName"
-                placeholder="Enter first name" />
-            <label i18n class="modal-content__form__label" for="last-name">Last Name</label>    
+                placeholder="{{ 'MODALS.INVITE_PEOPLE_MODAL.FIRST_NAME_LABEL' | translate }}" />
+            <label class="modal-content__form__label" for="last-name">{{ 'MODALS.INVITE_PEOPLE_MODAL.LAST_NAME_LABEL' | translate }}</label>    
             <input class="modal-content__form__input" type="text" id="last-name" name="last-name" [(ngModel)]="newUser.lastName"
-                placeholder="Enter last name" />
-            <label i18n class="modal-content__form__label" for="favorite-color">Favorite Color</label>
+                placeholder="{{ 'MODALS.INVITE_PEOPLE_MODAL.LAST_NAME_LABEL' | translate }}" />
+            <label class="modal-content__form__label" for="favorite-color">{{ 'MODALS.INVITE_PEOPLE_MODAL.FAVORITE_COLOR_LABEL' | translate }}</label>
             <input class="modal-content__form__input" type="color" id="favorite-color" name="favorite-color" [(ngModel)]="newUser.color" />
             <div class="modal-content__form__buttons">
-                <button i18n class="modal-content__form__buttons__cancel"
-                    type="button" (click)="closeModal()">Cancel</button>
-                <button i18n class="modal-content__form__buttons__create"
-                    type="submit" (click)="inviteUser()">Create</button>
+                <button class="modal-content__form__buttons__cancel"
+                    type="button" (click)="closeModal()">{{ 'MODALS.INVITE_PEOPLE_MODAL.CANCEL_BUTTON' | translate }}</button>
+                <button class="modal-content__form__buttons__create"
+                    type="submit" (click)="inviteUser()">{{ 'MODALS.INVITE_PEOPLE_MODAL.CREATE_BUTTON' | translate }}</button>
             </div>
         </form>
     </div>

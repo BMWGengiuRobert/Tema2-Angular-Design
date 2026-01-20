@@ -5,11 +5,11 @@ import { UsersService } from '../../../services/users.service';
 import { ProjectDBModel } from '../../../db/project-db.model';
 import { getProjectsByUserId } from '../../../db/mocked-db';
 import { getTasksByProjectId } from '../../../db/mocked-db';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-projects-card',
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, TranslatePipe],
   templateUrl: './projects-card.html',
   styleUrl: './projects-card.sass',
 })
@@ -18,11 +18,7 @@ export class ProjectsCard implements OnInit, OnDestroy {
   projects = [] as ProjectDBModel[];
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private userService: UsersService, translateService: TranslateService) {
-    const currentLang = document.documentElement.lang || 'en';
-    const lang = currentLang.includes('ro') ? 'ro' : 'en';
-    translateService.use(lang);
-  }
+  constructor(private userService: UsersService, private translateService: TranslateService) {}
 
   ngOnInit(): void {
     this.userSubscription = this.userService.selectedUser$.subscribe({
@@ -36,6 +32,8 @@ export class ProjectsCard implements OnInit, OnDestroy {
         console.log('Completed fetching user projects.');
       }
     });
+
+    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   getTasksByProjectId(projectId: number): number {

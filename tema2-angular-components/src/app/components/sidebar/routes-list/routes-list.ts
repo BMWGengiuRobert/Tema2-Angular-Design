@@ -20,11 +20,7 @@ export class RoutesList implements OnInit, OnDestroy {
 
   private colorSubscription: Subscription = new Subscription();
 
-  constructor(private userService: AvatarColorService, translateService: TranslateService) {
-    const currentLang = document.documentElement.lang || 'en';
-    const lang = currentLang.includes('ro') ? 'ro' : 'en';
-    translateService.use(lang);
-  }
+  constructor(private userService: AvatarColorService, private translateService: TranslateService) {}
 
   ngOnInit() {
     this.colorSubscription = this.userService.selectedUserColor$.subscribe({
@@ -38,6 +34,8 @@ export class RoutesList implements OnInit, OnDestroy {
         console.log('Completed fetching user color.');
       }
     });
+
+    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   ngOnDestroy() {

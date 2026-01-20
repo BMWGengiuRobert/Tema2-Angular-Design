@@ -1,21 +1,21 @@
 <div class="modal-overlay" *ngIf="isModalOpen" (click)="clickedOutsideModal($event)">
     <div class="modal-content">
-        <h2 i18n class="modal-content__title">Add New Project</h2>
+        <h2 class="modal-content__title">{{ 'MODALS.CREATE_PROJECT_MODAL.TITLE' | translate }}</h2>
         <form class="modal-content__form">
-            <label i18n class="modal-content__form__label" for="project-name">Project Name</label>
+            <label class="modal-content__form__label" for="project-name">{{ 'MODALS.CREATE_PROJECT_MODAL.PROJECT_NAME_LABEL' | translate }}</label>
             <input class="modal-content__form__input" type="text" id="project-name" name="project-name"
-                [(ngModel)]="newProject.name" placeholder="Enter project name" />
-            <label i18n class="modal-content__form__label" for="project-teammates">Number of Teammates</label>
+                [(ngModel)]="newProject.name" placeholder="{{ 'MODALS.CREATE_PROJECT_MODAL.PROJECT_NAME_LABEL' | translate }}" />
+            <label class="modal-content__form__label" for="project-teammates">{{ 'MODALS.CREATE_PROJECT_MODAL.PROJECT_DESCRIPTION_LABEL' | translate }}</label>
             <input class="modal-content__form__input" type="number" id="project-teammates" name="project-teammates" min="1"
                 [(ngModel)]="newProject.noOfTeammates" />
-            <label i18n class="modal-content__form__label" for="project-color">Project Color</label>
+            <label class="modal-content__form__label" for="project-color">{{ 'MODALS.CREATE_PROJECT_MODAL.PROJECT_COLOR_LABEL' | translate }}</label>
             <input class="modal-content__form__input" type="color" id="project-color" name="project-color"
                 [(ngModel)]="newProject.color" />
             <div class="modal-content__form__buttons">
-                <button i18n class="modal-content__form__buttons__cancel" type="button"
-                    (click)="closeModal()">Cancel</button>
-                <button i18n class="modal-content__form__buttons__create" type="submit"
-                    (click)="createProject()">Create</button>
+                <button class="modal-content__form__buttons__cancel" type="button"
+                    (click)="closeModal()">{{ 'MODALS.CREATE_PROJECT_MODAL.CANCEL_BUTTON' | translate }}</button>
+                <button class="modal-content__form__buttons__create" type="submit"
+                    (click)="createProject()">{{ 'MODALS.CREATE_PROJECT_MODAL.CREATE_BUTTON' | translate }}</button>
             </div>
         </form>
     </div>

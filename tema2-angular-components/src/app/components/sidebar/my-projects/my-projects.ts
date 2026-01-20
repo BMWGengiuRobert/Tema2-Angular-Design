@@ -6,28 +6,30 @@ import { getProjectsByUserId } from '../../../db/mocked-db';
 import { UsersService } from '../../../services/users.service';
 import { ProjectDBModel } from '../../../db/project-db.model';
 import { Subscription } from 'rxjs';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslatePipe, TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-projects',
-  imports: [CommonModule, CreateProjectModal, TranslateModule],
+  imports: [CommonModule, CreateProjectModal, TranslatePipe, TranslateModule],
   templateUrl: './my-projects.html',
   styleUrl: './my-projects.sass',
 })
+
 export class MyProjects implements OnInit, OnDestroy {
-  projects = [] as ProjectDBModel[];
+  projects: ProjectDBModel[] = [];
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private openModalService: OpenModalService, private userService: UsersService, translateService: TranslateService) { 
-    const currentLang = document.documentElement.lang || 'en';
-    const lang = currentLang.includes('ro') ? 'ro' : 'en';
-    translateService.use(lang);
-  }
+  constructor(private openModalService: OpenModalService, private userService: UsersService, private translateService: TranslateService) {}
 
   ngOnInit() {
+    this.translateService.onLangChange.subscribe(() => {
+      this.projects = this.projects.map(project => ({ ...project, name: this.translateService.instant(project.name) }));
+    });
+
     this.userSubscription = this.userService.selectedUser$.subscribe({
       next: (selectedUser) => {
         this.projects = getProjectsByUserId(selectedUser.id);
+        this.projects = this.projects.map(project => ({ ...project, name: this.translateService.instant(project.name) }));
       },
       error: (err) => {
         console.error('Error fetching user projects:', err);
@@ -36,6 +38,8 @@ export class MyProjects implements OnInit, OnDestroy {
         console.log('Completed fetching user projects.');
       }
     });
+
+    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   openModal() {

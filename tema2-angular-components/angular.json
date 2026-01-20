@@ -8,10 +8,6 @@
   "projects": {
     "tema2-angular-components": {
       "projectType": "application",
-      "i18n": {
-        "sourceLocale": "en-US",
-        "locales": {"ro": "src/local/messages.ro.xlf"}
-      },
       "schematics": {
         "@schematics/angular:component": {
           "style": "sass"
@@ -24,7 +20,6 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "localize": ["ro"],
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "sass",
@@ -41,9 +36,6 @@
             ],
             "styles": [
               "src/styles.sass"
-            ],
-            "polyfills": [
-              "@angular/localize/init"
             ]
           },
           "configurations": {

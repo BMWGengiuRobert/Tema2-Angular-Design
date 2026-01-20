@@ -8,10 +8,11 @@ import { UsersService } from '../../services/users.service';
 import { Subscription } from 'rxjs';
 import { User, USERS } from '../../models/users.model';
 import { MyReminders } from "./my-reminders/my-reminders";
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard, MyReminders],
+  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard, MyReminders, TranslateModule, TranslatePipe],
   templateUrl: './home-page.html',
   styleUrl: './home-page.sass',
 })
@@ -20,7 +21,7 @@ export class HomePage {
   selectedUser: User = USERS[0];
   selectedUserSubscription: Subscription = new Subscription();
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private translateService: TranslateService) {}
 
   ngOnInit() {
     this.selectedUserSubscription = this.usersService.selectedUser$.subscribe({
@@ -34,6 +35,8 @@ export class HomePage {
         console.log('Completed fetching selected user.');
       }
     });
+
+    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   ngOnDestroy() {
