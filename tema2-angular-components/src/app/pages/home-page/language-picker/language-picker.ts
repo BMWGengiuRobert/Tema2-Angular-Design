@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-language-picker',
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule,TranslatePipe],
   templateUrl: './language-picker.html',
   styleUrl: './language-picker.sass',
 })
@@ -13,9 +13,9 @@ export class LanguagePicker {
   currentLang = 'en';
   
   languages = [
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'ro', name: 'Română', flag: '🇷🇴' },
-    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+    { code: 'en', name: 'English', flag: 'https://flagcdn.com/w40/gb.png' },
+    { code: 'ro', name: 'Română', flag: 'https://flagcdn.com/w40/ro.png' },
+    { code: 'de', name: 'Deutsch', flag: 'https://flagcdn.com/w40/de.png' },
   ];
 
   constructor(private translate: TranslateService) {

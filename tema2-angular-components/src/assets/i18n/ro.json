@@ -92,6 +92,9 @@
         "SAT": "Sâm",
         "SUN": "Dum"
       }
+    },
+    "LANGUAGE_PICKER":{
+      "NO_LANG": "Nicio limbă disponibilă"
     }
   },
   "MODALS": {

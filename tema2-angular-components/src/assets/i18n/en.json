@@ -87,6 +87,9 @@
         "SAT": "Sat",
         "SUN": "Sun"
       }
+    },
+    "LANGUAGE_PICKER":{
+      "NO_LANG": "No language available"
     }
   },
   "MODALS": {

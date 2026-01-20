@@ -1,6 +1,6 @@
 <div class="language-picker">
   <button class="language-picker__button" (click)="toggleDropdown()">
-    <span class="language-picker__flag">{{ getCurrentLanguage()?.flag }}</span>
+    <img class="language-picker__flag" [src]="getCurrentLanguage()?.flag" [alt]="getCurrentLanguage()?.name">
     <span class="language-picker__name">{{ getCurrentLanguage()?.code?.toUpperCase() }}</span>
     <span class="language-picker__arrow" [class.open]="isOpen">▼</span>
   </button>
@@ -13,7 +13,7 @@
           [class.active]="lang.code === currentLang"
           (click)="selectLanguage(lang.code)">
           
-          <span class="language-picker__option-flag">{{ lang.flag }}</span>
+          <img class="language-picker__option-flag" [src]="lang.flag" [alt]="lang.name">
           <span class="language-picker__option-name">{{ lang.name }}</span>
           
           @if (lang.code === currentLang) {
@@ -21,7 +21,7 @@
           }
         </div>
       } @empty {
-        <div class="language-picker__option">Nicio limbă disponibilă</div>
+        <div class="language-picker__option">{{ 'HOME_PAGE.LANGUAGE_PICKER.NO_LANG' | translate }}</div>
       }
     </div>
   }
