@@ -4,5 +4,8 @@ export interface TaskDBModel {
   userId: number;
   priority: 'High' | 'Medium' | 'Low';
   dueDate: Date;
-  name: string;
+  name: {
+    en: string;
+    ro: string;
+  };
 }

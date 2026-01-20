@@ -1,9 +1,14 @@
 import { Pipe } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 
 @Pipe({
-    name: 'taskDueDatePipe'
+    name: 'taskDueDatePipe',
+    pure: false
 })
 export class TaskDueDatePipe {
+
+    constructor(private translate: TranslateService) { }
+
     transform(value: Date): string {
         const date: Date = new Date(value);
         date.setHours(0, 0, 0, 0);
@@ -16,23 +21,43 @@ export class TaskDueDatePipe {
         tomorrow.setHours(0, 0, 0, 0);
 
         if (date.getTime() === today.getTime()) {
-            return 'Today';
+            if (this.translate.getCurrentLang() === 'ro') {
+                return 'Astăzi';
+            } else {
+                return 'Today';
+            }
         } else if (date.getTime() === tomorrow.getTime()) {
-            return 'Tomorrow';
+            if (this.translate.getCurrentLang() === 'ro') {
+                return 'Mâine';
+            } else {
+                return 'Tomorrow';
+            }
         } else if (date < today) {
             const noOfOverdueDays: number = Math.floor((today.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
 
             if (noOfOverdueDays === 1) {
-                return 'Yesterday';
+                if (this.translate.getCurrentLang() === 'ro') {
+                    return 'Ieri';
+                } else {
+                    return 'Yesterday';
+                }
             } else {
-                return `${noOfOverdueDays} days overdue`;
+                if (this.translate.getCurrentLang() === 'ro') {
+                    return `${noOfOverdueDays} zile întârziere`;
+                } else {
+                    return `${noOfOverdueDays} days overdue`;
+                }
             }
         } else if (date > tomorrow) {
             const noOfRemainingDays: number = Math.ceil((date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
 
-            return `${noOfRemainingDays} days left`;
+            if (this.translate.getCurrentLang() === 'ro') {
+                return `${noOfRemainingDays} zile rămase`;
+            } else {
+                return `${noOfRemainingDays} days left`;
+            }
         }
 
-        return 'No due date';
+        return this.translate.getCurrentLang() === 'ro' ? 'Fără dată limită' : 'No due date';
     }
 }

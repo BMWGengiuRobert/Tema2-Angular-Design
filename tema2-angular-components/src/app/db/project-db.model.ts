@@ -2,6 +2,11 @@ export interface ProjectDBModel {
   id: number;
   userId: number;
   noOfTeammates: number;
-  name: string;
+  name: {
+    en: string;
+    ro: string;
+  };
   color: string;
 }
+
+

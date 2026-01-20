@@ -15,22 +15,29 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 })
 export class MyReminders implements OnInit, OnDestroy {
 
-  allReminders: ReminderDbModel[] = [];
-  reminders: ReminderDbModel[] = [];
+  rawAllReminders: ReminderDbModel[] = [];
+  reminders: { id: number; userId: number; name: string; dueDate: Date }[] = [];
   selectedDate: Date = new Date();
   private userSubcription: Subscription = new Subscription();
 
-  constructor(private userService: UsersService, private translateService: TranslateService){}
+  constructor(private userService: UsersService, private translateService: TranslateService) { }
 
   ngOnInit(): void {
+
+    this.translateService.onLangChange.subscribe(() => {
+      this.updateRemindersWithTranslation();
+      this.filterRemindersByDate();
+    });
+
     this.userSubcription = this.userService.selectedUser$.subscribe(user => {
-      this.allReminders = getRemindersByUserId(user.id);
+      this.rawAllReminders = getRemindersByUserId(user.id);
+      this.updateRemindersWithTranslation();
       this.filterRemindersByDate();
     });
 
     this.translateService.use(document.documentElement.lang || 'en');
   }
-  
+
   ngOnDestroy(): void {
     this.userSubcription.unsubscribe();
   }
@@ -41,17 +48,26 @@ export class MyReminders implements OnInit, OnDestroy {
     this.filterRemindersByDate();
   }
 
+  updateRemindersWithTranslation(): void {
+    this.filterRemindersByDate();
+  }
+
   filterRemindersByDate(): void {
-    this.reminders = this.allReminders.filter(reminder => {
-      const reminderDate = new Date(reminder.dueDate);
-      return this.isSameDay(reminderDate, this.selectedDate);
-    });
+    this.reminders = this.rawAllReminders
+      .map(reminder => ({
+        ...reminder,
+        name: this.translateService.getCurrentLang() === 'en' ? reminder.name.en : reminder.name.ro
+      }))
+      .filter(reminder => {
+        const reminderDate = new Date(reminder.dueDate);
+        return this.isSameDay(reminderDate, this.selectedDate);
+      });
   }
 
   isSameDay(date1: Date, date2: Date): boolean {
     return date1.getDate() === date2.getDate() &&
-           date1.getMonth() === date2.getMonth() &&
-           date1.getFullYear() === date2.getFullYear();
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear();
   }
 
   isToday(): boolean {

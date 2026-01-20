@@ -15,15 +15,30 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 })
 export class ProjectsCard implements OnInit, OnDestroy {
 
-  projects = [] as ProjectDBModel[];
+  rawProjects: ProjectDBModel[] = [];
+  projects: {id: number, userId: number, noOfTeammates: number, name: string, color: string}[] = [];
   private userSubscription: Subscription = new Subscription();
 
   constructor(private userService: UsersService, private translateService: TranslateService) {}
 
   ngOnInit(): void {
+
+    this.translateService.onLangChange.subscribe({
+      next: () => {
+        this.updateProjectsWithTranslation();
+      },
+      error: (err) => {
+        console.error('Error during language change:', err);
+      },
+      complete: () => {
+        console.log('Language change handling completed.');
+      }
+    });
+    
     this.userSubscription = this.userService.selectedUser$.subscribe({
       next: (selectedUser) => {
-        this.projects = getProjectsByUserId(selectedUser.id);
+        this.rawProjects = getProjectsByUserId(selectedUser.id);
+        this.updateProjectsWithTranslation();
       },
       error: (err) => {
         console.error('Error fetching user projects:', err);
@@ -34,6 +49,13 @@ export class ProjectsCard implements OnInit, OnDestroy {
     });
 
     this.translateService.use(document.documentElement.lang || 'en');
+  }
+
+  updateProjectsWithTranslation(): void {
+    this.projects = this.rawProjects.map(project => ({ 
+      ...project, 
+      name: this.translateService.getCurrentLang() === 'en' ? project.name.en : project.name.ro 
+    }));
   }
 
   getTasksByProjectId(projectId: number): number {

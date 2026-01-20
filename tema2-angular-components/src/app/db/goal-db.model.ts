@@ -3,5 +3,8 @@ export interface GoalDBModel {
   userId: number;
   projectId: number; 
   percentageCompleted: number;
-  name: string;
+  name: {
+    en: string;
+    ro: string;
+  };
 }

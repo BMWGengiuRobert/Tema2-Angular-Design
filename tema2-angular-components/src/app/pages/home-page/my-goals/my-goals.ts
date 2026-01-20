@@ -15,15 +15,31 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 })
 export class MyGoals implements OnInit, OnDestroy {
 
-  goals: GoalDBModel[] = [];
+  rawGoals: GoalDBModel[] = [];
+  goals: { id: number; userId: number; projectId: number; percentageCompleted: number; name: string }[] = [];
   private userSubscription: Subscription = new Subscription();
 
   constructor(private userService: UsersService, private translateService: TranslateService) {}
 
   ngOnInit(): void {
+
+    this.translateService.onLangChange.subscribe( {
+      next: () => {
+        this.updateGoalsWithTranslation();
+      },
+      error: (err) => {
+        console.error('Error during language change:', err);
+      },
+      complete: () => {
+        console.log('Language change handling completed.');
+      }
+      
+    });
+
     this.userSubscription = this.userService.selectedUser$.subscribe({
       next: (selectedUser) => {
-        this.goals = getGoalsByUserId(selectedUser.id);
+        this.rawGoals = getGoalsByUserId(selectedUser.id);
+        this.updateGoalsWithTranslation();
       },
       error: (err) => {
         console.error('Error fetching user goals:', err);
@@ -36,9 +52,16 @@ export class MyGoals implements OnInit, OnDestroy {
     this.translateService.use(document.documentElement.lang || 'en');
   }
 
+  private updateGoalsWithTranslation(): void {
+    this.goals = this.rawGoals.map(goal => ({
+      ...goal,
+      name: this.translateService.getCurrentLang() === 'en' ? goal.name.en : goal.name.ro
+    }));
+  }
+
   getProjectNameById(projectId: number): string {
     const project: ProjectDBModel | undefined = getProjectById(projectId);
-    return project ? project.name : 'Unknown Project';
+    return project ? (this.translateService.getCurrentLang() === 'en' ? project.name.en : project.name.ro) : 'Unknown Project';
   }
 
   ngOnDestroy(): void {

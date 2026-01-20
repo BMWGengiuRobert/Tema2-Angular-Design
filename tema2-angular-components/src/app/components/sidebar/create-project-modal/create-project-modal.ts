@@ -17,7 +17,8 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 export class CreateProjectModal implements OnInit, OnDestroy {
 
   isModalOpen: boolean = false;
-  newProject: ProjectDBModel = { id: 0, userId: 0, noOfTeammates: 0, name: '', color: '#000' };
+  newProject: ProjectDBModel = { id: 0, userId: 0, noOfTeammates: 0, name: { en: '', ro: '' }, color: '#000' };
+  projectName: string = '';
   private modalSubscription: Subscription = new Subscription();
   private userSubscription: Subscription = new Subscription();
 
@@ -65,10 +66,14 @@ export class CreateProjectModal implements OnInit, OnDestroy {
     const newProjectId = getProjects().length + 1;
     addProject({
       ...this.newProject,
+      name: {
+        en: this.projectName,
+        ro: this.projectName
+      },
       id: newProjectId
     });
     this.usersService.refreshSelectedUser();
-    this.newProject = { id: 0, userId: 0, noOfTeammates: 0, name: '', color: '#000' };
+    this.newProject = { id: 0, userId: 0, noOfTeammates: 0, name: { en: '', ro: '' }, color: '#000' };
     this.closeModal();
   }
 

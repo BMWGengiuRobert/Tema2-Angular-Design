@@ -3,7 +3,7 @@
         <a [routerLink]="[route.path]" class="route-link" (mouseenter)="hoveredRouteId = route.id"
             (mouseleave)="hoveredRouteId = null">
             <i class="{{ route.icon }}" [ngStyle]="{'color': hoveredRouteId === route.id ? selectedUserColor : ''}"></i>
-            {{ route.name | translate }}
+            {{ ('SIDEBAR.ROUTES_LIST.' + route.id) | translate }}
         </a>
     </li>
 </ul>

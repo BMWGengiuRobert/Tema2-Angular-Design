@@ -16,20 +16,30 @@ import { TranslateService, TranslatePipe, TranslateModule } from '@ngx-translate
 })
 
 export class MyProjects implements OnInit, OnDestroy {
-  projects: ProjectDBModel[] = [];
+  rawProjects: ProjectDBModel[] = [];
+  projects: { id: number; userId: number; noOfTeammates: number; name: string; color: string }[] = [];
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private openModalService: OpenModalService, private userService: UsersService, private translateService: TranslateService) {}
+  constructor(private openModalService: OpenModalService, private userService: UsersService, private translateService: TranslateService) { }
 
   ngOnInit() {
-    this.translateService.onLangChange.subscribe(() => {
-      this.projects = this.projects.map(project => ({ ...project, name: this.translateService.instant(project.name) }));
+
+    this.translateService.onLangChange.subscribe( {
+      next: () => {
+        this.updateProjectsWithTranslation();
+      },
+      error: (err) => {
+        console.error('Error during language change:', err);
+      },
+      complete: () => {
+        console.log('Language change handling completed.');
+      }
     });
 
     this.userSubscription = this.userService.selectedUser$.subscribe({
       next: (selectedUser) => {
-        this.projects = getProjectsByUserId(selectedUser.id);
-        this.projects = this.projects.map(project => ({ ...project, name: this.translateService.instant(project.name) }));
+        this.rawProjects = getProjectsByUserId(selectedUser.id);
+        this.updateProjectsWithTranslation();
       },
       error: (err) => {
         console.error('Error fetching user projects:', err);
@@ -40,6 +50,13 @@ export class MyProjects implements OnInit, OnDestroy {
     });
 
     this.translateService.use(document.documentElement.lang || 'en');
+  }
+
+  updateProjectsWithTranslation(): void {
+    this.projects = this.rawProjects.map(project => ({
+      ...project,
+      name: this.translateService.getCurrentLang() === 'en' ? project.name.en : project.name.ro
+    }));
   }
 
   openModal() {

@@ -5,14 +5,14 @@
         </div>
         <div class="month-selector">
             <button (click)="toggleDropdown()">
-                <span class="current-month">{{this.months[this.currentMonth] | translate}}
+                <span class="current-month">{{ ('HOME_PAGE.MY_CALENDAR_CARD.MONTHS_NAME.' + this.months[this.currentMonth]).toUpperCase() | translate }}
                     <i class="fa fa-chevron-down"></i>
                 </span>
             </button>
 
             <ul class="months-dropdown" *ngIf="isDropdownOpen"> 
                 <li *ngFor="let month of months; let i = index;" (click)="changeMonth(i)" >
-                    {{ month | translate }}
+                    {{ ('HOME_PAGE.MY_CALENDAR_CARD.MONTHS_NAME.' + month.toUpperCase()) | translate }}
                 </li>
             </ul>
         </div>
@@ -22,7 +22,7 @@
             <button (click)="previousDay()"><i class="fa fa-chevron-left"></i></button>
             <div class="current-week__days">
                 <div class="day" *ngFor="let day of week; let i = index;" [ngClass]="{'active': i === 3, 'other-month': !day.isCurrentMonth}">
-                    <span class="name">{{ day.dayName | translate }}</span>
+                    <span class="name">{{ ('HOME_PAGE.MY_CALENDAR_CARD.DAYS_NAME.' + day.dayName.toUpperCase()) | translate }}</span>
                     <span class="number">{{ day.dayNumber }}</span>
                 </div>
             </div>

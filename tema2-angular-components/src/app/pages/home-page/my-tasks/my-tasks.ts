@@ -14,16 +14,32 @@ import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate
 })
 export class MyTasks implements OnInit, OnDestroy {
 
-  tasks: TaskDBModel[] = [];
+  rawTasks: TaskDBModel[] = [];
+  tasks: { id: number; projectId: number; userId: number; priority: 'High' | 'Medium' | 'Low'; dueDate: Date; name: string }[] = [];
   private userSubscription: Subscription = new Subscription();
 
   constructor(private userService: UsersService, private translateService: TranslateService) {}
 
   ngOnInit(): void {
+
+    this.translateService.onLangChange.subscribe( {
+      next: () => {
+        this.updateTasksWithTranslation();
+      },
+      error: (err) => {
+        console.error('Error during language change:', err);
+      },
+      complete: () => {
+        console.log('Language change handling completed.');
+      }
+    });
+
+
     this.userSubscription = this.userService.selectedUser$.subscribe({
       next: (selectedUser) => {
-        this.tasks = getTasksByUserId(selectedUser.id);
-      },
+        this.rawTasks = getTasksByUserId(selectedUser.id);
+        this.updateTasksWithTranslation();
+      },  
       error: (err) => {
         console.error('Error fetching user tasks:', err);
       },
@@ -35,6 +51,13 @@ export class MyTasks implements OnInit, OnDestroy {
     this.translateService.use(document.documentElement.lang || 'en');
   }
   
+  updateTasksWithTranslation(): void {
+    this.tasks = this.rawTasks.map(task => ({
+      ...task,
+      name: this.translateService.getCurrentLang() === 'en' ? task.name.en : task.name.ro
+    }));
+  }
+
   ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
