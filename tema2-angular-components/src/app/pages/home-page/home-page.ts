@@ -9,10 +9,11 @@ import { Subscription } from 'rxjs';
 import { User, USERS } from '../../models/users.model';
 import { MyReminders } from "./my-reminders/my-reminders";
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { LanguagePicker } from './language-picker/language-picker';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard, MyReminders, TranslateModule, TranslatePipe],
+  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard, MyReminders, TranslateModule, TranslatePipe, LanguagePicker],
   templateUrl: './home-page.html',
   styleUrl: './home-page.sass',
 })
@@ -36,7 +37,7 @@ export class HomePage {
       }
     });
 
-    this.translateService.use(document.documentElement.lang || 'en');
+     this.translateService.use(document.documentElement.lang || 'en');
   }
 
   ngOnDestroy() {

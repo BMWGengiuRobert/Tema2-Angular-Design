@@ -1,5 +1,6 @@
 <div class="page-container">
-    <p class="page-container__date">{{ currentDate | customDatePipe | translate}}</p>
+    <app-language-picker></app-language-picker>
+    <p class="page-container__date">{{ currentDate | customDatePipe }}</p>
     <div class="page-container__header">
         <div class="page-container__header__messages">
             <span  class="page-container__header__messages__greetings" >{{ 'HOME_PAGE.GREETINGS_TEXT' | translate }}, {{ selectedUser.firstName }}!</span>

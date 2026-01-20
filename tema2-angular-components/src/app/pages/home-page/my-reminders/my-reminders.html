@@ -7,7 +7,7 @@
     <div class="card-container__date">
         <span><i class="fa fa-calendar"></i></span>
         <input type="date" [value]="dateInputValue()" (change)="onDateChange($event)" class="date-picker">
-        <span>{{ isToday() ? 'Today' : (selectedDate | customDatePipe) }}</span>
+        <span>{{ isToday() ? ('HOME_PAGE.MY_REMINDERS_CARD.TODAY_LABEL' | translate) : (selectedDate | customDatePipe) }}</span>
         <span>&bull;</span>
         <span>{{reminders.length}}</span>
     </div>

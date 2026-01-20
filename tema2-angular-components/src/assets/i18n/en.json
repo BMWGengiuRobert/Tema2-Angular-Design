@@ -50,6 +50,7 @@
     },
     "MY_REMINDERS_CARD":{
       "TITLE": "My Reminders",
+      "TODAY_LABEL":"Today",
       "NO_REMINDERS_TEXT": "No reminders available."
     },
     "MY_CALENDAR_CARD":{

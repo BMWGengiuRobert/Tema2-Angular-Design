@@ -50,6 +50,7 @@
     },
     "MY_REMINDERS_CARD":{
       "TITLE": "Mementourile Mele",
+      "TODAY_LABEL":"Astăzi",
       "NO_REMINDERS_TEXT": "Nu există mementouri disponibile."
     },
     "MY_CALENDAR_CARD":{
