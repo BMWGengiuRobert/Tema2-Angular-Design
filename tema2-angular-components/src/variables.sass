@@ -40,6 +40,11 @@ $status-info: #49e6f1
 $status-alert: #ceb211
 $status-pending: #aabd03
 $status-inactive: #374249
+
+// 403 Forbidden Page Specific
+$gradient-403-start-light: #00bf8f
+$gradient-403-end-light: #001510
+$link-color-light: #7669e0
 //================================================================
 
 
@@ -85,6 +90,12 @@ $status-info-dark: #5fecf5
 $status-alert-dark: #e8d84f
 $status-pending-dark: #c5d645
 $status-inactive-dark: #455157
+
+  
+// 403 Forbidden Page Specific
+$gradient-403-start-dark: #3cc5d7
+$gradient-403-end-dark: #47d794
+$link-color-dark: #9d8ff4
 //================================================================
 
     
@@ -127,6 +138,10 @@ $status-inactive-dark: #455157
   --pending: #{$status-pending}
   --inactive: #{$status-inactive}
 
+  --gradient-403-start: #{$gradient-403-start-light}
+  --gradient-403-end: #{$gradient-403-end-light}
+  --link-color: #{$link-color-light}
+
 // Dark Theme Override
 [data-theme="dark"]
   --bg-page: #{$bg-page-dark}
@@ -162,3 +177,7 @@ $status-inactive-dark: #455157
   --alert: #{$status-alert-dark}
   --pending: #{$status-pending-dark}
   --inactive: #{$status-inactive-dark}
+
+  --gradient-403-start: #{$gradient-403-start-dark}
+  --gradient-403-end: #{$gradient-403-end-dark}
+  --link-color: #{$link-color-dark}
