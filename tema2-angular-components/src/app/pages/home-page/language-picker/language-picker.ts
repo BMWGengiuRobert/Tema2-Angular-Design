@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { OpenModalService } from '../../../services/modal.service';
 
 @Component({
   selector: 'app-language-picker',
@@ -18,7 +19,7 @@ export class LanguagePicker {
     { code: 'de', name: 'Deutsch', flag: 'https://flagcdn.com/w40/de.png' },
   ];
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private modalService: OpenModalService) {
     this.currentLang = this.translate.getCurrentLang() || 'en';
   }
 
@@ -30,6 +31,7 @@ export class LanguagePicker {
     this.currentLang = langCode;
     this.translate.use(langCode);
     this.isOpen = false;
+    this.modalService.openLoadingSpinner();
   }
 
   getCurrentLanguage() {

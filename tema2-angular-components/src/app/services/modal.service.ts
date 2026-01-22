@@ -8,10 +8,12 @@ export class OpenModalService {
     private isInvitePeopleModalOpen = new BehaviorSubject<boolean>(false);
     private isCreateProjectModalOpen = new BehaviorSubject<boolean>(false);
     private isChangeThemeModalOpen = new BehaviorSubject<boolean>(false);
+    private isLoadingSpinnerOpen = new BehaviorSubject<boolean>(false);
 
     isInvitePeopleModalOpen$ = this.isInvitePeopleModalOpen.asObservable();
     isCreateProjectModalOpen$ = this.isCreateProjectModalOpen.asObservable();
     isChangeThemeModalOpen$ = this.isChangeThemeModalOpen.asObservable();
+    isLoadingSpinnerOpen$ = this.isLoadingSpinnerOpen.asObservable();
 
     openInvitePeopleModal() {
         this.isInvitePeopleModalOpen.next(true);
@@ -53,5 +55,13 @@ export class OpenModalService {
         if (event.target === event.currentTarget) {
             this.closeChangeThemeModal();
         }
+    }
+
+    openLoadingSpinner() {
+        this.isLoadingSpinnerOpen.next(true);
+    }
+
+    closeLoadingSpinner() {
+        this.isLoadingSpinnerOpen.next(false);
     }
 }

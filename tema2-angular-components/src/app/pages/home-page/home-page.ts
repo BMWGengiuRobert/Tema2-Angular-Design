@@ -5,15 +5,17 @@ import { MyGoals } from './my-goals/my-goals';
 import { ProjectsCard } from './projects-card/projects-card';
 import { CalendarCard } from './calendar-card/calendar-card';
 import { UsersService } from '../../services/users.service';
-import { Subscription } from 'rxjs';
+import { Subscription, delay, tap, timeout } from 'rxjs';
 import { User, USERS } from '../../models/users.model';
 import { MyReminders } from "./my-reminders/my-reminders";
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LanguagePicker } from './language-picker/language-picker';
+import { LoadingSpinner } from "../../components/loading-spinner/loading-spinner";
+import { OpenModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-home-page',
-  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard, MyReminders, TranslateModule, TranslatePipe, LanguagePicker],
+  imports: [CustomDatePipe, MyTasks, MyGoals, ProjectsCard, CalendarCard, MyReminders, TranslateModule, TranslatePipe, LanguagePicker, LoadingSpinner],
   templateUrl: './home-page.html',
   styleUrl: './home-page.sass',
 })
@@ -22,7 +24,11 @@ export class HomePage {
   selectedUser: User = USERS[0];
   selectedUserSubscription: Subscription = new Subscription();
 
-  constructor(private usersService: UsersService, private translateService: TranslateService) {}
+  constructor(
+    private usersService: UsersService,
+    private translateService: TranslateService,
+    private modalService: OpenModalService
+  ) { }
 
   ngOnInit() {
     this.selectedUserSubscription = this.usersService.selectedUser$.subscribe({
@@ -37,7 +43,20 @@ export class HomePage {
       }
     });
 
-     this.translateService.use(document.documentElement.lang || 'en');
+    this.translateService.onLangChange.subscribe({
+      next: () => {
+        setTimeout(() => {
+          this.modalService.closeLoadingSpinner();
+        }, 2000);
+      },
+      error: (err) => {
+        console.error('Error during language change:', err);
+        this.modalService.closeLoadingSpinner();
+      },
+      complete: () => {
+        console.log('Language change process completed.');
+      }
+    });
   }
 
   ngOnDestroy() {
