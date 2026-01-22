@@ -1,0 +1,28 @@
+<div class="language-picker">
+  <button class="language-picker__button" (click)="toggleDropdown()">
+    <img class="language-picker__flag" [src]="getCurrentLanguage()?.flag" [alt]="getCurrentLanguage()?.name">
+    <span class="language-picker__name">{{ getCurrentLanguage()?.code?.toUpperCase() }}</span>
+    <span class="language-picker__arrow" [class.open]="isOpen">▼</span>
+  </button>
+  
+  @if (isOpen) {
+    <div class="language-picker__dropdown">
+      @for (lang of languages; track lang.code) {
+        <div 
+          class="language-picker__option"
+          [class.active]="lang.code === currentLang"
+          (click)="selectLanguage(lang.code)">
+          
+          <img class="language-picker__option-flag" [src]="lang.flag" [alt]="lang.name">
+          <span class="language-picker__option-name">{{ lang.name }}</span>
+          
+          @if (lang.code === currentLang) {
+            <span class="language-picker__check">✓</span>
+          }
+        </div>
+      } @empty {
+        <div class="language-picker__option">{{ 'HOME_PAGE.LANGUAGE_PICKER.NO_LANG' | translate }}</div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,19 @@
+<div class="sidebar-container">
+    <app-avatar-picture />
+    <app-routes-list />
+    <app-my-projects />
+    <div class="sidebar-container__bottom">
+        <button class="settings-button" (click)="openChangeThemeModal()"><i class="fa fa-gear"></i> {{ 'SIDEBAR.SETTINGS' | translate }}</button>
+        <div class="prodify-ai">
+            <div class="prodify-ai__header">
+                <span class="prodify-ai__icon">&#9733;</span>
+                <span class="prodify-ai__title">prodify</span>
+            </div>
+            <div class="prodify-ai__description">{{ 'SIDEBAR.NEW_MEMBERS_DESCRIPTION' | translate }}
+            </div>
+            <button class="prodify-ai__invite-people-btn" (click)="openInvitePeopleModal()">{{ 'SIDEBAR.INVITE_PEOPLE' | translate }}</button>
+        </div>
+    </div>
+</div>
+<app-invite-people-modal></app-invite-people-modal>
+<app-change-theme-modal></app-change-theme-modal>

@@ -1,0 +1,18 @@
+<div class="projects-container">
+    <div class="projects-container__header">
+        <p class="projects-container__title">{{ 'SIDEBAR.MY_PROJECTS.TITLE_FROM_SIDEBAR' | translate }}</p>
+        <button class="projects-container__add-button" (click)="openModal()">{{ 'SIDEBAR.MY_PROJECTS.ADD_PROJECT' | translate }}</button>
+    </div>
+    <ul class="projects-container__list">
+        @if(projects.length === 0)
+        {
+            <p class="projects-container__no-projects-text">{{ 'SIDEBAR.MY_PROJECTS.NO_PROJECTS_TEXT' | translate }}</p>
+        }
+        <li class="projects-container__item" *ngFor="let project of projects">
+            <div class="projects-container__item__icon" [ngStyle]="{ 'background-color': project.color }"></div>
+            <span class="projects-container__item__name">{{ project.name }}</span>
+        </li>
+    </ul>
+</div>
+
+<app-create-project-modal></app-create-project-modal>

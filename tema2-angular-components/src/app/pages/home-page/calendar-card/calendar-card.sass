@@ -1,0 +1,202 @@
+.card-container
+    display: flex
+    flex-direction: column
+    background-color: var(--bg-card)
+    padding: 16px
+    border-radius: 20px
+    gap: 12px
+
+    .fa-chevron-left, .fa-chevron-right
+        cursor: pointer
+        border: none
+        background: none
+        color: var(--text-primary)
+
+    &__header
+        display: flex
+        align-items: center
+        gap: 36px
+        font-family: 'Arial', sans-serif
+
+        .title
+            font-size: 20px
+            font-weight: 600
+            color: var(--text-primary)
+
+            i
+                margin-right: 8px
+                color: var(--primary)
+
+        .month-selector
+
+            .current-month
+                font-size: 16px
+                color: var(--text-strong)
+
+            i
+                margin-left: 8px
+
+            button
+                cursor: pointer
+                border: none
+                background: none
+
+            .months-dropdown
+                position: absolute
+                list-style: none
+                background-color: var(--bg-card)
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+                display: flex
+                padding: 0
+                flex-direction: column
+
+                li
+                    cursor: pointer
+                    white-space: nowrap
+                    padding: 4px 9px
+                    border-bottom: 2px solid var(--primary)
+
+                    &:last-child
+                        border-bottom: none
+
+                    &:hover
+                        background-color: var(--bg-hover)
+
+    &__body
+        display: flex
+        flex-direction: column
+        gap: 16px
+        padding: 16px
+        border-radius: 20px
+
+        .current-week
+            display: flex
+
+            &__days
+                display: flex
+                align-items: center
+                justify-content: space-around
+                flex-grow: 1
+
+                .day
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    justify-content: center
+                    padding: 8px
+                    height: 40px
+                    width: 40px
+                    border-radius: 12px
+                    gap: 4px
+
+                    .name
+                        color: var(--text-secondary)
+                        font-size: 14px
+
+                    .number
+                        font-size: 18px
+                        font-weight: bold
+
+                .active
+                    background-color: var(--primary)
+                    color: var(--text-strong)
+
+                    .name
+                        color: var(--text-strong)
+                
+                .other-month
+                    opacity: 0.4
+                    pointer-events: none 
+                    
+                    .name, .number
+                        color: var(--text-secondary)
+
+            button
+                cursor: pointer
+                border: none
+                background: none
+
+        .upcoming-events
+            display: flex
+            flex-direction: column
+            background-color: var(--bg-page)
+            padding: 12px
+            border-radius: 12px
+            gap: 16px
+
+            &__details
+                display: flex
+                justify-content: space-between
+
+                &__header
+                    display: flex
+                    flex-direction: column
+                    gap: 4px
+
+                    .title
+                        font-family: 'Arial', sans-serif
+                        font-size: 18px
+                        font-weight: bold
+
+                    .details
+                        font-family: 'Arial', sans-serif
+                        font-size: 14px
+                        color: var(--text-secondary)
+                        display: flex
+                        gap: 8px
+                        align-items: center
+
+                .actions
+                    display: flex
+                    align-items: center
+                    gap: 4px
+
+            .platform
+                display: flex
+                align-items: center
+                justify-content: space-between
+                font-family: 'Arial', sans-serif
+
+                &__cell
+                    display: flex
+                    align-items: center
+                    gap: 8px
+                    background: var(--bg-card)
+                    padding: 8px 12px
+                    border-radius: 50px
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+
+                    i
+                        color: var(--text-strong)
+
+                &__people
+                    display: flex
+                    align-items: center
+                    background: var(--bg-card)
+                    padding: 4px 8px
+                    border-radius: 50px
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
+
+                    .avatar
+                        display: flex
+                        align-items: center
+                        justify-content: center
+                        font-size: 12px
+                        width: 24px
+                        height: 24px
+                        border-radius: 50px
+                        margin-left: -8px
+                        border: 2px solid var(--text-strong)
+
+                    .purple
+                        background-color: var(--primary)
+                        margin-left: 4px
+                    .red
+                        background-color: #f63b3b
+                    .green
+                        background-color: #34c759
+                    .pink
+                        background-color: #da5870
+                    .orange
+                        background-color: #ff9500
+                        margin-right: 2px

@@ -1,0 +1,91 @@
+.card-container 
+    display: flex
+    flex-direction: column
+    background-color: var(--bg-card)
+    padding: 16px
+    border-radius: 20px
+    gap: 12px
+
+    &__header
+        display: flex
+        justify-content: space-between
+        align-items: center
+        font-family: 'Arial', sans-serif
+        padding: 8px
+
+        .title
+            font-size: 20px
+            font-weight: bold
+
+            i
+                color: var(--primary)
+                margin-right: 8px
+        
+    &__body
+        display: flex
+        flex-direction: column
+        gap: 16px
+
+        .no-goals
+            text-align: center
+            font-weight: bold
+            color: var(--text-secondary)
+            font-size: 16px
+            padding: 20px
+
+        .item
+            display: flex
+            justify-content: space-between
+            align-items: center
+            padding: 8px
+
+            &__details
+                display: flex
+                flex-direction: column
+                gap: 4px
+
+                &__title
+                    font-size: 18px
+                    font-weight: bold
+                    color: var(--text-strong)
+
+                div
+                    color: var(--text-secondary)
+                    display: flex
+                    gap: 8px
+                    align-items: center
+                    span
+                        font-size: 14px
+            
+            &__status
+                display: flex
+                align-items: center
+                gap: 8px
+
+                span
+                    font-size: 16px
+                    font-weight: bold
+                    min-width: 40px
+                    text-align: right
+                
+                .progress-track
+                    width: 120px
+                    height: 10px
+                    background-color: var(--border)
+                    border-radius: 5px
+                    overflow: hidden
+
+                    .progress-fill
+                        height: 100%
+                    
+                    .orange
+                        background-color: var(--warning)
+                    
+                    .red
+                        background-color: var(--error-dark)
+                    
+                    .green
+                        background-color: var(--success)
+                    
+                    .cyan
+                        background-color: var(--info)

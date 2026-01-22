@@ -1,0 +1,127 @@
+{
+  "PROJECT": {
+    "productLaunch_1": "Product launch_1 222",
+    "Team brainstorim_1": "Team brainstorming_1",
+    "Design landing page": "Design landing page"
+  },
+  "SIDEBAR": {
+    "MY_PROJECTS": {
+      "TITLE_FROM_SIDEBAR": "Proiectele Mele",
+      "ADD_PROJECT": "+ Adaugă",
+      "NO_PROJECTS_TEXT": "Nu există proiecte disponibile. Apasă \"Adaugă\" pentru a crea unul."
+    },
+    "SETTINGS": "Setări",
+    "NEW_MEMBERS_DESCRIPTION": "Noii membri vor avea acces la Spații, Documente și Panouri publice",
+    "INVITE_PEOPLE": "+ Invită persoane",
+    "ROUTES_LIST": {
+      "1": "Acasă",
+      "2": "Prodify Ai",
+      "3": "Sarcinile Mele",
+      "4": "Inbox",
+      "5": "Calendar",
+      "6": "Rapoarte & Analize"
+    }
+  },
+  "HOME_PAGE": {
+    "GREETINGS_TEXT": "Bună",
+    "HELP_TEXT": "Cu ce te pot ajuta astăzi?",
+    "BUTTONS": {
+      "CREATE_WORKSPACE": "Creează spațiu de lucru",
+      "CONNECT_APPS": "Conectează aplicații",
+      "ASK_AI": "Întreabă AI",
+      "GET_TASKS_UPDATES": "Obține actualizări ale sarcinilor"
+    },
+    "MY_TASKS_CARD": {
+      "TITLE": "Sarcinile Mele",
+      "NO_TASKS_TEXT": "Nu există sarcini atribuite.",
+      "PROGRESS_LABEL": "ÎN PROGRES",
+      "UPCOMING_LABEL": "VIITOARE",
+      "TO_DO_LABEL": "DE FĂCUT",
+      "TASKS_TABLE": {
+        "NAME_COLUMN": "Nume",
+        "PRIORITY_COLUMN": "Prioritate",
+        "DUE_DATE_COLUMN": "Data scadentă",
+        "HIGH_PRIORITY": "Ridicată",
+        "MEDIUM_PRIORITY": "Mediu",
+        "LOW_PRIORITY": "Scăzută"
+      },
+      "ADD_TASK_BUTTON": "+ Adaugă Sarcină",
+      "TASKS": "sarcini"
+    },
+    "MY_GOALS_CARD": {
+      "TITLE": "Obiectivele Mele",
+      "NO_GOALS_TEXT": "Nu există obiective disponibile.",
+      "MY_PROJECTS":"Proiectele Mele"
+    },
+    "MY_PROJECTS_CARD": {
+      "TITLE": "Proiecte",
+      "RECENTS_LABEL": "Recente",
+      "TASKS": "sarcini",
+      "TEAMMATES": "colegi de echipă",
+      "NO_PROJECTS_TEXT": "Nu există proiecte recente disponibile."
+    },
+    "MY_REMINDERS_CARD": {
+      "TITLE": "Mementourile Mele",
+      "TODAY_LABEL": "Astăzi",
+      "NO_REMINDERS_TEXT": "Nu există reamintiri disponibile."
+    },
+    "MY_CALENDAR_CARD": {
+      "TITLE": "Calendar",
+      "MEETING_WITH_VP": "Întâlnire cu VP",
+      "TODAY_LABEL": "Astăzi",
+      "MONTHS_NAME": {
+        "JANUARY": "Ianuarie",
+        "FEBRUARY": "Februarie",
+        "MARCH": "Martie",
+        "APRIL": "Aprilie",
+        "MAY": "Mai",
+        "JUNE": "Iunie",
+        "JULY": "Iulie",
+        "AUGUST": "August",
+        "SEPTEMBER": "Septembrie",
+        "OCTOBER": "Octombrie",
+        "NOVEMBER": "Noiembrie",
+        "DECEMBER": "Decembrie"
+      },
+      "DAYS_NAME": {
+        "MON": "Lun",
+        "TUE": "Mar",
+        "WED": "Mie",
+        "THU": "Joi",
+        "FRI": "Vin",
+        "SAT": "Sâm",
+        "SUN": "Dum"
+      }
+    },
+    "LANGUAGE_PICKER":{
+      "NO_LANG": "Nicio limbă disponibilă"
+    }
+  },
+  "MODALS": {
+    "CREATE_PROJECT_MODAL": {
+      "TITLE": "Creează Proiect",
+      "PROJECT_NAME_LABEL": "Numele Proiectului",
+      "PROJECT_TEAMMATES_LABEL": "Membrii Echipei",
+      "PROJECT_COLOR_LABEL": "Culoarea Proiectului",
+      "CREATE_BUTTON": "Creează",
+      "CANCEL_BUTTON": "Anulează"
+    },
+    "INVITE_PEOPLE_MODAL": {
+      "TITLE": "Invită Persoane",
+      "FIRST_NAME_LABEL": "Prenume",
+      "LAST_NAME_LABEL": "Nume",
+      "FAVORITE_COLOR_LABEL": "Culoare Preferată",
+      "CANCEL_BUTTON": "Anulează",
+      "CREATE_BUTTON": "Creează"
+    },
+    "CHANGE_THEME_MODAL": {
+      "TITLE": "Schimbă Tema",
+      "LIGHT_THEME_LABEL": "Mod Deschis",
+      "LIGHT_THEME_DESCRIPTION": "Interfață curată și luminoasă",
+      "DARK_THEME_LABEL": "Mod Întunecat",
+      "DARK_THEME_DESCRIPTION": "Ușor pentru ochi",
+      "ACTIVE_BUTTON": "Activ",
+      "SELECT_BUTTON": "Selectează"
+    }
+  }
+}

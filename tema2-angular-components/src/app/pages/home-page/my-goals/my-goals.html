@@ -1,0 +1,36 @@
+<div class="card-container">
+    <div class="card-container__header">
+        <div class="title">
+            <span ><i class="fa fa-chart-pie"></i> {{'HOME_PAGE.MY_GOALS_CARD.TITLE' | translate}}</span>
+        </div>
+    </div>
+    <div class="card-container__body">
+        @if(goals.length === 0) {
+        <p  class="no-goals">{{'HOME_PAGE.MY_GOALS_CARD.NO_GOALS_TEXT' | translate}}</p>
+        }
+
+        @for(goal of goals; track goal.id) {
+        <div class="item">
+            <div class="item__details">
+                <span  class="item__details__title">{{ goal.name | translate }}</span>
+                <div>
+                    <span>{{ getProjectNameById(goal.projectId) | translate }}</span>
+                    <span>&bull;</span>
+                    <span >{{'HOME_PAGE.MY_GOALS_CARD.MY_PROJECTS' | translate}}</span>
+                </div>
+            </div>
+            <div class="item__status">
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: {{ goal.percentageCompleted }}%" [ngClass]="{
+                        'red': goal.percentageCompleted < 30,
+                        'orange': goal.percentageCompleted >= 30 && goal.percentageCompleted < 70,
+                        'green': goal.percentageCompleted >= 70,
+                        'cyan': goal.percentageCompleted === 100
+                    }"></div>
+                </div>
+                <span class="percentage">{{ goal.percentageCompleted }}%</span>
+            </div>
+        </div>
+        }
+    </div>
+</div>

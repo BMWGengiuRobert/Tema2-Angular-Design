@@ -1,0 +1,35 @@
+<div class="page-container">
+    <app-language-picker></app-language-picker>
+    <p class="page-container__date">{{ currentDate | customDatePipe }}</p>
+    <div class="page-container__header">
+        <div class="page-container__header__messages">
+            <span  class="page-container__header__messages__greetings" >{{ 'HOME_PAGE.GREETINGS_TEXT' | translate }}, {{ selectedUser.firstName }}!</span>
+            <span  class="page-container__header__messages__help">{{ 'HOME_PAGE.HELP_TEXT' | translate }}</span>
+        </div>
+        <div class="page-container__header__buttons">
+            <button  class="ask-ai"><span class="icon">&#9733;</span> {{ 'HOME_PAGE.BUTTONS.ASK_AI' | translate }}</button>
+            <div class="page-container__header__buttons__gradient">
+                <button >{{ 'HOME_PAGE.BUTTONS.GET_TASKS_UPDATES' | translate }}</button>
+            </div>
+            <div class="page-container__header__buttons__gradient">
+                <button >{{ 'HOME_PAGE.BUTTONS.CREATE_WORKSPACE' | translate }}</button>
+            </div>
+            <div class="page-container__header__buttons__gradient">
+                <button >{{ 'HOME_PAGE.BUTTONS.CONNECT_APPS' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-container__main-section">
+        <div class="page-container__left-section">
+            <app-my-tasks></app-my-tasks>
+            <app-my-goals></app-my-goals>
+        </div>
+        <div class="page-container__right-section">
+            <app-projects-card></app-projects-card>
+            <app-calendar-card></app-calendar-card>
+            <app-my-reminders></app-my-reminders>
+        </div>
+    </div>
+</div>
+
+<app-loading-spinner></app-loading-spinner>

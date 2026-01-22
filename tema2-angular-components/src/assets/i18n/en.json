@@ -1,0 +1,122 @@
+{
+  "SIDEBAR": {
+    "MY_PROJECTS": {
+      "TITLE_FROM_SIDEBAR": "My Projects",
+      "ADD_PROJECT": "+ Add",
+      "NO_PROJECTS_TEXT": "No projects available. Click \"Add\" to create one."
+    },
+    "SETTINGS": "Settings",
+    "NEW_MEMBERS_DESCRIPTION": "New members will gain access to public Spaces, Docs and Dashboards",
+    "INVITE_PEOPLE": "+ Invite people",
+    "ROUTES_LIST": {
+      "1": "Home",
+      "2": "Prodify Ai",
+      "3": "My Tasks",
+      "4": "Inbox",
+      "5": "Calendar",
+      "6": "Reports & Analytics"
+    }
+  },
+  "HOME_PAGE": {
+    "GREETINGS_TEXT": "Hello",
+    "HELP_TEXT": "How can I help you today?",
+    "BUTTONS": {
+      "CREATE_WORKSPACE": "Create workspace",
+      "CONNECT_APPS": "Connect apps",
+      "ASK_AI": "Ask AI",
+      "GET_TASKS_UPDATES": "Get tasks updates"
+    },
+    "MY_TASKS_CARD": {
+      "TITLE": "My Tasks",
+      "NO_TASKS_TEXT": "No tasks assigned.",
+      "PROGRESS_LABEL": "IN PROGRESS",
+      "UPCOMING_LABEL": "UPCOMING",
+      "TO_DO_LABEL": "TO DO",
+      "TASKS_TABLE": {
+        "NAME_COLUMN": "Name",
+        "PRIORITY_COLUMN": "Priority",
+        "DUE_DATE_COLUMN": "Due Date",
+        "HIGH_PRIORITY": "High",
+        "MEDIUM_PRIORITY": "Medium",
+        "LOW_PRIORITY": "Low"
+      },
+      "ADD_TASK_BUTTON": "+ Add Task",
+      "TASKS": "tasks"
+    },
+    "MY_GOALS_CARD": {
+      "TITLE": "My Goals",
+      "NO_GOALS_TEXT": "No goals available.",
+      "MY_PROJECTS":"My Projects"
+    },
+    "MY_PROJECTS_CARD": {
+      "TITLE": "Projects",
+      "RECENTS_LABEL": "Recents",
+      "TASKS": "tasks",
+      "TEAMMATES": "teammates",
+      "NO_PROJECTS_TEXT": "No recent projects available."
+    },
+    "MY_REMINDERS_CARD": {
+      "TITLE": "My Reminders",
+      "TODAY_LABEL": "Today",
+      "NO_REMINDERS_TEXT": "No reminders available."
+    },
+    "MY_CALENDAR_CARD": {
+      "TITLE": "Calendar",
+      "MEETING_WITH_VP": "Meeting with VP",
+      "TODAY_LABEL": "Today",
+      "MONTHS_NAME": {
+        "JANUARY": "January",
+        "FEBRUARY": "February",
+        "MARCH": "March",
+        "APRIL": "April",
+        "MAY": "May",
+        "JUNE": "June",
+        "JULY": "July",
+        "AUGUST": "August",
+        "SEPTEMBER": "September",
+        "OCTOBER": "October",
+        "NOVEMBER": "November",
+        "DECEMBER": "December"
+      },
+      "DAYS_NAME": {
+        "MON": "Mon",
+        "TUE": "Tue",
+        "WED": "Wed",
+        "THU": "Thu",
+        "FRI": "Fri",
+        "SAT": "Sat",
+        "SUN": "Sun"
+      }
+    },
+    "LANGUAGE_PICKER":{
+      "NO_LANG": "No language available"
+    }
+  },
+  "MODALS": {
+    "CREATE_PROJECT_MODAL": {
+      "TITLE": "Create Project",
+      "PROJECT_NAME_LABEL": "Project Name",
+      "PROJECT_TEAMMATES_LABEL": "Project Teammates",
+      "PROJECT_COLOR_LABEL": "Project Color",
+      "CREATE_BUTTON": "Create",
+      "CANCEL_BUTTON": "Cancel"
+    },
+    "INVITE_PEOPLE_MODAL": {
+      "TITLE": "Invite People",
+      "FIRST_NAME_LABEL": "First Name",
+      "LAST_NAME_LABEL": "Last Name",
+      "FAVORITE_COLOR_LABEL": "Favorite Color",
+      "CANCEL_BUTTON": "Cancel",
+      "CREATE_BUTTON": "Create"
+    },
+    "CHANGE_THEME_MODAL": {
+      "TITLE": "Change Theme",
+      "LIGHT_THEME_LABEL": "Light Mode",
+      "LIGHT_THEME_DESCRIPTION": "Clean and bright interface",
+      "DARK_THEME_LABEL": "Dark Mode",
+      "DARK_THEME_DESCRIPTION": "Easy on the eyes",
+      "ACTIVE_BUTTON": "Active",
+      "SELECT_BUTTON": "Select"
+    }
+  }
+}
