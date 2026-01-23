@@ -3,13 +3,12 @@ import { Router } from '@angular/router';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-forbidden-403-page',
-  imports: [TranslateModule,TranslatePipe],
-  templateUrl: './forbidden-403-page.html',
-  styleUrl: './forbidden-403-page.sass',
+  selector: 'app-unauthorized-401',
+  imports: [TranslateModule, TranslatePipe],
+  templateUrl: './unauthorized-401.html',
+  styleUrl: './unauthorized-401.sass',
 })
-export class Forbidden403Page {
-
+export class Unauthorized401 {
   constructor(
     private router: Router,
     private translate: TranslateService

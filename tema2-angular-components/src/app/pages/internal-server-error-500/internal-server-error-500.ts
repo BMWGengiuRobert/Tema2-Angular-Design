@@ -3,13 +3,12 @@ import { Router } from '@angular/router';
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-forbidden-403-page',
+  selector: 'app-internal-server-error-500',
   imports: [TranslateModule,TranslatePipe],
-  templateUrl: './forbidden-403-page.html',
-  styleUrl: './forbidden-403-page.sass',
+  templateUrl: './internal-server-error-500.html',
+  styleUrl: './internal-server-error-500.sass',
 })
-export class Forbidden403Page {
-
+export class InternalServerError500 {
   constructor(
     private router: Router,
     private translate: TranslateService

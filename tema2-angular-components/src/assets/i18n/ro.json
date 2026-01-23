@@ -1,9 +1,4 @@
 {
-  "PROJECT": {
-    "productLaunch_1": "Product launch_1 222",
-    "Team brainstorim_1": "Team brainstorming_1",
-    "Design landing page": "Design landing page"
-  },
   "SIDEBAR": {
     "MY_PROJECTS": {
       "TITLE_FROM_SIDEBAR": "Proiectele Mele",
@@ -51,7 +46,7 @@
     "MY_GOALS_CARD": {
       "TITLE": "Obiectivele Mele",
       "NO_GOALS_TEXT": "Nu există obiective disponibile.",
-      "MY_PROJECTS":"Proiectele Mele"
+      "MY_PROJECTS": "Proiectele Mele"
     },
     "MY_PROJECTS_CARD": {
       "TITLE": "Proiecte",
@@ -93,7 +88,7 @@
         "SUN": "Dum"
       }
     },
-    "LANGUAGE_PICKER":{
+    "LANGUAGE_PICKER": {
       "NO_LANG": "Nicio limbă disponibilă"
     }
   },
@@ -122,6 +117,33 @@
       "DARK_THEME_DESCRIPTION": "Ușor pentru ochi",
       "ACTIVE_BUTTON": "Activ",
       "SELECT_BUTTON": "Selectează"
+    }
+  },
+  "ERRORS": {
+    "FORBIDDEN_403": {
+      "SUBTITLE": "Acesta este un spațiu restricționat",
+      "DESCRIPTION": "Din păcate, nu aveți permisiunile necesare pentru a accesa această pagină.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "NOT_FOUND_404": {
+      "SUBTITLE": "Pierdut în spațiu",
+      "DESCRIPTION": "Pagina pe care o căutați s-ar putea sa nu mai existe, sau ar putea fi acum desemnată ca privată.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "INTERNAL_SERVER_ERROR_500": {
+      "SUBTITLE": "Houston, am avut o problemă",
+      "DESCRIPTION": "Cererea ta nu a mai decolat cu adevărat, dar lucrăm să rezolvăm problema rapid.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "BAD_GATEWAY_502": {
+      "SUBTITLE": "Eroare de comunicare între servere",
+      "DESCRIPTION": "Se pare că există o problemă de comunicare între servere. Te rugăm să încerci din nou mai târziu.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "UNAUTHORIZED_401": {
+      "SUBTITLE": "Acces neautorizat",
+      "DESCRIPTION": "Nu ai permisiunea necesară pentru a accesa această pagină. Te rugăm să te autentifici.",
+      "BUTTON": "Reveniți la pagina principală"
     }
   }
 }

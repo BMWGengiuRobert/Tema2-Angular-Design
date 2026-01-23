@@ -118,5 +118,32 @@
       "ACTIVE_BUTTON": "Active",
       "SELECT_BUTTON": "Select"
     }
+  },
+  "ERRORS": {
+    "FORBIDDEN_403": {
+      "SUBTITLE": "This is a restricted space",
+      "DESCRIPTION": "Unfortunately, you don't have permissions required to access this page.",
+      "BUTTON": "Back to the home page"
+    },
+    "NOT_FOUND_404": {
+      "SUBTITLE": "Lost in space",
+      "DESCRIPTION": "The page you're seeking minght no longer exist, or might now be designated as private.",
+      "BUTTON": "Back to the home page"
+    },
+    "INTERNAL_SERVER_ERROR_500": {
+      "SUBTITLE": "Houston, we've had a problem",
+      "DESCRIPTION": "Your request never quite got off the ground, but we're working to fix the problem quickly.",
+      "BUTTON": "Back to the home page"
+    },
+    "BAD_GATEWAY_502": {
+      "SUBTITLE": "Gateway got lost",
+      "DESCRIPTION": "The server received an invalid response from the upstream server while trying to fulfill your request.",
+      "BUTTON": "Back to the home page"
+    },
+    "UNAUTHORIZED_401": {
+      "SUBTITLE": "Unauthorized entry into this sector",
+      "DESCRIPTION": "You do not have the necessary permissions to view this page. Please log in or contact the administrator if you believe this is an error.",
+      "BUTTON": "Back to the home page"
+    }
   }
 }

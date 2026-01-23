@@ -45,9 +45,28 @@ $status-inactive: #374249
 $gradient-403-start-light: #00bf8f
 $gradient-403-end-light: #001510
 $link-color-light: #7669e0
+$url-pattern-403-light: url('/assets/error-codes-patterns/pattern-403-light.png')
+
+// 404 Not Found Page Specific
+$gradient-404-start-light: #FFC300
+$gradient-404-end-light: #FF9100
+$url-pattern-404-light: url('/assets/error-codes-patterns/pattern-404-light.png')
+
+// 500 Internal Server Error Page Specific
+$gradient-500-start-light: #FF8A80
+$gradient-500-end-light: #FF5252
+$url-pattern-500-light: url('/assets/error-codes-patterns/pattern-500-light.jpg')
+
+// 502 Bad Gateway Page Specific
+$gradient-502-start-light: #FF8C42
+$gradient-502-end-light: #F04124
+$url-pattern-502-light: url('/assets/error-codes-patterns/pattern-502-light.jpg')
+
+// 401 Unauthorized Page Specific
+$gradient-401-start-light: #9D446E
+$gradient-401-end-light: #CE7D9C
+$url-pattern-401-light: url('/assets/error-codes-patterns/pattern-401-light.png')
 //================================================================
-
-
 
 // Dark Theme Vars For Colors
 //================================================================
@@ -91,14 +110,32 @@ $status-alert-dark: #e8d84f
 $status-pending-dark: #c5d645
 $status-inactive-dark: #455157
 
-  
 // 403 Forbidden Page Specific
 $gradient-403-start-dark: #3cc5d7
 $gradient-403-end-dark: #47d794
 $link-color-dark: #9d8ff4
-//================================================================
+$url-pattern-403-dark: url('/assets/error-codes-patterns/pattern-403-dark.jpg')
 
-    
+// 404 Not Found Page Specific
+$gradient-404-start-dark: #FFEB3B
+$gradient-404-end-dark: #FFC107
+$url-pattern-404-dark: url('/assets/error-codes-patterns/pattern-404-dark.png')
+
+// 500 Internal Server Error Page Specific
+$gradient-500-start-dark: #FF5722
+$gradient-500-end-dark: #D50000
+$url-pattern-500-dark: url('/assets/error-codes-patterns/pattern-500-dark.jpg')
+
+// 502 Bad Gateway Page Specific
+$gradient-502-start-dark: #FF4D00
+$gradient-502-end-dark: #FF8A00
+$url-pattern-502-dark: url('/assets/error-codes-patterns/pattern-502-dark.jpg')
+
+// 401 Unauthorized Page Specific
+$gradient-401-start-dark: #D46A9B
+$gradient-401-end-dark: #862D59
+$url-pattern-401-dark: url('/assets/error-codes-patterns/pattern-401-dark.png')
+//================================================================
 
 // Css Vars
 //================================================================
@@ -108,27 +145,27 @@ $link-color-dark: #9d8ff4
   --bg-card: #{$bg-card-light}
   --bg-hover: #{$bg-hover-light}
   --bg-hover-subtle: #{$bg-hover-subtle-light}
-  
+
   --primary: #{$primary-purple}
   --primary-light: #{$primary-purple-light}
   --gradient-start: #{$gradient-purple-start}
   --gradient-end: #{$gradient-purple-end}
-  
+
   --accent-1: #{$accent-cyan}
   --accent-2: #{$accent-purple}
   --accent-3: #{$accent-cyan-light}
   --accent-4: #{$accent-pink}
-  
+
   --text-primary: #{$text-primary-light}
   --text-strong: #{$text-strong-light}
   --text-secondary: #{$text-secondary-light}
   --text-muted: #{$text-muted-light}
-  
+
   --border: #{$border-light}
   --border-divider: #{$border-divider-light}
   --border-subtle: #{$border-subtle-light}
   --border-medium: #{$border-medium-light}
-  
+
   --error: #{$status-error}
   --error-dark: #{$status-error-dark}
   --warning: #{$status-warning}
@@ -141,6 +178,23 @@ $link-color-dark: #9d8ff4
   --gradient-403-start: #{$gradient-403-start-light}
   --gradient-403-end: #{$gradient-403-end-light}
   --link-color: #{$link-color-light}
+  --url-pattern-403: #{$url-pattern-403-light}
+
+  --gradient-404-start: #{$gradient-404-start-light}
+  --gradient-404-end: #{$gradient-404-end-light}
+  --url-pattern-404: #{$url-pattern-404-light}
+
+  --gradient-500-start: #{$gradient-500-start-light}
+  --gradient-500-end: #{$gradient-500-end-light}
+  --url-pattern-500: #{$url-pattern-500-light}
+
+  --gradient-502-start: #{$gradient-502-start-light}
+  --gradient-502-end: #{$gradient-502-end-light}
+  --url-pattern-502: #{$url-pattern-502-light}
+
+  --gradient-401-start: #{$gradient-401-start-light}
+  --gradient-401-end: #{$gradient-401-end-light}
+  --url-pattern-401: #{$url-pattern-401-light}
 
 // Dark Theme Override
 [data-theme="dark"]
@@ -148,27 +202,27 @@ $link-color-dark: #9d8ff4
   --bg-card: #{$bg-card-dark}
   --bg-hover: #{$bg-hover-dark}
   --bg-hover-subtle: #{$bg-hover-subtle-dark}
-  
+
   --primary: #{$primary-purple-dark}
   --primary-light: #{$primary-purple-light-dark}
   --gradient-start: #{$gradient-purple-start-dark}
   --gradient-end: #{$gradient-purple-end-dark}
-  
+
   --accent-1: #{$accent-cyan-dark}
   --accent-2: #{$accent-purple-dark}
   --accent-3: #{$accent-cyan-light-dark}
   --accent-4: #{$accent-pink-dark}
-  
+
   --text-primary: #{$text-primary-dark}
   --text-strong: #{$text-strong-dark}
   --text-secondary: #{$text-secondary-dark}
   --text-muted: #{$text-muted-dark}
-  
+
   --border: #{$border-light-dark}
   --border-divider: #{$border-divider-dark}
   --border-subtle: #{$border-subtle-dark}
   --border-medium: #{$border-medium-dark}
-  
+
   --error: #{$status-error-dark-theme}
   --error-dark: #{$status-error-intense-dark}
   --warning: #{$status-warning-dark}
@@ -181,3 +235,20 @@ $link-color-dark: #9d8ff4
   --gradient-403-start: #{$gradient-403-start-dark}
   --gradient-403-end: #{$gradient-403-end-dark}
   --link-color: #{$link-color-dark}
+  --url-pattern-403: #{$url-pattern-403-dark}
+
+  --gradient-404-start: #{$gradient-404-start-dark}
+  --gradient-404-end: #{$gradient-404-end-dark}
+  --url-pattern-404: #{$url-pattern-404-dark}
+
+  --gradient-500-start: #{$gradient-500-start-dark}
+  --gradient-500-end: #{$gradient-500-end-dark}
+  --url-pattern-500: #{$url-pattern-500-dark}
+
+  --gradient-502-start: #{$gradient-502-start-dark}
+  --gradient-502-end: #{$gradient-502-end-dark}
+  --url-pattern-502: #{$url-pattern-502-dark}
+
+  --gradient-401-start: #{$gradient-401-start-dark}
+  --gradient-401-end: #{$gradient-401-end-dark}
+  --url-pattern-401: #{$url-pattern-401-dark}
