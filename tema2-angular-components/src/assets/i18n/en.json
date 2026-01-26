@@ -145,5 +145,13 @@
       "DESCRIPTION": "You do not have the necessary permissions to view this page. Please log in or contact the administrator if you believe this is an error.",
       "BUTTON": "Back to the home page"
     }
+  },
+  "LOGIN_REGISTER_PAGE": {
+    "TITLE": "Sign In",
+    "USERNAME_PLACEHOLDER": "Username or email",
+    "PASSWORD_PLACEHOLDER": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "BUTTON": "Sign In"
   }
 }

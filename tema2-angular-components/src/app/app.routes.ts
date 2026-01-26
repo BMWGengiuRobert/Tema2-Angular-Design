@@ -7,6 +7,7 @@ import { NotFound404 } from './pages/not-found-404/not-found-404';
 import { InternalServerError500 } from './pages/internal-server-error-500/internal-server-error-500';
 import { BadGateway502 } from './pages/bad-gateway-502/bad-gateway-502';
 import { Unauthorized401 } from './pages/unauthorized-401/unauthorized-401';
+import { LoginRegisterPage } from './pages/login-register-page/login-register-page';
 
 export const routes: Routes = [
     {
@@ -32,6 +33,9 @@ export const routes: Routes = [
     },
     {
         path: '401-unauthorized', component: Unauthorized401
+    },
+    {
+        path: 'login-register', component: LoginRegisterPage
     },
     {
         path: '**', redirectTo: '404-not-found'

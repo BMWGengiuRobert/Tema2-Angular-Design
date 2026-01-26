@@ -145,5 +145,13 @@
       "DESCRIPTION": "Nu ai permisiunea necesară pentru a accesa această pagină. Te rugăm să te autentifici.",
       "BUTTON": "Reveniți la pagina principală"
     }
+  },
+  "LOGIN_REGISTER_PAGE": {
+    "TITLE": "Autentificare",
+    "USERNAME_PLACEHOLDER": "Nume de utilizator sau email",
+    "PASSWORD_PLACEHOLDER": "Parolă",
+    "REMEMBER_ME": "Ține-mă minte",
+    "FORGOT_PASSWORD": "Ai uitat parola?",
+    "BUTTON": "Autentificare"
   }
 }
