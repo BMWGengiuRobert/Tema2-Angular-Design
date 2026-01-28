@@ -1,20 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
-import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors } from "@angular/forms";
+import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors, ReactiveFormsModule } from "@angular/forms";
 import { LanguagePicker } from "../home-page/language-picker/language-picker";
 import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { COUNTRIES_EN, COUNTRIES_RO, CountryAndItsCities, CountryAndItsCodes } from '../../models/countries.model';
+import { COUNTRIES_EN, COUNTRIES_MAPPING, COUNTRIES_RO, CountryAndItsCities, CountryAndItsCodes } from '../../models/countries.model';
 import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-login-register-page',
-  imports: [FormsModule, CommonModule, LanguagePicker, TranslateModule, TranslatePipe],
+  imports: [FormsModule, CommonModule, LanguagePicker, TranslateModule, TranslatePipe, ReactiveFormsModule],
   templateUrl: './login-register-page.html',
   styleUrl: './login-register-page.sass',
 })
 export class LoginRegisterPage implements OnInit {
 
   countries: string[] = [];
+  selectedCountry: string = '';
+  selectedCity: string = '';
 
   rawCountriesAndAllTheirCities: CountryAndItsCities[] = [];
   rawCountriesAndTheirCodes: CountryAndItsCodes[] = [];
@@ -49,7 +51,7 @@ export class LoginRegisterPage implements OnInit {
       city: ['', Validators.required],
       homeAddress: ['', Validators.required],
       zipCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?\d{1,4}?[-.\s]?\d{7,12}$/)]],
       luckyNumber: ['', [Validators.required, Validators.min(1), Validators.max(100), this.validateLuckyNumber]],
     });
   }
@@ -99,25 +101,49 @@ export class LoginRegisterPage implements OnInit {
   }
 
   processCountriesData() {
-    this.countriesService.getCountriesAndTheirCodes().subscribe(data => {
-      this.rawCountriesAndTheirCodes = data;
-      console.log(this.rawCountriesAndTheirCodes);
-    });
-
-    this.countriesService.getCountriesAndAllTheirCities().subscribe(data => {
+    this.countriesService.getAllCountries().subscribe(data => {
       this.rawCountriesAndAllTheirCities = data;
-      console.log(this.rawCountriesAndAllTheirCities);
     });
   }
 
-  getCountryDialCode(countryName: string): string | null {
-    const country = this.rawCountriesAndTheirCodes.find(c => c.name.toLowerCase() === countryName.toLowerCase());
-    return country ? country.dial_code : null;
+  countryNameOnEnglishForDialCode(countryName: string): string {
+    const found = COUNTRIES_MAPPING.find(c =>
+      c.ro.toLowerCase() === countryName.toLowerCase() ||
+      c.en.toLowerCase() === countryName.toLowerCase()
+    );
+
+    return found?.en || countryName;
   }
 
-  getCitiesForCountry(countryName: string): string[] {
-    const country = this.rawCountriesAndAllTheirCities.find(c => c.country.toLowerCase() === countryName.toLowerCase());
-    return country ? country.cities : [];
+  onCountryChange(countryName: string) {
+    if (countryName) {
+      this.selectedCity = '';
+
+      const countryNameInEnglish = this.countryNameOnEnglishForDialCode(countryName).toLowerCase();
+
+      this.countriesService.getCitiesForCountry(countryNameInEnglish).subscribe({
+        next: (cities: string[]) => {
+          this.citiesForSelectedCountry = cities;
+        },
+        error: (err) => {
+          this.citiesForSelectedCountry = [];
+          console.error('Error fetching cities for country:', err);
+        }
+      });
+
+      this.countriesService.getSingleCountryCodes(countryNameInEnglish).subscribe({
+        next: (countryCodes: CountryAndItsCodes) => {
+          const dialCode = countryCodes.dial_code;
+          this.accountForm.patchValue({ phoneNumber: dialCode });
+        },
+        error: (err) => {
+          console.error('Error fetching country codes:', err);
+        }
+      });
+
+    } else {
+      this.citiesForSelectedCountry = [];
+    }
   }
 
   // FORM CUSTOM VALIDATORS
@@ -140,5 +166,4 @@ export class LoginRegisterPage implements OnInit {
     return null;
   }
 
-  //ngModel valueOnChange handlers
 }

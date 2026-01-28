@@ -68,7 +68,7 @@
         {
         <p class="title">{{ 'LOGIN_REGISTER_PAGE.TITLE' | translate }}</p>
         }
-        <form class="sign-in-form">
+        <form class="sign-in-form" [formGroup]="accountForm">
             @if(!isNewHere)
             {
             <input class="sign-in-form__input" type="text"
@@ -88,8 +88,15 @@
             <div class="row">
                 <p class="row-label">{{ 'LOGIN_REGISTER_PAGE.ADDRESS_INFO_LABEL' | translate }}</p>
                 <div class="row-inputs">
-                    <input class="sign-in-form__input" type="text" list="country-list"
-                        placeholder="{{ 'LOGIN_REGISTER_PAGE.COUNTRY_PLACEHOLDER' | translate }}" required />
+                    <input class="sign-in-form__input" 
+                        type="text" 
+                        list="country-list"
+                        name="country"
+                        placeholder="{{ 'LOGIN_REGISTER_PAGE.COUNTRY_PLACEHOLDER' | translate }}" 
+                        [(ngModel)]="selectedCountry"
+                        [ngModelOptions]="{standalone: true}"
+                        (ngModelChange)="onCountryChange($event)"
+                        required />
                     <datalist id="country-list">
                         @for (country of countries; track country) {
                         <option [value]="country"></option>
