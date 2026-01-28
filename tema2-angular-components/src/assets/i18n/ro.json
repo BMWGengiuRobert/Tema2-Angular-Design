@@ -148,10 +148,27 @@
   },
   "LOGIN_REGISTER_PAGE": {
     "TITLE": "Autentificare",
+    "SUBTITLE_REGISTER": "Creează un cont nou",
     "USERNAME_PLACEHOLDER": "Nume de utilizator sau email",
     "PASSWORD_PLACEHOLDER": "Parolă",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirmă parola",
     "REMEMBER_ME": "Ține-mă minte",
     "FORGOT_PASSWORD": "Ai uitat parola?",
-    "BUTTON": "Autentificare"
+    "BUTTON": "Autentificare",
+    "NEW_HERE": "Prima dată aici? Alătură-te nouă pentru a începe.",
+    "GO_BACK": "Înapoi",
+    "EMAIL_PLACEHOLDER": "Adresă de email",
+    "ADDRESS_PLACEHOLDER": "Adresa de acasă",
+    "ZIPCODE_PLACEHOLDER": "Cod poștal",
+    "DESIRED_USERNAME_PLACEHOLDER": "Nume de utilizator",
+    "LUCKY_NUMBER_PLACEHOLDER": "Număr norocos",
+    "PHONE_NUMBER_PLACEHOLDER": "Număr de telefon",
+    "CITY_PLACEHOLDER": "Oraș",
+    "COUNTRY_PLACEHOLDER": "Țară",
+    "CREATE_ACCOUNT": "Creează cont",
+    "ACCOUNT_INFO_LABEL": "Informații cont",
+    "ADDRESS_INFO_LABEL": "Informații adresă",
+    "CONTACT_INFO_LABEL": "Informații contact",
+    "PASSWORD_INFO_LABEL": "Informații parolă"
   }
 }

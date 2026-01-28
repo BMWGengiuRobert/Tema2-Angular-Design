@@ -70,14 +70,14 @@ $url-pattern-401-light: url('/assets/error-codes-patterns/pattern-401-light.png'
 // Login Register Page Specific
 $gradient-login-register-start-light: #D14D28
 $gradient-login-register-end-light: #7B2218
-$url-pattern-login-register-light: url('/assets/login-register-patterns/pattern-login-light-2.jpg')  
+$link-color-light: #7B2218
 //================================================================
 
 // Dark Theme Vars For Colors
 //================================================================
 // Backgrounds
 $bg-page-dark: #121212
-$bg-card-dark: #1e1e1e
+$bg-card-dark: #302d2d
 $bg-hover-dark: #2a2a2a
 $bg-hover-subtle-dark: #282828
 
@@ -140,6 +140,11 @@ $url-pattern-502-dark: url('/assets/error-codes-patterns/pattern-502-dark.jpg')
 $gradient-401-start-dark: #D46A9B
 $gradient-401-end-dark: #862D59
 $url-pattern-401-dark: url('/assets/error-codes-patterns/pattern-401-dark.png')
+
+// Login Register Page Specific
+$gradient-login-register-start-dark: #d68a82
+$gradient-login-register-end-dark: #663b30
+$link-color-login-register-dark: #d68a82
 //================================================================
 
 // Css Vars
@@ -203,7 +208,7 @@ $url-pattern-401-dark: url('/assets/error-codes-patterns/pattern-401-dark.png')
 
   --gradient-login-register-start: #{$gradient-login-register-start-light}
   --gradient-login-register-end: #{$gradient-login-register-end-light}
-  --url-pattern-login-register: #{$url-pattern-login-register-light}
+  --link-color-login-register: #{$link-color-light}
 
 // Dark Theme Override
 [data-theme="dark"]
@@ -261,3 +266,7 @@ $url-pattern-401-dark: url('/assets/error-codes-patterns/pattern-401-dark.png')
   --gradient-401-start: #{$gradient-401-start-dark}
   --gradient-401-end: #{$gradient-401-end-dark}
   --url-pattern-401: #{$url-pattern-401-dark}
+
+  --gradient-login-register-start: #{$gradient-login-register-start-dark}
+  --gradient-login-register-end: #{$gradient-login-register-end-dark}
+  --link-color-login-register: #{$link-color-login-register-dark}

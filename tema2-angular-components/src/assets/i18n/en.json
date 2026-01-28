@@ -148,10 +148,28 @@
   },
   "LOGIN_REGISTER_PAGE": {
     "TITLE": "Sign In",
+    "SUBTITLE_REGISTER": "Create a new account",
     "USERNAME_PLACEHOLDER": "Username or email",
     "PASSWORD_PLACEHOLDER": "Password",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirm Password",
     "REMEMBER_ME": "Remember me",
     "FORGOT_PASSWORD": "Forgot password?",
-    "BUTTON": "Sign In"
+    "BUTTON": "Sign In",
+    "NEW_HERE": "First time visiting? Join us here to get started.",
+    "GO_BACK": "Go Back",
+    "EMAIL_PLACEHOLDER": "Email Address",
+    "ADDRESS_PLACEHOLDER": "Home Address",
+    "ZIPCODE_PLACEHOLDER": "Zip Code",
+    "DESIRED_USERNAME_PLACEHOLDER": "Username",
+    "LUCKY_NUMBER_PLACEHOLDER": "Lucky Number",
+    "COLOR_PLACEHOLDER": "Favorite Color",
+    "PHONE_NUMBER_PLACEHOLDER": "Phone Number",
+    "COUNTRY_PLACEHOLDER": "Country",
+    "CITY_PLACEHOLDER": "City",
+    "CREATE_ACCOUNT": "Create Account",
+    "ACCOUNT_INFO_LABEL": "Account Info",
+    "ADDRESS_INFO_LABEL": "Address Info",
+    "CONTACT_INFO_LABEL": "Contact Info",
+    "PASSWORD_INFO_LABEL": "Password Info"
   }
 }

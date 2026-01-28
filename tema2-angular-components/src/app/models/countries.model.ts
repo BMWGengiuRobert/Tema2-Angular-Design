@@ -1,0 +1,106 @@
+export const COUNTRIES_EN: string[] = [
+    "United States",
+    "Romania",
+    "Germany",
+    "France",
+    "Spain",
+    "Italy",
+    "Canada",
+    "Australia",
+    "Brazil",
+    "India",
+    "China",
+    "Japan",
+    "South Korea",
+    "United Kingdom",
+    "Netherlands",
+    "Sweden",
+    "Norway",
+    "Denmark",
+    "Finland",
+    "Belgium",
+    "Switzerland",
+    "Austria",
+    "Portugal",
+    "Greece",
+    "Turkey",
+    "Mexico",
+    "Argentina",
+    "South Africa",
+    "New Zealand",
+    "Ireland",
+    "Poland",
+    "Czech Republic",
+    "Hungary",
+    "Slovakia",
+    "Ukraine",
+    "Russia",
+    "Saudi Arabia",
+    "United Arab Emirates",
+    "Singapore",
+    "Malaysia",
+    "Thailand",
+    "Vietnam",
+    "Indonesia",
+    "Philippines"
+];
+
+export const COUNTRIES_RO: string[] = [
+    "Statele Unite",
+    "România",
+    "Germania",
+    "Franța",
+    "Spania",
+    "Italia",
+    "Canada",
+    "Australia",
+    "Brazilia",
+    "India",
+    "China",
+    "Japonia",
+    "Coreea de Sud",
+    "Regatul Unit",
+    "Olanda",
+    "Suedia",
+    "Norvegia",
+    "Danemarca",
+    "Finlanda",
+    "Belgia",
+    "Elveția",
+    "Austria",
+    "Portugalia",
+    "Grecia",
+    "Turcia",
+    "Mexic",
+    "Argentina",
+    "Africa de Sud",
+    "Noua Zeelandă",
+    "Irlanda",
+    "Polonia",
+    "Republica Cehă",
+    "Ungaria",
+    "Slovacia",
+    "Ucraina",
+    "Rusia",
+    "Arabia Saudită",
+    "Emiratele Arabe Unite",
+    "Singapore",
+    "Malaysia",
+    "Thailanda",
+    "Vietnam",
+    "Indonezia",
+    "Filipine"
+];
+
+export interface CountryAndItsCodes {
+    name: string;
+    code: string;
+    dial_code: string;
+}
+
+export interface CountryAndItsCities {
+    cities: string[];
+    country: string;
+    iso2: string;
+    iso3: string;
+}
