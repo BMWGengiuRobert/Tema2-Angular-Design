@@ -17,9 +17,6 @@ export class LoginRegisterPage implements OnInit {
   countries: string[] = [];
   selectedCountry: string = '';
   selectedCity: string = '';
-
-  rawCountriesAndAllTheirCities: CountryAndItsCities[] = [];
-  rawCountriesAndTheirCodes: CountryAndItsCodes[] = [];
   citiesForSelectedCountry: string[] = [];
 
   backgroundImagesLight: string[] = [
@@ -41,19 +38,19 @@ export class LoginRegisterPage implements OnInit {
   processedImageUrls: string[] = [];
   accountForm: FormGroup;
 
-  constructor(private translateService: TranslateService, private formBuilder: FormBuilder, private countriesService: CountriesService) {
+  constructor(private formBuilder: FormBuilder, private countriesService: CountriesService) {
     this.accountForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6), this.validatePasswordMatch]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
       country: ['', Validators.required],
-      city: ['', Validators.required],
+      city: [{ value: '', disabled: true }, Validators.required],
       homeAddress: ['', Validators.required],
       zipCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\+?\d{1,4}?[-.\s]?\d{7,12}$/)]],
-      luckyNumber: ['', [Validators.required, Validators.min(1), Validators.max(100), this.validateLuckyNumber]],
-    });
+      phoneNumber: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^\+?\d{1,4}?[-.\s]?\d{7,12}$/)]],
+      luckyNumber: ['', [Validators.required, Validators.min(7), Validators.max(77777), this.validateLuckyNumber]],
+    }, { validators: this.validatePasswordMatch });
   }
 
   ngOnInit() {
@@ -62,22 +59,8 @@ export class LoginRegisterPage implements OnInit {
     }, 2000);
 
     this.changeMode();
-
-    this.translateService.onLangChange.subscribe({
-      next: () => {
-        this.changeCountryList();
-      },
-      error: (err) => {
-        console.error('Error during language change:', err);
-      },
-      complete: () => {
-        console.log('Language change handling completed.');
-      }
-    })
-
     this.processedImageUrls = this.getBackgroundImages();
-
-    this.processCountriesData();
+    this.processCountryList();
   }
 
   getBackgroundImages() {
@@ -88,40 +71,29 @@ export class LoginRegisterPage implements OnInit {
     this.isNewHere = !this.isNewHere;
   }
 
-  changeCountryList() {
-    if (this.translateService.getCurrentLang() === 'ro') {
-      this.countries = COUNTRIES_RO;
-    } else {
-      this.countries = COUNTRIES_EN;
-    }
-  }
-
   changeMode() {
     this.isLightMode = localStorage.getItem('theme') === 'light';
   }
 
-  processCountriesData() {
-    this.countriesService.getAllCountries().subscribe(data => {
-      this.rawCountriesAndAllTheirCities = data;
+  processCountryList() {
+    this.countriesService.getAllCountries().subscribe({
+      next: (countriesData: any[]) => {
+        this.countries = countriesData;
+      },
+      error: (err) => {
+        this.countries = [];
+        console.error('Error fetching countries:', err);
+      }
     });
-  }
-
-  countryNameOnEnglishForDialCode(countryName: string): string {
-    const found = COUNTRIES_MAPPING.find(c =>
-      c.ro.toLowerCase() === countryName.toLowerCase() ||
-      c.en.toLowerCase() === countryName.toLowerCase()
-    );
-
-    return found?.en || countryName;
   }
 
   onCountryChange(countryName: string) {
     if (countryName) {
       this.selectedCity = '';
+      this.accountForm.get('city')?.enable();
+      this.accountForm.get('phoneNumber')?.enable();
 
-      const countryNameInEnglish = this.countryNameOnEnglishForDialCode(countryName).toLowerCase();
-
-      this.countriesService.getCitiesForCountry(countryNameInEnglish).subscribe({
+      this.countriesService.getCitiesForCountry(countryName).subscribe({
         next: (cities: string[]) => {
           this.citiesForSelectedCountry = cities;
         },
@@ -131,7 +103,7 @@ export class LoginRegisterPage implements OnInit {
         }
       });
 
-      this.countriesService.getSingleCountryCodes(countryNameInEnglish).subscribe({
+      this.countriesService.getSingleCountryCodes(countryName).subscribe({
         next: (countryCodes: CountryAndItsCodes) => {
           const dialCode = countryCodes.dial_code;
           this.accountForm.patchValue({ phoneNumber: dialCode });
@@ -146,6 +118,16 @@ export class LoginRegisterPage implements OnInit {
     }
   }
 
+  onSubmitForm() {  
+    if (this.accountForm.valid) {
+      console.log('Form Submitted', this.accountForm.value);
+      this.accountForm.reset();
+    } else {
+      console.log('Form is invalid');
+      this.accountForm.markAllAsTouched();
+    }
+  }
+
   // FORM CUSTOM VALIDATORS
   validatePasswordMatch(group: AbstractControl): ValidationErrors | null {
     const password = group.get('password')?.value;
@@ -154,16 +136,31 @@ export class LoginRegisterPage implements OnInit {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
-  validateLuckyNumber(group: AbstractControl): ValidationErrors | null {
-    const luckyNumber = group.get('luckyNumber')?.value;
+  validateLuckyNumber(control: AbstractControl): ValidationErrors | null {
+    const luckyNumber = control.value;
 
     const isAllDigitsSame = luckyNumber?.toString().split('').every((digit: string) => digit === luckyNumber.toString()[0]);
 
     if (isAllDigitsSame) {
-      return { allDigitsSame: true };
+      return { allDigitsSame: false };
     }
 
     return null;
+  }
+
+  // GLOBAL FUNCTION TO CHECK FOR ERRORS
+  checkForErrors(controlName: string, errorName: string) {
+    const control = this.accountForm.get(controlName);
+
+    if (control?.hasError(errorName) && (control.touched || control.dirty)) {
+      return true;
+    }
+
+    if (this.accountForm.hasError(errorName) && (control?.touched || control?.dirty)) {
+      return true;
+    }
+
+    return false;
   }
 
 }

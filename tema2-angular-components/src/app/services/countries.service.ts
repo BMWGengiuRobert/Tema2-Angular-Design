@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { delay } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
@@ -21,13 +22,13 @@ export class CountriesService {
 
     getAllCountries() {
         return this.http.get(this.getAllCountriesUrl).pipe(
-            map((res: any) => res.data)
+            map((res: any) => res.data.map((item: any) => item.country))
         );
     }
 
     getCitiesForCountry(countryName: string) {
         return this.http.post(this.getCitiesForCountryUrl, { country: countryName }).pipe(
-            map((res: any) => res.data)
+            map((res: any) => res.data), delay(0)
         );
     }
 

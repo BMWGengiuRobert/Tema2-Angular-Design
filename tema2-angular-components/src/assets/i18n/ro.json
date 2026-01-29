@@ -155,7 +155,7 @@
     "REMEMBER_ME": "Ține-mă minte",
     "FORGOT_PASSWORD": "Ai uitat parola?",
     "BUTTON": "Autentificare",
-    "NEW_HERE": "Prima dată aici? Alătură-te nouă pentru a începe.",
+    "NEW_HERE": "Alătură-te nouă!",
     "GO_BACK": "Înapoi",
     "EMAIL_PLACEHOLDER": "Adresă de email",
     "ADDRESS_PLACEHOLDER": "Adresa de acasă",
@@ -169,6 +169,27 @@
     "ACCOUNT_INFO_LABEL": "Informații cont",
     "ADDRESS_INFO_LABEL": "Informații adresă",
     "CONTACT_INFO_LABEL": "Informații contact",
-    "PASSWORD_INFO_LABEL": "Informații parolă"
+    "PASSWORD_INFO_LABEL": "Informații parolă",
+    "ERRORS": {
+      "USERNAME_REQUIRED": "Numele de utilizator este obligatoriu",
+      "USERNAME_MIN_LENGTH": "Numele de utilizator trebuie să aibă cel puțin 3 caractere",
+      "EMAIL_REQUIRED": "Email-ul este obligatoriu",
+      "EMAIL_INVALID": "Vă rugăm să introduceți o adresă de email validă",
+      "PASSWORD_REQUIRED": "Parola este obligatorie",
+      "PASSWORD_MIN_LENGTH": "Parola trebuie să aibă cel puțin 6 caractere",
+      "CONFIRM_PASSWORD_REQUIRED": "Vă rugăm să confirmați parola",
+      "PASSWORD_MISMATCH": "Parolele nu se potrivesc",
+      "COUNTRY_REQUIRED": "Țara este obligatorie",
+      "CITY_REQUIRED": "Orașul este obligatoriu",
+      "ADDRESS_REQUIRED": "Adresa este obligatorie",
+      "ZIPCODE_REQUIRED": "Codul poștal este obligatoriu",
+      "ZIPCODE_INVALID": "Codul poștal trebuie să conțină 6 cifre",
+      "PHONE_REQUIRED": "Numărul de telefon este obligatoriu",
+      "PHONE_INVALID": "Vă rugăm să introduceți un număr de telefon valid",
+      "LUCKY_NUMBER_REQUIRED": "Numărul norocos este obligatoriu",
+      "LUCKY_NUMBER_MIN": "Numărul norocos trebuie să fie cel puțin 7",
+      "LUCKY_NUMBER_MAX": "Numărul norocos trebuie să fie maximum 77777",
+      "LUCKY_NUMBER_SAME_DIGITS": "Toate cifrele nu pot fi identice"
+    }
   }
 }

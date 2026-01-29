@@ -155,7 +155,7 @@
     "REMEMBER_ME": "Remember me",
     "FORGOT_PASSWORD": "Forgot password?",
     "BUTTON": "Sign In",
-    "NEW_HERE": "First time visiting? Join us here to get started.",
+    "NEW_HERE": "Join us!",
     "GO_BACK": "Go Back",
     "EMAIL_PLACEHOLDER": "Email Address",
     "ADDRESS_PLACEHOLDER": "Home Address",
@@ -170,6 +170,27 @@
     "ACCOUNT_INFO_LABEL": "Account Info",
     "ADDRESS_INFO_LABEL": "Address Info",
     "CONTACT_INFO_LABEL": "Contact Info",
-    "PASSWORD_INFO_LABEL": "Password Info"
+    "PASSWORD_INFO_LABEL": "Password Info",
+    "ERRORS": {
+      "USERNAME_REQUIRED": "Username is required",
+      "USERNAME_MIN_LENGTH": "Username must be at least 3 characters",
+      "EMAIL_REQUIRED": "Email is required",
+      "EMAIL_INVALID": "Please enter a valid email address",
+      "PASSWORD_REQUIRED": "Password is required",
+      "PASSWORD_MIN_LENGTH": "Password must be at least 6 characters",
+      "CONFIRM_PASSWORD_REQUIRED": "Please confirm your password",
+      "PASSWORD_MISMATCH": "Passwords do not match",
+      "COUNTRY_REQUIRED": "Country is required",
+      "CITY_REQUIRED": "City is required",
+      "ADDRESS_REQUIRED": "Address is required",
+      "ZIPCODE_REQUIRED": "Zip code is required",
+      "ZIPCODE_INVALID": "Zip code must be 6 digits",
+      "PHONE_REQUIRED": "Phone number is required",
+      "PHONE_INVALID": "Please enter a valid phone number",
+      "LUCKY_NUMBER_REQUIRED": "Lucky number is required",
+      "LUCKY_NUMBER_MIN": "Lucky number must be at least 7",
+      "LUCKY_NUMBER_MAX": "Lucky number must be at most 77777",
+      "LUCKY_NUMBER_SAME_DIGITS": "All digits cannot be the same"
+    }
   }
 }

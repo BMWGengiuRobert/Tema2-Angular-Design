@@ -71,6 +71,7 @@ $url-pattern-401-light: url('/assets/error-codes-patterns/pattern-401-light.png'
 $gradient-login-register-start-light: #D14D28
 $gradient-login-register-end-light: #7B2218
 $link-color-light: #7B2218
+$bg-input-disabled-light: #f0f0f0
 //================================================================
 
 // Dark Theme Vars For Colors
@@ -145,6 +146,7 @@ $url-pattern-401-dark: url('/assets/error-codes-patterns/pattern-401-dark.png')
 $gradient-login-register-start-dark: #d68a82
 $gradient-login-register-end-dark: #663b30
 $link-color-login-register-dark: #d68a82
+$bg-input-disabled-dark: #3a3a3a
 //================================================================
 
 // Css Vars
@@ -210,6 +212,8 @@ $link-color-login-register-dark: #d68a82
   --gradient-login-register-end: #{$gradient-login-register-end-light}
   --link-color-login-register: #{$link-color-light}
 
+  --bg-input-disabled: #{$bg-input-disabled-light}
+
 // Dark Theme Override
 [data-theme="dark"]
   --bg-page: #{$bg-page-dark}
@@ -270,3 +274,5 @@ $link-color-login-register-dark: #d68a82
   --gradient-login-register-start: #{$gradient-login-register-start-dark}
   --gradient-login-register-end: #{$gradient-login-register-end-dark}
   --link-color-login-register: #{$link-color-login-register-dark}
+
+  --bg-input-disabled: #{$bg-input-disabled-dark}
