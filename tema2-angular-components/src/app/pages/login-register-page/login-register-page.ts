@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors, ReactiveFormsModule } from "@angular/forms";
 import { LanguagePicker } from "../home-page/language-picker/language-picker";
-import { TranslateModule, TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { COUNTRIES_EN, COUNTRIES_MAPPING, COUNTRIES_RO, CountryAndItsCities, CountryAndItsCodes } from '../../models/countries.model';
+import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
+import { CountryAndItsCodes } from '../../models/countries.model';
 import { CountriesService } from '../../services/countries.service';
 
 @Component({
@@ -61,6 +61,7 @@ export class LoginRegisterPage implements OnInit {
     this.changeMode();
     this.processedImageUrls = this.getBackgroundImages();
     this.processCountryList();
+    this.updateFormValidators();
   }
 
   getBackgroundImages() {
@@ -69,6 +70,7 @@ export class LoginRegisterPage implements OnInit {
 
   isNewHerePressed() {
     this.isNewHere = !this.isNewHere;
+    this.updateFormValidators();
   }
 
   changeMode() {
@@ -118,7 +120,8 @@ export class LoginRegisterPage implements OnInit {
     }
   }
 
-  onSubmitForm() {  
+  onSubmitForm() {
+    console.log('Submitting form...');
     if (this.accountForm.valid) {
       console.log('Form Submitted', this.accountForm.value);
       this.accountForm.reset();
@@ -133,6 +136,10 @@ export class LoginRegisterPage implements OnInit {
     const password = group.get('password')?.value;
     const confirmPassword = group.get('confirmPassword')?.value;
 
+    if (group.get('confirmPassword')?.disabled) {
+      return null;
+    }
+
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
@@ -142,7 +149,7 @@ export class LoginRegisterPage implements OnInit {
     const isAllDigitsSame = luckyNumber?.toString().split('').every((digit: string) => digit === luckyNumber.toString()[0]);
 
     if (isAllDigitsSame) {
-      return { allDigitsSame: false };
+      return { allDigitsSame: true };
     }
 
     return null;
@@ -163,4 +170,31 @@ export class LoginRegisterPage implements OnInit {
     return false;
   }
 
+  updateFormValidators() {
+    const fieldsForRegister = ['confirmPassword', 'country', 'city', 'homeAddress', 'zipCode', 'phoneNumber', 'luckyNumber', 'email'];
+
+    if (this.isNewHere) {
+      fieldsForRegister.forEach(field => {
+        const control = this.accountForm.get(field);
+        control?.enable();
+        control?.markAsUntouched();
+        control?.markAsPristine();
+      });
+    } else {
+      fieldsForRegister.forEach(field => {
+        const control = this.accountForm.get(field);
+        control?.disable();
+        control?.setValue('');
+        control?.markAsUntouched();
+        control?.markAsPristine();
+        control?.setErrors(null);
+      });
+    }
+    this.accountForm.updateValueAndValidity();
+  }
+
+  //formdirty pt erori
+  //fiecare eroare
+  //sa nu apara la inceput
+  //regex parola litera mare, cifra, caracter special semn punctuatie
 }

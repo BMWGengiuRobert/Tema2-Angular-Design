@@ -297,37 +297,38 @@
             </div>
             }
 
+            @if(!isNewHere)
+            {
+            <div class="actions">
+                <div class="actions__remember-me">
+                    <input type="checkbox" id="remember-me" />
+                    <label for="remember-me">{{ 'LOGIN_REGISTER_PAGE.REMEMBER_ME' | translate }}</label>
+                </div>
+                <a class="actions__forgot-password">{{ 'LOGIN_REGISTER_PAGE.FORGOT_PASSWORD' | translate }}</a>
+            </div>
+            }
+
+            @if(isNewHere)
+            {
+            <div class="buttons-container">
+                <button class="new-here-button" (click)="isNewHerePressed()" type="button"> <i class="fa-solid fa-backward"></i>{{
+                    'LOGIN_REGISTER_PAGE.GO_BACK' | translate}}</button>
+                <button class="submit-button center-button1" type="submit"
+                    [disabled]="!accountForm.valid">{{'LOGIN_REGISTER_PAGE.CREATE_ACCOUNT' | translate }}</button>
+            </div>
+            }
+            @else
+            {
+            <div class="buttons-container">
+                <button class="submit-button center-button2" type="submit"
+                    [disabled]="!accountForm.valid">{{'LOGIN_REGISTER_PAGE.BUTTON' | translate }}</button>
+                <button class="new-here-button" (click)="isNewHerePressed()" type="button">{{ 'LOGIN_REGISTER_PAGE.NEW_HERE' |
+                    translate}} <i class="fa-solid fa-forward"></i></button>
+            </div>
+            }
+
         </form>
 
-        @if(!isNewHere)
-        {
-        <div class="actions">
-            <div class="actions__remember-me">
-                <input type="checkbox" id="remember-me" />
-                <label for="remember-me">{{ 'LOGIN_REGISTER_PAGE.REMEMBER_ME' | translate }}</label>
-            </div>
-            <p>{{ 'LOGIN_REGISTER_PAGE.FORGOT_PASSWORD' | translate }}</p>
-        </div>
-        }
-
-        @if(isNewHere)
-        {
-        <div class="buttons-container">
-            <button class="new-here-button" (click)="isNewHerePressed()"> <i class="fa-solid fa-backward"></i>{{
-                'LOGIN_REGISTER_PAGE.GO_BACK' | translate}}</button>
-            <button class="submit-button center-button1" (click)="onSubmitForm()"
-                [disabled]="!accountForm.valid">{{'LOGIN_REGISTER_PAGE.CREATE_ACCOUNT' | translate }}</button>
-        </div>
-        }
-        @else
-        {
-        <div class="buttons-container">
-            <button class="submit-button center-button2" (click)="onSubmitForm()"
-                [disabled]="!accountForm.valid">{{'LOGIN_REGISTER_PAGE.BUTTON' | translate }}</button>
-            <button class="new-here-button" (click)="isNewHerePressed()">{{ 'LOGIN_REGISTER_PAGE.NEW_HERE' |
-                translate}} <i class="fa-solid fa-forward"></i></button>
-        </div>
-        }
     </div>
 </div>
 
