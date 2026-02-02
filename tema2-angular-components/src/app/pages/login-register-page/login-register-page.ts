@@ -5,6 +5,7 @@ import { LanguagePicker } from "../home-page/language-picker/language-picker";
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { CountryAndItsCodes } from '../../models/countries.model';
 import { CountriesService } from '../../services/countries.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-register-page',
@@ -38,7 +39,7 @@ export class LoginRegisterPage implements OnInit {
   processedImageUrls: string[] = [];
   accountForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private countriesService: CountriesService) {
+  constructor(private formBuilder: FormBuilder, private countriesService: CountriesService, private router: Router) {
     this.accountForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/), this.validatePasswordPattern]],
@@ -121,9 +122,9 @@ export class LoginRegisterPage implements OnInit {
   }
 
   onSubmitForm() {
-    console.log('Submitting form...');
     if (this.accountForm.valid) {
       console.log('Form Submitted', this.accountForm.value);
+      this.router.navigate(['/home']);
       this.accountForm.reset();
     } else {
       console.log('Form is invalid');
@@ -148,7 +149,7 @@ export class LoginRegisterPage implements OnInit {
 
     const isAllDigitsSame = luckyNumber?.toString().split('').every((digit: string) => digit === luckyNumber.toString()[0]);
 
-    if (isAllDigitsSame) {
+    if (isAllDigitsSame && luckyNumber.toString().length >= 2) {
       return { allDigitsSame: true };
     }
 
@@ -195,10 +196,18 @@ export class LoginRegisterPage implements OnInit {
   }
 
   updateFormValidators() {
+    const fieldsForRegister = ['confirmPassword', 'country', 'city', 'homeAddress', 'zipCode', 'phoneNumber', 'luckyNumber', 'email'];
+
+    this.accountForm.reset();
+
     if (this.isNewHere) {
-      this.accountForm.reset();
+      fieldsForRegister.forEach(field => {
+        this.accountForm.get(field)?.enable();
+      });
     } else {
-      this.accountForm.reset();
+      fieldsForRegister.forEach(field => {
+        this.accountForm.get(field)?.disable();
+      });
     }
   }
 
