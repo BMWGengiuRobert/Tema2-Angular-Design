@@ -176,7 +176,7 @@
       "EMAIL_REQUIRED": "Email-ul este obligatoriu",
       "EMAIL_INVALID": "Vă rugăm să introduceți o adresă de email validă",
       "PASSWORD_REQUIRED": "Parola este obligatorie",
-      "PASSWORD_MIN_LENGTH": "Parola trebuie să aibă cel puțin 6 caractere",
+      "PASSWORD_MIN_LENGTH": "Parola trebuie să aibă cel puțin 8 caractere",
       "CONFIRM_PASSWORD_REQUIRED": "Vă rugăm să confirmați parola",
       "PASSWORD_MISMATCH": "Parolele nu se potrivesc",
       "COUNTRY_REQUIRED": "Țara este obligatorie",
@@ -189,7 +189,10 @@
       "LUCKY_NUMBER_REQUIRED": "Numărul norocos este obligatoriu",
       "LUCKY_NUMBER_MIN": "Numărul norocos trebuie să fie cel puțin 7",
       "LUCKY_NUMBER_MAX": "Numărul norocos trebuie să fie maximum 77777",
-      "LUCKY_NUMBER_SAME_DIGITS": "Toate cifrele nu pot fi identice"
+      "LUCKY_NUMBER_SAME_DIGITS": "Toate cifrele nu pot fi identice",
+      "PASSWORD_MISSING_NUMBER": "Parola trebuie să conțină cel puțin o cifră",
+      "PASSWORD_MISSING_UPPERCASE": "Parola trebuie să conțină cel puțin o majusculă",
+      "PASSWORD_MISSING_SPECIAL_CHAR": "Parola trebuie să conțină cel puțin un caracter special (@$!%*?&)"
     }
   }
 }

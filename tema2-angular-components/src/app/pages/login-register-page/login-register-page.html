@@ -141,6 +141,18 @@
                         <span><i class="fa-solid fa-circle-exclamation"></i>{{
                             'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MIN_LENGTH' | translate }}</span>
                         }
+                        @if(checkForErrors('password', 'missingNumber')) {
+                        <span><i class="fa-solid fa-circle-exclamation"></i>
+                            {{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MISSING_NUMBER' | translate}}</span>
+                        }
+                        @if(checkForErrors('password', 'missingUppercase')) {
+                        <span><i class="fa-solid fa-circle-exclamation"></i>
+                            {{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MISSING_UPPERCASE' | translate}}</span>
+                        }
+                        @if(checkForErrors('password', 'missingSpecialChar')) {
+                        <span><i class="fa-solid fa-circle-exclamation"></i>
+                            {{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MISSING_SPECIAL_CHAR' | translate}}</span>
+                        }
                     </div>
                 </div>
                 <div class="input-group">
@@ -293,6 +305,18 @@
                             class="fa-solid fa-circle-exclamation"></i>{{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MIN_LENGTH'
                         | translate }}</span>
                     }
+                    @if(checkForErrors('password', 'missingNumber')) {
+                    <span><i class="fa-solid fa-circle-exclamation"></i>
+                        {{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MISSING_NUMBER' | translate}}</span>
+                    }
+                    @if(checkForErrors('password', 'missingUppercase')) {
+                    <span><i class="fa-solid fa-circle-exclamation"></i>
+                        {{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MISSING_UPPERCASE' | translate}}</span>
+                    }
+                    @if(checkForErrors('password', 'missingSpecialChar')) {
+                    <span><i class="fa-solid fa-circle-exclamation"></i>
+                        {{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MISSING_SPECIAL_CHAR' | translate}}</span>
+                    }
                 </div>
             </div>
             }
@@ -311,7 +335,8 @@
             @if(isNewHere)
             {
             <div class="buttons-container">
-                <button class="new-here-button" (click)="isNewHerePressed()" type="button"> <i class="fa-solid fa-backward"></i>{{
+                <button class="new-here-button" (click)="isNewHerePressed()" type="button"> <i
+                        class="fa-solid fa-backward"></i>{{
                     'LOGIN_REGISTER_PAGE.GO_BACK' | translate}}</button>
                 <button class="submit-button center-button1" type="submit"
                     [disabled]="!accountForm.valid">{{'LOGIN_REGISTER_PAGE.CREATE_ACCOUNT' | translate }}</button>
@@ -322,7 +347,8 @@
             <div class="buttons-container">
                 <button class="submit-button center-button2" type="submit"
                     [disabled]="!accountForm.valid">{{'LOGIN_REGISTER_PAGE.BUTTON' | translate }}</button>
-                <button class="new-here-button" (click)="isNewHerePressed()" type="button">{{ 'LOGIN_REGISTER_PAGE.NEW_HERE' |
+                <button class="new-here-button" (click)="isNewHerePressed()" type="button">{{
+                    'LOGIN_REGISTER_PAGE.NEW_HERE' |
                     translate}} <i class="fa-solid fa-forward"></i></button>
             </div>
             }

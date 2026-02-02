@@ -41,8 +41,8 @@ export class LoginRegisterPage implements OnInit {
   constructor(private formBuilder: FormBuilder, private countriesService: CountriesService) {
     this.accountForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/), this.validatePasswordPattern]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
       email: ['', [Validators.required, Validators.email]],
       country: ['', Validators.required],
       city: [{ value: '', disabled: true }, Validators.required],
@@ -155,6 +155,30 @@ export class LoginRegisterPage implements OnInit {
     return null;
   }
 
+  validatePasswordPattern(control: AbstractControl): ValidationErrors | null {
+    const password = control.value;
+
+    if (!password) return null;
+
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecialChar = /[@$!%*?&]/.test(password);
+
+    if (!hasUpperCase) {
+      return { missingUppercase: true };
+    }
+
+    if (!hasNumber) {
+      return { missingNumber: true };
+    }
+
+    if (!hasSpecialChar) {
+      return { missingSpecialChar: true };
+    }
+
+    return null;
+  }
+
   // GLOBAL FUNCTION TO CHECK FOR ERRORS
   checkForErrors(controlName: string, errorName: string) {
     const control = this.accountForm.get(controlName);
@@ -171,26 +195,11 @@ export class LoginRegisterPage implements OnInit {
   }
 
   updateFormValidators() {
-    const fieldsForRegister = ['confirmPassword', 'country', 'city', 'homeAddress', 'zipCode', 'phoneNumber', 'luckyNumber', 'email'];
-
     if (this.isNewHere) {
-      fieldsForRegister.forEach(field => {
-        const control = this.accountForm.get(field);
-        control?.enable();
-        control?.markAsUntouched();
-        control?.markAsPristine();
-      });
+      this.accountForm.reset();
     } else {
-      fieldsForRegister.forEach(field => {
-        const control = this.accountForm.get(field);
-        control?.disable();
-        control?.setValue('');
-        control?.markAsUntouched();
-        control?.markAsPristine();
-        control?.setErrors(null);
-      });
+      this.accountForm.reset();
     }
-    this.accountForm.updateValueAndValidity();
   }
 
   //formdirty pt erori

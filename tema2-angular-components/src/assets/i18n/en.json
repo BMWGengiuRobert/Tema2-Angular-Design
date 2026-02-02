@@ -177,7 +177,7 @@
       "EMAIL_REQUIRED": "Email is required",
       "EMAIL_INVALID": "Please enter a valid email address",
       "PASSWORD_REQUIRED": "Password is required",
-      "PASSWORD_MIN_LENGTH": "Password must be at least 6 characters",
+      "PASSWORD_MIN_LENGTH": "Password must be at least 8 characters",
       "CONFIRM_PASSWORD_REQUIRED": "Please confirm your password",
       "PASSWORD_MISMATCH": "Passwords do not match",
       "COUNTRY_REQUIRED": "Country is required",
@@ -190,7 +190,10 @@
       "LUCKY_NUMBER_REQUIRED": "Lucky number is required",
       "LUCKY_NUMBER_MIN": "Lucky number must be at least 7",
       "LUCKY_NUMBER_MAX": "Lucky number must be at most 77777",
-      "LUCKY_NUMBER_SAME_DIGITS": "All digits cannot be the same"
+      "LUCKY_NUMBER_SAME_DIGITS": "All digits cannot be the same",
+      "PASSWORD_MISSING_NUMBER": "Password must contain at least one number",
+      "PASSWORD_MISSING_UPPERCASE": "Password must contain at least one uppercase letter",  
+      "PASSWORD_MISSING_SPECIAL_CHAR": "Password must contain at least one special character (@$!%*?&)"
     }
   }
 }
