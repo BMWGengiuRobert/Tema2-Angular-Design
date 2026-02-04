@@ -134,49 +134,77 @@ export class LoginRegisterPage implements OnInit {
     }
   }
 
+  logInUser(username: string, password: string, rememberMe: boolean) {
+    const loginCredentials: LoginData = {
+      username: username,
+      password: password
+    };
+
+    const user = this.checkPermissionService.checkValidCredentials(loginCredentials);
+    if (!user) {
+      const passwordControl = this.accountForm.get('password');
+      passwordControl?.setErrors({ invalidCredentials: true });
+      passwordControl?.markAsDirty();
+      passwordControl?.markAsTouched();
+
+      this.accountForm.get('password')?.setErrors({ invalidCredentials: true });
+      return;
+    }
+
+    // log in the user
+    this.usersService.setSelectedUser(user);
+
+    if (rememberMe) {
+      localStorage.setItem('rememberedUsername', username);
+    }
+    else {
+      localStorage.removeItem('rememberedUsername');
+    }
+
+    this.modalService.openLoadingSpinner();
+
+    setTimeout(() => {
+      this.modalService.closeLoadingSpinner();
+      this.router.navigate(['/home']);
+      this.accountForm.reset();
+    }, 500);
+
+  }
+
+  createNewUser() {
+    // logic if form valid to create new user
+    // redirect to login page after creating user
+    console.log("user created successfully");
+    this.isNewHere = false;
+    this.updateFormValidators();
+  }
+
   onSubmitForm() {
-    if (this.accountForm.valid) {
-      console.log('Form Submitted', this.accountForm.value);
 
-      const { username, password, rememberMe } = this.accountForm.value;
+    // form is for loggig in
+    if (!this.isNewHere) {
 
-      const loginCredentials: LoginData = {
-        username: username,
-        password: password
-      };
+      if (this.accountForm.valid) {
+        console.log('Form Submitted', this.accountForm.value);
 
-      const user = this.checkPermissionService.checkValidCredentials(loginCredentials);
-      if (!user) {
-        const passwordControl = this.accountForm.get('password');
-        passwordControl?.setErrors({ invalidCredentials: true });
-        passwordControl?.markAsDirty();
-        passwordControl?.markAsTouched();
+        const { username, password, rememberMe } = this.accountForm.value;
 
-        this.accountForm.get('password')?.setErrors({ invalidCredentials: true });
-        return;
+        this.logInUser(username, password, rememberMe);
+
+      } else {
+        console.log('Form is invalid');
+        this.accountForm.markAllAsTouched();
       }
-
-      // log in the user
-      this.usersService.setSelectedUser(user);
-
-      if (rememberMe) {
-        localStorage.setItem('rememberedUsername', username);
-      }
-      else {
-        localStorage.removeItem('rememberedUsername');
-      }
-
-      this.modalService.openLoadingSpinner();
-
-      setTimeout(() => {
-        this.modalService.closeLoadingSpinner();
-        this.router.navigate(['/home']);
-        this.accountForm.reset();
-      }, 500);
-
     } else {
-      console.log('Form is invalid');
-      this.accountForm.markAllAsTouched();
+
+      // form is for registering new user 
+      if (this.accountForm.valid) {
+        console.log('Form Submitted', this.accountForm.value);
+        this.createNewUser();
+      } else {
+        console.log('Form is invalid');
+        this.accountForm.markAllAsTouched();
+      }
     }
   }
 
