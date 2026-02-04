@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CustomDatePipe } from '../../pipes/custom-date.pipe';
 import { MyTasks } from './my-tasks/my-tasks';
 import { MyGoals } from './my-goals/my-goals';
@@ -24,13 +24,17 @@ export class HomePage {
   selectedUser: User = USERS[0];
   selectedUserSubscription: Subscription = new Subscription();
 
-  constructor(
-    private usersService: UsersService,
-    private translateService: TranslateService,
-    private modalService: OpenModalService
-  ) { }
+  // Injecting services
+  usersService: UsersService = inject(UsersService);
+  translateService: TranslateService = inject(TranslateService);
+  modalService: OpenModalService = inject(OpenModalService);
 
   ngOnInit() {
+    this.getSelectedUser();
+    this.closeLoadingSpinnerOnLangChange();
+  }
+
+  getSelectedUser() {
     this.selectedUserSubscription = this.usersService.selectedUser$.subscribe({
       next: (user: User) => {
         this.selectedUser = user;
@@ -42,7 +46,9 @@ export class HomePage {
         console.log('Completed fetching selected user.');
       }
     });
+  }
 
+  closeLoadingSpinnerOnLangChange() {
     this.translateService.onLangChange.subscribe({
       next: () => {
         setTimeout(() => {

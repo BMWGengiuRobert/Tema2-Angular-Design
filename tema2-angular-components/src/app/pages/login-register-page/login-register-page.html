@@ -317,6 +317,10 @@
                     <span><i class="fa-solid fa-circle-exclamation"></i>
                         {{'LOGIN_REGISTER_PAGE.ERRORS.PASSWORD_MISSING_SPECIAL_CHAR' | translate}}</span>
                     }
+                    @if(checkForErrors('password', 'invalidCredentials')) {
+                    <span><i class="fa-solid fa-circle-exclamation"></i>
+                        {{'LOGIN_REGISTER_PAGE.ERRORS.INVALID_CREDENTIALS' | translate}}</span>
+                    }
                 </div>
             </div>
             }
@@ -325,7 +329,7 @@
             {
             <div class="actions">
                 <div class="actions__remember-me">
-                    <input type="checkbox" id="remember-me" />
+                    <input type="checkbox" id="remember-me" formControlName="rememberMe" />
                     <label for="remember-me">{{ 'LOGIN_REGISTER_PAGE.REMEMBER_ME' | translate }}</label>
                 </div>
                 <a class="actions__forgot-password">{{ 'LOGIN_REGISTER_PAGE.FORGOT_PASSWORD' | translate }}</a>
@@ -359,3 +363,4 @@
 </div>
 
 <app-language-picker></app-language-picker>
+<app-loading-spinner></app-loading-spinner>

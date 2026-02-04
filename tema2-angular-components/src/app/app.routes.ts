@@ -8,13 +8,14 @@ import { InternalServerError500 } from './pages/internal-server-error-500/intern
 import { BadGateway502 } from './pages/bad-gateway-502/bad-gateway-502';
 import { Unauthorized401 } from './pages/unauthorized-401/unauthorized-401';
 import { LoginRegisterPage } from './pages/login-register-page/login-register-page';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
     {
-        path: '', component: HomePage
+        path: '', component: HomePage, canActivate: [authGuard]
     },
     {
-        path: 'home', component: HomePage
+        path: 'home', component: HomePage, canActivate: [authGuard]
     },
     {
         path: 'admin', component: AdminPage, canActivate: [roleGuard]

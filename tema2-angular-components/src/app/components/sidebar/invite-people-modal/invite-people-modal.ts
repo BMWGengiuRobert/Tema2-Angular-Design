@@ -20,7 +20,9 @@ export class InvitePeopleModal implements OnInit, OnDestroy {
     firstName: '',
     lastName: '',
     color: '',
-    password: ''
+    password: '',
+    email: '',
+    username: ''
   }
   modalSubscription: Subscription = new Subscription();
 
@@ -55,14 +57,33 @@ export class InvitePeopleModal implements OnInit, OnDestroy {
   }
 
   inviteUser() {
-    const newUserId = this.usersService.getUsers().length + 1;
+    const newUserId: number = this.usersService.getUsers().length + 1;
+
+    const userEmail: string = `${this.newUser.firstName.toLowerCase()}.${this.newUser.lastName.toLowerCase()}@example.com`;
+    const emailAlreadyExists: boolean = this.usersService.getUsers().some(user => user.email === userEmail);
+    if (emailAlreadyExists) {
+      this.newUser.email = `${this.newUser.firstName.toLowerCase()}.${this.newUser.lastName.toLowerCase()}${newUserId}@example.com`;
+    } else {
+      this.newUser.email = userEmail;
+    }
+
+    const userName: string = `${this.newUser.firstName.toLowerCase()}.${this.newUser.lastName.toLowerCase()}`;
+    const usernameAlreadyExists: boolean = this.usersService.getUsers().some(user => user.username === userName);
+    if (usernameAlreadyExists) {
+      this.newUser.username = `${this.newUser.firstName.toLowerCase()}.${this.newUser.lastName.toLowerCase()}${newUserId}`;
+    } else {
+      this.newUser.username = userName;
+    }
+
     this.usersService.addUser({ ...this.newUser, id: newUserId, password: 'abcd1234A@' });
     this.newUser = {
       id: 0,
       firstName: '',
       lastName: '',
       color: '',
-      password: ''
+      password: '',
+      email: '',
+      username: ''
     };
     this.closeModal();
   }

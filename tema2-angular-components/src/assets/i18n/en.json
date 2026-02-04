@@ -193,7 +193,8 @@
       "LUCKY_NUMBER_SAME_DIGITS": "All digits cannot be the same",
       "PASSWORD_MISSING_NUMBER": "Password must contain at least one number",
       "PASSWORD_MISSING_UPPERCASE": "Password must contain at least one uppercase letter",  
-      "PASSWORD_MISSING_SPECIAL_CHAR": "Password must contain at least one special character (@$!%*?&)"
+      "PASSWORD_MISSING_SPECIAL_CHAR": "Password must contain at least one special character (@$!%*?&)",
+      "INVALID_CREDENTIALS": "Invalid credentials"
     }
   }
 }

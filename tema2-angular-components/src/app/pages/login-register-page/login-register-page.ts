@@ -1,15 +1,20 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormGroup, FormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors, ReactiveFormsModule } from "@angular/forms";
 import { LanguagePicker } from "../home-page/language-picker/language-picker";
 import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { CountryAndItsCodes } from '../../models/countries.model';
 import { CountriesService } from '../../services/countries.service';
 import { Router } from '@angular/router';
+import { LoginData } from '../../models/formData.model';
+import { CheckPermissionService } from '../../services/check-permission.service';
+import { UsersService } from '../../services/users.service';
+import { LoadingSpinner } from "../../components/loading-spinner/loading-spinner";
+import { OpenModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-login-register-page',
-  imports: [FormsModule, CommonModule, LanguagePicker, TranslateModule, TranslatePipe, ReactiveFormsModule],
+  imports: [FormsModule, CommonModule, LanguagePicker, TranslateModule, TranslatePipe, ReactiveFormsModule, LoadingSpinner],
   templateUrl: './login-register-page.html',
   styleUrl: './login-register-page.sass',
 })
@@ -39,7 +44,14 @@ export class LoginRegisterPage implements OnInit {
   processedImageUrls: string[] = [];
   accountForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private countriesService: CountriesService, private router: Router) {
+  //Injecting services
+  countriesService: CountriesService = inject(CountriesService);
+  router: Router = inject(Router);
+  checkPermissionService: CheckPermissionService = inject(CheckPermissionService);
+  modalService: OpenModalService = inject(OpenModalService);
+  usersService: UsersService = inject(UsersService);
+
+  constructor(private formBuilder: FormBuilder) {
     this.accountForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/), this.validatePasswordPattern]],
@@ -51,6 +63,7 @@ export class LoginRegisterPage implements OnInit {
       zipCode: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
       phoneNumber: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^\+?\d{1,4}?[-.\s]?\d{7,12}$/)]],
       luckyNumber: ['', [Validators.required, Validators.min(7), Validators.max(77777), this.validateLuckyNumber]],
+      rememberMe: [false]
     }, { validators: this.validatePasswordMatch });
   }
 
@@ -124,8 +137,43 @@ export class LoginRegisterPage implements OnInit {
   onSubmitForm() {
     if (this.accountForm.valid) {
       console.log('Form Submitted', this.accountForm.value);
-      this.router.navigate(['/home']);
-      this.accountForm.reset();
+
+      const { username, password, rememberMe } = this.accountForm.value;
+
+      const loginCredentials: LoginData = {
+        username: username,
+        password: password
+      };
+
+      const user = this.checkPermissionService.checkValidCredentials(loginCredentials);
+      if (!user) {
+        const passwordControl = this.accountForm.get('password');
+        passwordControl?.setErrors({ invalidCredentials: true });
+        passwordControl?.markAsDirty();
+        passwordControl?.markAsTouched();
+
+        this.accountForm.get('password')?.setErrors({ invalidCredentials: true });
+        return;
+      }
+
+      // log in the user
+      this.usersService.setSelectedUser(user);
+
+      if (rememberMe) {
+        localStorage.setItem('rememberedUsername', username);
+      }
+      else {
+        localStorage.removeItem('rememberedUsername');
+      }
+
+      this.modalService.openLoadingSpinner();
+
+      setTimeout(() => {
+        this.modalService.closeLoadingSpinner();
+        this.router.navigate(['/home']);
+        this.accountForm.reset();
+      }, 500);
+
     } else {
       console.log('Form is invalid');
       this.accountForm.markAllAsTouched();
@@ -210,9 +258,4 @@ export class LoginRegisterPage implements OnInit {
       });
     }
   }
-
-  //formdirty pt erori
-  //fiecare eroare
-  //sa nu apara la inceput
-  //regex parola litera mare, cifra, caracter special semn punctuatie
 }

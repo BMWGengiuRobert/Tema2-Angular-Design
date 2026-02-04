@@ -192,7 +192,8 @@
       "LUCKY_NUMBER_SAME_DIGITS": "Toate cifrele nu pot fi identice",
       "PASSWORD_MISSING_NUMBER": "Parola trebuie să conțină cel puțin o cifră",
       "PASSWORD_MISSING_UPPERCASE": "Parola trebuie să conțină cel puțin o majusculă",
-      "PASSWORD_MISSING_SPECIAL_CHAR": "Parola trebuie să conțină cel puțin un caracter special (@$!%*?&)"
+      "PASSWORD_MISSING_SPECIAL_CHAR": "Parola trebuie să conțină cel puțin un caracter special (@$!%*?&)",
+      "INVALID_CREDENTIALS": "Date de autentificare invalide"
     }
   }
 }

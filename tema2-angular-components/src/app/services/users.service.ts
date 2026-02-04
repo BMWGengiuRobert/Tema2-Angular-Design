@@ -8,10 +8,12 @@ import { BehaviorSubject } from "rxjs";
 export class UsersService {
 
     users = USERS;
+    private userLoggedIn: boolean = false;
     private selectedUser: BehaviorSubject<User> = new BehaviorSubject<User>(this.users[0]);
     selectedUser$ = this.selectedUser.asObservable();
 
     setSelectedUser(user: User) {
+        this.userLoggedIn = true;
         this.selectedUser.next(user);
     }
 
@@ -29,5 +31,9 @@ export class UsersService {
 
     addUser(user: User) {
         this.users.push(user);
+    }
+
+    isLoggedIn(): boolean {
+        return this.userLoggedIn;
     }
 }
