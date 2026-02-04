@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AvatarPicture } from './avatar-picture/avatar-picture';
 import { RoutesList } from './routes-list/routes-list';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,9 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './sidebar.sass',
 })
 export class Sidebar {
-  constructor(private openModalService: OpenModalService) { }
+
+  //Injecting services
+  openModalService: OpenModalService = inject(OpenModalService);
 
   openInvitePeopleModal() {
     this.openModalService.openInvitePeopleModal();

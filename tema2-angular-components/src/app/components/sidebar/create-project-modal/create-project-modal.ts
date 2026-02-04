@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OpenModalService } from '../../../services/modal.service';
 import { Subscription } from 'rxjs';
@@ -22,9 +22,18 @@ export class CreateProjectModal implements OnInit, OnDestroy {
   private modalSubscription: Subscription = new Subscription();
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private usersService: UsersService, private openModalService: OpenModalService, private translateService: TranslateService) { }
+  // Injecting services
+  usersService: UsersService = inject(UsersService);
+  openModalService: OpenModalService = inject(OpenModalService);
+  translateService: TranslateService = inject(TranslateService);
 
   ngOnInit() {
+    this.checkCreateProjectModalOpen();
+    this.getIdOfSelectedUser();
+    this.translateService.use(document.documentElement.lang || 'en');
+  }
+
+  checkCreateProjectModalOpen() {
     this.modalSubscription = this.openModalService.isCreateProjectModalOpen$.subscribe(
       {
         next: (isOpen: boolean) => {
@@ -34,11 +43,13 @@ export class CreateProjectModal implements OnInit, OnDestroy {
           console.error('Error receiving modal state:', err);
         },
         complete: () => {
-          console.log('Completed receiving modal state.');  
+          console.log('Completed receiving modal state.');
         }
       }
     );
+  }
 
+  getIdOfSelectedUser() {
     this.userSubscription = this.usersService.selectedUser$.subscribe(
       {
         next: (user) => {
@@ -50,12 +61,11 @@ export class CreateProjectModal implements OnInit, OnDestroy {
           console.error('Error receiving selected user:', err);
         },
         complete: () => {
-          console.log('Completed receiving selected user.');  
+          console.log('Completed receiving selected user.');
         }
       }
     );
 
-    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   closeModal() {
