@@ -1,4 +1,4 @@
-export interface FormData {
+export interface FormUserData {
     username: string;
     password: string;
     confirmPassword: string;

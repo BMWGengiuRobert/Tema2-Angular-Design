@@ -6,11 +6,13 @@ import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { CountryAndItsCodes } from '../../models/countries.model';
 import { CountriesService } from '../../services/countries.service';
 import { Router } from '@angular/router';
-import { LoginData } from '../../models/formData.model';
+import { FormUserData, LoginData } from '../../models/formData.model';
 import { CheckPermissionService } from '../../services/check-permission.service';
 import { UsersService } from '../../services/users.service';
 import { LoadingSpinner } from "../../components/loading-spinner/loading-spinner";
 import { OpenModalService } from '../../services/modal.service';
+import { StorageService } from '../../services/storage.service';
+import { User } from '../../models/users.model';
 
 @Component({
   selector: 'app-login-register-page',
@@ -50,6 +52,7 @@ export class LoginRegisterPage implements OnInit {
   checkPermissionService: CheckPermissionService = inject(CheckPermissionService);
   modalService: OpenModalService = inject(OpenModalService);
   usersService: UsersService = inject(UsersService);
+  storageService: StorageService = inject(StorageService);
 
   constructor(private formBuilder: FormBuilder) {
     this.accountForm = this.formBuilder.group({
@@ -134,11 +137,7 @@ export class LoginRegisterPage implements OnInit {
     }
   }
 
-  logInUser(username: string, password: string, rememberMe: boolean) {
-    const loginCredentials: LoginData = {
-      username: username,
-      password: password
-    };
+  logInUser(loginCredentials: LoginData, rememberMe: boolean) {
 
     const user = this.checkPermissionService.checkValidCredentials(loginCredentials);
     if (!user) {
@@ -155,28 +154,46 @@ export class LoginRegisterPage implements OnInit {
     this.usersService.setSelectedUser(user);
 
     if (rememberMe) {
-      localStorage.setItem('rememberedUsername', username);
+      this.storageService.setItem('rememberedUsername', loginCredentials.username);
     }
     else {
-      localStorage.removeItem('rememberedUsername');
+      this.storageService.removeItem('rememberedUsername');
     }
 
     this.modalService.openLoadingSpinner();
 
     setTimeout(() => {
       this.modalService.closeLoadingSpinner();
+      this.updateFormValidators();
       this.router.navigate(['/home']);
       this.accountForm.reset();
     }, 500);
 
   }
 
-  createNewUser() {
-    // logic if form valid to create new user
-    // redirect to login page after creating user
-    console.log("user created successfully");
-    this.isNewHere = false;
-    this.updateFormValidators();
+  //value change in form observable
+
+  createNewUser(newUser: FormUserData) {
+
+    const userFromDb: User = {
+      id: this.usersService.getUsers().length + 1,
+      firstName: newUser.username,
+      lastName: newUser.username,
+      color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+      password: newUser.password,
+      email: newUser.email,
+      username: newUser.username
+    }
+
+    this.usersService.addUser(userFromDb);
+
+    this.modalService.openLoadingSpinner();
+
+    setTimeout(() => {
+      this.modalService.closeLoadingSpinner();
+      this.logInUser({ username: newUser.username, password: newUser.password }, false);
+      this.updateFormValidators();
+    }, 500);
   }
 
   onSubmitForm() {
@@ -185,11 +202,15 @@ export class LoginRegisterPage implements OnInit {
     if (!this.isNewHere) {
 
       if (this.accountForm.valid) {
-        console.log('Form Submitted', this.accountForm.value);
 
         const { username, password, rememberMe } = this.accountForm.value;
 
-        this.logInUser(username, password, rememberMe);
+        const loginCredentials: LoginData = {
+          username: username,
+          password: password
+        };
+
+        this.logInUser(loginCredentials, rememberMe);
 
       } else {
         console.log('Form is invalid');
@@ -199,8 +220,23 @@ export class LoginRegisterPage implements OnInit {
 
       // form is for registering new user 
       if (this.accountForm.valid) {
-        console.log('Form Submitted', this.accountForm.value);
-        this.createNewUser();
+
+        const { email, username, password, confirmPassword, homeAddress, zipcode, country, city, phoneNumber, luckyNumber } = this.accountForm.value;
+
+        const newUserFromForm: FormUserData = {
+          username,
+          password,
+          confirmPassword,
+          email,
+          country,
+          city,
+          homeAddress,
+          zipCode: zipcode,
+          phoneNumber,
+          luckyNumber
+        }
+
+        this.createNewUser(newUserFromForm);
       } else {
         console.log('Form is invalid');
         this.accountForm.markAllAsTouched();
