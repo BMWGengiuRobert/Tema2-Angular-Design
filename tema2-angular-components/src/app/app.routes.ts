@@ -9,6 +9,7 @@ import { BadGateway502 } from './pages/bad-gateway-502/bad-gateway-502';
 import { Unauthorized401 } from './pages/unauthorized-401/unauthorized-401';
 import { LoginRegisterPage } from './pages/login-register-page/login-register-page';
 import { authGuard } from './guards/auth-guard';
+import { MyTasksPage } from './pages/my-tasks-page/my-tasks-page';
 
 export const routes: Routes = [
     {
@@ -16,6 +17,9 @@ export const routes: Routes = [
     },
     {
         path: 'home', component: HomePage, canActivate: [authGuard]
+    },
+    {
+        path: 'my-tasks', component: MyTasksPage, canActivate: [authGuard]
     },
     {
         path: 'admin', component: AdminPage, canActivate: [roleGuard]
