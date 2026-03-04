@@ -15,7 +15,8 @@
       "4": "Inbox",
       "5": "Calendar",
       "6": "Rapoarte & Analize"
-    }
+    },
+    "LOGOUT": "Deconectare"
   },
   "HOME_PAGE": {
     "GREETINGS_TEXT": "Bună",

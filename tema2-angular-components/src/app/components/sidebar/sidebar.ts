@@ -27,4 +27,9 @@ export class Sidebar {
     this.openModalService.openChangeThemeModal();
   }
 
+  logout() {
+    localStorage.removeItem('rememberedUsername');
+    window.location.reload();
+  }
+
 }

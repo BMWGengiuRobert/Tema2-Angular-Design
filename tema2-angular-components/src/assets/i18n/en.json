@@ -15,7 +15,8 @@
       "4": "Inbox",
       "5": "Calendar",
       "6": "Reports & Analytics"
-    }
+    },
+    "LOGOUT": "Log Out"
   },
   "HOME_PAGE": {
     "GREETINGS_TEXT": "Hello",
