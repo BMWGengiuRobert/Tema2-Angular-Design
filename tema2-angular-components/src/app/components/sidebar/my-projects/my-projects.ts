@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CreateProjectModal } from '../create-project-modal/create-project-modal';
 import { OpenModalService } from '../../../services/modal.service';
 import { getProjectsByUserId } from '../../../db/mocked-db';
@@ -20,11 +20,19 @@ export class MyProjects implements OnInit, OnDestroy {
   projects: { id: number; userId: number; noOfTeammates: number; name: string; color: string }[] = [];
   private userSubscription: Subscription = new Subscription();
 
-  constructor(private openModalService: OpenModalService, private userService: UsersService, private translateService: TranslateService) { }
+  //Injecting services
+  openModalService: OpenModalService = inject(OpenModalService);
+  userService: UsersService = inject(UsersService);
+  translateService: TranslateService = inject(TranslateService);
 
   ngOnInit() {
+    this.getRawProjectsOfSelectedUser();
+    this.onLangChangeUpdateProjects();
+    this.translateService.use(document.documentElement.lang || 'en');
+  }
 
-    this.translateService.onLangChange.subscribe( {
+  onLangChangeUpdateProjects() {
+    this.translateService.onLangChange.subscribe({
       next: () => {
         this.updateProjectsWithTranslation();
       },
@@ -35,7 +43,9 @@ export class MyProjects implements OnInit, OnDestroy {
         console.log('Language change handling completed.');
       }
     });
+  }
 
+  getRawProjectsOfSelectedUser() {
     this.userSubscription = this.userService.selectedUser$.subscribe({
       next: (selectedUser) => {
         this.rawProjects = getProjectsByUserId(selectedUser.id);
@@ -48,8 +58,6 @@ export class MyProjects implements OnInit, OnDestroy {
         console.log('Completed fetching user projects.');
       }
     });
-
-    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   updateProjectsWithTranslation(): void {

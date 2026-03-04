@@ -30,6 +30,8 @@ export class LanguagePicker {
   selectLanguage(langCode: string) {
     this.currentLang = langCode;
     this.translate.use(langCode);
+    localStorage.setItem('language', langCode);
+    document.documentElement.lang = langCode;
     this.isOpen = false;
     this.modalService.openLoadingSpinner();
   }

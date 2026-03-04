@@ -13,6 +13,15 @@ export class App {
   protected readonly title = signal('tema2-angular-components');
 
   constructor(private translate: TranslateService) {
+    const savedLang = localStorage.getItem('language');
+    const currentLang = savedLang || document.documentElement.lang || 'en';
+    
+    this.translate.addLangs(['en', 'ro']);
+    this.translate.setFallbackLang('en');
+    this.translate.use(currentLang);
+    
+    document.documentElement.lang = currentLang;
+    
     console.log('Default language:', this.translate.getFallbackLang());
     console.log('Current language:', this.translate.getCurrentLang());
     console.log('Available languages:', this.translate.getLangs());

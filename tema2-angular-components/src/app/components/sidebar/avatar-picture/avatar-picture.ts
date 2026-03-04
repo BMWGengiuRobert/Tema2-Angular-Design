@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
+import { Component, HostListener, ElementRef, inject } from '@angular/core';
 import { UsersDropdown } from '../../users-dropdown/users-dropdown';
 import { CommonModule } from '@angular/common';
 import { USERS, User } from '../../../models/users.model';
@@ -16,7 +16,10 @@ export class AvatarPicture {
   isDropdownVisible = false;
   selectedUser: User = USERS[0];
 
-  constructor(private elementRef: ElementRef, private avatarColorService: AvatarColorService, private usersService: UsersService) { }
+  // Injecting services
+  avatarColorService: AvatarColorService = inject(AvatarColorService);
+  usersService: UsersService = inject(UsersService);
+  elementRef: ElementRef = inject(ElementRef);
 
   onClickShowDropdown() {
     this.isDropdownVisible = !this.isDropdownVisible;

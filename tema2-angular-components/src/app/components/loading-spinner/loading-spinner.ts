@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { OpenModalService } from '../../services/modal.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { BehaviorSubject } from 'rxjs';
@@ -18,10 +18,16 @@ export class LoadingSpinner implements OnInit, OnDestroy {
   selectedUserSubscription: Subscription = new Subscription();
   selectedUserColor: string = '';
 
-
-  constructor(private modalService: OpenModalService, private avatarColorService: AvatarColorService) { }
+  // Injecting services
+  modalService: OpenModalService = inject(OpenModalService);
+  avatarColorService: AvatarColorService = inject(AvatarColorService);
 
   ngOnInit() {
+    this.checkLoadingSpinnerOpen();
+    this.getSelectedUserColor();
+  }
+
+  checkLoadingSpinnerOpen() {
     this.loadingSpinnerSubscription = this.modalService.isLoadingSpinnerOpen$.subscribe({
       next: (isOpen: boolean) => {
         this.isModalOpen.next(isOpen);
@@ -33,7 +39,9 @@ export class LoadingSpinner implements OnInit, OnDestroy {
         this.isModalOpen.next(false);
       }
     });
+  }
 
+  getSelectedUserColor() {
     this.selectedUserSubscription = this.avatarColorService.selectedUserColor$.subscribe({
       next: (color: string) => {
         this.selectedUserColor = color;
@@ -45,9 +53,7 @@ export class LoadingSpinner implements OnInit, OnDestroy {
         console.log('Completed fetching selected user color.');
       }
     });
-
   }
-
 
   ngOnDestroy() {
     this.loadingSpinnerSubscription.unsubscribe();

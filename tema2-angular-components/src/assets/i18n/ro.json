@@ -1,9 +1,4 @@
 {
-  "PROJECT": {
-    "productLaunch_1": "Product launch_1 222",
-    "Team brainstorim_1": "Team brainstorming_1",
-    "Design landing page": "Design landing page"
-  },
   "SIDEBAR": {
     "MY_PROJECTS": {
       "TITLE_FROM_SIDEBAR": "Proiectele Mele",
@@ -51,7 +46,7 @@
     "MY_GOALS_CARD": {
       "TITLE": "Obiectivele Mele",
       "NO_GOALS_TEXT": "Nu există obiective disponibile.",
-      "MY_PROJECTS":"Proiectele Mele"
+      "MY_PROJECTS": "Proiectele Mele"
     },
     "MY_PROJECTS_CARD": {
       "TITLE": "Proiecte",
@@ -93,7 +88,7 @@
         "SUN": "Dum"
       }
     },
-    "LANGUAGE_PICKER":{
+    "LANGUAGE_PICKER": {
       "NO_LANG": "Nicio limbă disponibilă"
     }
   },
@@ -122,6 +117,83 @@
       "DARK_THEME_DESCRIPTION": "Ușor pentru ochi",
       "ACTIVE_BUTTON": "Activ",
       "SELECT_BUTTON": "Selectează"
+    }
+  },
+  "ERRORS": {
+    "FORBIDDEN_403": {
+      "SUBTITLE": "Acesta este un spațiu restricționat",
+      "DESCRIPTION": "Din păcate, nu aveți permisiunile necesare pentru a accesa această pagină.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "NOT_FOUND_404": {
+      "SUBTITLE": "Pierdut în spațiu",
+      "DESCRIPTION": "Pagina pe care o căutați s-ar putea sa nu mai existe, sau ar putea fi acum desemnată ca privată.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "INTERNAL_SERVER_ERROR_500": {
+      "SUBTITLE": "Houston, am avut o problemă",
+      "DESCRIPTION": "Cererea ta nu a mai decolat cu adevărat, dar lucrăm să rezolvăm problema rapid.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "BAD_GATEWAY_502": {
+      "SUBTITLE": "Eroare de comunicare între servere",
+      "DESCRIPTION": "Se pare că există o problemă de comunicare între servere. Te rugăm să încerci din nou mai târziu.",
+      "BUTTON": "Reveniți la pagina principală"
+    },
+    "UNAUTHORIZED_401": {
+      "SUBTITLE": "Acces neautorizat",
+      "DESCRIPTION": "Nu ai permisiunea necesară pentru a accesa această pagină. Te rugăm să te autentifici.",
+      "BUTTON": "Reveniți la pagina principală"
+    }
+  },
+  "LOGIN_REGISTER_PAGE": {
+    "TITLE": "Autentificare",
+    "SUBTITLE_REGISTER": "Creează un cont nou",
+    "USERNAME_PLACEHOLDER": "Nume de utilizator sau email",
+    "PASSWORD_PLACEHOLDER": "Parolă",
+    "CONFIRM_PASSWORD_PLACEHOLDER": "Confirmă parola",
+    "REMEMBER_ME": "Ține-mă minte",
+    "FORGOT_PASSWORD": "Ai uitat parola?",
+    "BUTTON": "Autentificare",
+    "NEW_HERE": "Alătură-te nouă!",
+    "GO_BACK": "Înapoi",
+    "EMAIL_PLACEHOLDER": "Adresă de email",
+    "ADDRESS_PLACEHOLDER": "Adresa de acasă",
+    "ZIPCODE_PLACEHOLDER": "Cod poștal",
+    "DESIRED_USERNAME_PLACEHOLDER": "Nume de utilizator",
+    "LUCKY_NUMBER_PLACEHOLDER": "Număr norocos",
+    "PHONE_NUMBER_PLACEHOLDER": "Număr de telefon",
+    "CITY_PLACEHOLDER": "Oraș",
+    "COUNTRY_PLACEHOLDER": "Țară",
+    "CREATE_ACCOUNT": "Creează cont",
+    "ACCOUNT_INFO_LABEL": "Informații cont",
+    "ADDRESS_INFO_LABEL": "Informații adresă",
+    "CONTACT_INFO_LABEL": "Informații contact",
+    "PASSWORD_INFO_LABEL": "Informații parolă",
+    "ERRORS": {
+      "USERNAME_REQUIRED": "Numele de utilizator este obligatoriu",
+      "USERNAME_MIN_LENGTH": "Numele de utilizator trebuie să aibă cel puțin 3 caractere",
+      "EMAIL_REQUIRED": "Email-ul este obligatoriu",
+      "EMAIL_INVALID": "Vă rugăm să introduceți o adresă de email validă",
+      "PASSWORD_REQUIRED": "Parola este obligatorie",
+      "PASSWORD_MIN_LENGTH": "Parola trebuie să aibă cel puțin 8 caractere",
+      "CONFIRM_PASSWORD_REQUIRED": "Vă rugăm să confirmați parola",
+      "PASSWORD_MISMATCH": "Parolele nu se potrivesc",
+      "COUNTRY_REQUIRED": "Țara este obligatorie",
+      "CITY_REQUIRED": "Orașul este obligatoriu",
+      "ADDRESS_REQUIRED": "Adresa este obligatorie",
+      "ZIPCODE_REQUIRED": "Codul poștal este obligatoriu",
+      "ZIPCODE_INVALID": "Codul poștal trebuie să conțină 6 cifre",
+      "PHONE_REQUIRED": "Numărul de telefon este obligatoriu",
+      "PHONE_INVALID": "Vă rugăm să introduceți un număr de telefon valid",
+      "LUCKY_NUMBER_REQUIRED": "Numărul norocos este obligatoriu",
+      "LUCKY_NUMBER_MIN": "Numărul norocos trebuie să fie cel puțin 7",
+      "LUCKY_NUMBER_MAX": "Numărul norocos trebuie să fie maximum 77777",
+      "LUCKY_NUMBER_SAME_DIGITS": "Toate cifrele nu pot fi identice",
+      "PASSWORD_MISSING_NUMBER": "Parola trebuie să conțină cel puțin o cifră",
+      "PASSWORD_MISSING_UPPERCASE": "Parola trebuie să conțină cel puțin o majusculă",
+      "PASSWORD_MISSING_SPECIAL_CHAR": "Parola trebuie să conțină cel puțin un caracter special (@$!%*?&)",
+      "INVALID_CREDENTIALS": "Date de autentificare invalide"
     }
   }
 }

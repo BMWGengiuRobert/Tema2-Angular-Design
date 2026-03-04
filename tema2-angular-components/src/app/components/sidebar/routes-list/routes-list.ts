@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ROUTES } from '../../../models/routes.model';
 import { RouterLink } from '@angular/router';
 import { AvatarColorService } from '../../../services/avatar-color.service';
@@ -20,9 +20,16 @@ export class RoutesList implements OnInit, OnDestroy {
 
   private colorSubscription: Subscription = new Subscription();
 
-  constructor(private userService: AvatarColorService, private translateService: TranslateService) {}
+  //Injecting services
+  private userService: AvatarColorService = inject(AvatarColorService);
+  private translateService: TranslateService = inject(TranslateService);
 
   ngOnInit() {
+    this.getSelectedUserColor();
+    this.translateService.use(document.documentElement.lang || 'en');
+  }
+
+  getSelectedUserColor() {
     this.colorSubscription = this.userService.selectedUserColor$.subscribe({
       next: (color: string) => {
         this.selectedUserColor = color;
@@ -34,8 +41,6 @@ export class RoutesList implements OnInit, OnDestroy {
         console.log('Completed fetching user color.');
       }
     });
-
-    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   ngOnDestroy() {
@@ -43,4 +48,3 @@ export class RoutesList implements OnInit, OnDestroy {
   }
 
 }
-  

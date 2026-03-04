@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { OpenModalService } from '../../../services/modal.service';
 import { CommonModule } from '@angular/common';
@@ -17,9 +17,18 @@ export class ChangeThemeModal implements OnInit, OnDestroy {
   themeSubscription: Subscription = new Subscription();
   currentTheme: 'light' | 'dark' = 'light';
 
-  constructor(private modalService: OpenModalService, private changeThemeService: ChangeThemeService, private translateService: TranslateService) { }
+  // Injecting services
+  modalService: OpenModalService = inject(OpenModalService);
+  changeThemeService: ChangeThemeService = inject(ChangeThemeService);
+  translateService: TranslateService = inject(TranslateService);
 
   ngOnInit() {
+    this.checkChangeThemeModalOpen();
+    this.getCurrentTheme();
+    this.translateService.use(document.documentElement.lang || 'en');
+  }
+
+  checkChangeThemeModalOpen() {
     this.modalSubscription = this.modalService.isChangeThemeModalOpen$.subscribe({
       next: (isOpen: boolean) => {
         this.isModalOpen = isOpen;
@@ -31,7 +40,9 @@ export class ChangeThemeModal implements OnInit, OnDestroy {
         console.log('Completed receiving modal state.');
       }
     });
+  }
 
+  getCurrentTheme() {
     this.themeSubscription = this.changeThemeService.currentTheme$.subscribe({
       next: (theme) => {
         this.currentTheme = theme;
@@ -43,8 +54,6 @@ export class ChangeThemeModal implements OnInit, OnDestroy {
         console.log('Completed receiving theme.');
       }
     });
-
-    this.translateService.use(document.documentElement.lang || 'en');
   }
 
   closeModal() {
